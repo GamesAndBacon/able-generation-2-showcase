@@ -2,17 +2,13 @@
 
 # Able · Generation 2.0
 
-**A visual tour of the biggest improvements in our custom Able.**
+**Richer abilities. Clearer authoring. More control over every execution.**
 
-Multi-phase abilities. Gameplay that reacts to events. State that survives between activations. A collision engine you can author visually.
+A visual tour of our custom Able: collision shapes, multiple phases, reactive gameplay, persistent state, and weapon integration.
 
-Built on Able 3.96, targeting Unreal Engine 5.8. “Generation 2.0” describes this project's evolution, not the vendor's version number.
+**[Open the full visual showcase →](https://gamesandbacon.github.io/able-generation-2-showcase/)**
 
-**[Open the full visual showcase →](https://gamesandbacon.github.io/able-generation-2-showcase/)** · [Screenshot notes](#capture-notes)
-
-| Author | Orchestrate | Retain | Measure |
-| :--- | :--- | :--- | :--- |
-| Collision Shapes and viewport handles | Timelines and gameplay events | Ability State and per-instigator passives | Native shape execution and ACE Profiler |
+Built on Able 3.96 for Unreal Engine 5.8. “Generation 2.0” names this project's evolution.
 
 ### Choose a chapter
 
@@ -21,9 +17,9 @@ Built on Able 3.96, targeting Unreal Engine 5.8. “Generation 2.0” describes 
 | [01 · Collision Shapes](#collision-shapes) | [02 · Multiple timelines](#timelines) | [10 · Collision performance](#collision-performance) |
 | [07 · Root motion](#root-motion) | [03 · Gameplay events](#gameplay-events) | [11 · Networking and APIs](#networking-apis) |
 | [08 · Ability Editor](#ability-editor) | [04 · Ability State](#ability-state) | [12 · Weapon integrations](#weapon-integrations) |
-| [09 · Bindings, spawning and presentation](#task-library) | [05 · Passives](#passives) · [06 · Input](#enhanced-input) | [Testing and migration](#the-foundation-underneath) |
+| [09 · Bindings and presentation](#task-library) | [05 · Passives](#passives) · [06 · Input](#enhanced-input) | [Testing and migration](#the-foundation-underneath) |
 
-This catalogue focuses on the major additions and their authoring options. Smaller fixes are summarized together. Expand **Look closer** panels for additional inspector screenshots.
+**Browse the images. Open Look closer for the controls behind them.** On the website, click any image to enlarge it.
 
 ---
 
@@ -31,57 +27,35 @@ This catalogue focuses on the major additions and their authoring options. Small
 
 ## 01 · Shape the attack
 
-### Able Collision Engine
+**Able Collision Engine — hitboxes that match the move.**
 
-**The hitbox can now match the move.**
+Build reusable Collision Shapes from presets, outlines, and repeated pieces. Preview the volume beside its graph; expose dimensions through typed Params.
 
-ACE replaces Able's fixed volume implementations with reusable **Collision Shapes**. Compose a shape from presets, extruded outlines, revolved profiles, repeated pieces, and other shapes. A typed **Params** struct exposes the dimensions each use can customize.
+![Cross Slash's construction graph, live shape preview and parameter controls.](images/ace-cross-slash.png)
 
-![Cross Slash's Build Shape graph beside its live preview and parameter controls.](images/ace-cross-slash.png)
+*Cross Slash: build the arc, inspect the volume, adjust its dimensions.*
 
-*Captured from the project's existing `CS_CrossSlash` asset. The graph constructs the volume; the preview shows its convex pieces; Params control its dimensions.*
+<details>
+<summary><strong>Look closer: shapes, handles and individual bindings</strong></summary>
 
-| Inspect the construction | Reuse the building blocks |
+| Inspect the construction | Compose another move |
 | :---: | :---: |
-| ![Cross Slash preview with a debugged arc, numbered points and parameter handles.](images/ace-preview.png) | ![Morning Star preview showing a sphere surrounded by cone spikes.](images/ace-morning-star.png) |
-| **Cross Slash:** debug a node's output and inspect handles in the viewport. | **Morning Star:** an exact sphere plus repeated cone spikes. |
+| ![Cross Slash preview with debug points and viewport parameter handles.](images/ace-preview.png) | ![Morning Star composed from a sphere and repeated cone spikes.](images/ace-morning-star.png) |
+| **Cross Slash:** debug a node and drag its handles. | **Morning Star:** reuse and repeat smaller pieces. |
 
-- Use the same shape system for **queries, sweeps, overlap watchers, and targeting**.
-- Bind a single parameter: grow the radius with charge while keeping the angle fixed.
-- Query from ordinary Blueprint or C++ outside an ability, including async Blueprint queries.
-- Inspect individual nodes, hulls, warnings, and the final volume in the live Shape Preview.
+![Collision Query exposes Cross Slash's Radius, Thickness, Angle, Height and Tilt with separate binding controls.](images/shape-parameters.png)
 
-**Enables:** cleaves, ring attacks, breath cones, compound boss hitboxes, and paths built from capsules.
+*Bind one dimension without replacing the whole parameter struct.*
 
-### A complete shape-building toolbox
+- **Presets:** Box, Sphere, Capsule, Segment, Cylinder, Cone, Vision Cone, Arc, Dome, Star, Prism and Path.
+- **Construction:** Hull, Extrude and Revolve; concave outlines split into convex pieces. Polygon, Rectangle, Star and Arc generators supply outlines.
+- **Composition:** Merge, Transform, Duplicate, Repeat, Mirror and nested Shapes. Blueprint and native C++ share the building blocks.
+- **Inspection:** coloured hulls, selected pieces, points, dimensions, warnings and undoable viewport handles.
+- **Integration:** Query, Sweep, Watch for Overlap and targeting; negative query shapes, automatic range and per-field bindings. Ordinary Blueprint queries support typed Params and async completion.
 
-| Building block | What it adds |
-| :--- | :--- |
-| **Exact primitives** | Box, Sphere, Capsule and Segment presets use analytic collision shapes. Box-shaped hulls can also become exact boxes automatically. |
-| **Attack and perception presets** | Cylinder, Cone, Vision Cone, Arc, Dome, Star, Prism and Path cover common attack volumes, fields of view, shells, outlines and capsule paths. |
-| **Custom solid construction** | Make Hull wraps a convex piece; Extrude Polygon turns an outline into height, with optional taper; Revolve Polygon spins a profile around an axis. Concave outlines are split into convex pieces. |
-| **Composition** | Merge, Transform, Duplicate, Repeat and Mirror Hulls assemble reusable pieces. A Shape node can call another Shape, including your own Blueprint classes. |
-| **Outline generation** | Polygon, Rectangle, Star Polygon and Arc Points generators, plus Transform, Duplicate and Merge Polygon nodes. Arrays in Params support custom paths and outlines. |
-| **Typed Params** | Create Params Struct seeds parameters from a single preset node. Get Shape Params supplies typed member pins; defaults provide a reusable starting shape. Native C++ shapes use the same construction functions. |
-| **Live inspection** | Per-hull colours, hull selection and provenance, point drawing, dimensions, a reference mesh, node warnings, and compiler status. Press **D** on supported graph nodes to inspect their output. |
-| **Viewport handles** | Drag distances, angles, points and transforms. Handles can write a node's literal value or the Default Param feeding it; a drag becomes one undo operation. |
+Async completion returns to the game thread. Worker-safe shapes can also build off-thread; raycasts retain line-trace behavior.
 
-### Use a shape wherever the ability needs a volume
-
-| Integration | What the author controls |
-| :--- | :--- |
-| **Collision Query** | Query Shape, optional Negative Query Shape, placement, filtering and individual Params. |
-| **Collision Sweep** | Sweep Shape and placement; exact testing along the sweep. |
-| **Watch for Overlap** | Repeated shape queries over the task's window. |
-| **Targeting** | Shared or timeline-specific shapes; automatic range from shape bounds. |
-| **Ordinary Blueprint** | Shape Overlap Actors, Shape Sweep Single, Shape Sweep Actors and Draw Collision Shape, with typed Params, ignored actors, object/channel filters and debug drawing. Query nodes can switch to async completion. |
-
-![Cross Slash selected in a Collision Query, with a separate binding control beside each parameter.](images/shape-parameters.png)
-
-*Unsaved demonstration: the existing Cross Slash class exposes Radius, Thickness, Angle, Height and Tilt inside the ability. The open menu belongs to one field's Create/View Binding button.*
-
-Async Blueprint queries report completion on the game thread. Shapes that support worker-thread construction can build there too; other Blueprint shapes build first on the game thread. Raycasts retain their line-trace behavior.
-
+</details>
 
 ---
 
@@ -89,90 +63,63 @@ Async Blueprint queries report completion on the game thread. Shapes that suppor
 
 ## 02 · Give one ability several phases
 
-### Multiple timelines
-
 **Wind up. Sustain. Recover. Keep one execution.**
 
-An ability can contain several timelines, each with its own playback, tasks, loops, channeling, and finish routes. Optional independent cooldowns and targeting also let one asset hold alternate attacks.
+Each timeline owns its tasks, playback, loops and exit routes. Phase transitions preserve the running context; alternate attacks can also own separate cooldowns and targeting.
 
-![The ability editor's timeline tabs show Wind Up, Sustained Attack and Recovery, above task tracks.](images/timeline-phases.png)
+![Wind Up, Sustained Attack and Recovery tabs show the routes between phases.](images/timeline-phases.png)
 
-*Unsaved authoring demonstration: the phase tabs expose their transition routes directly. The task tracks illustrate the editor layout, not a completed combat ability.*
-
-| Phase | What it owns | Example route |
-| :--- | :--- | :--- |
-| **Wind Up** | Preparation and startup timing | Finish → Sustained Attack |
-| **Sustained Attack** | Looping tasks and held-input channeling | Channel fails → Recovery |
-| **Recovery** | Exit animation and recovery timing | Finish → End Ability |
-
-Transitions keep the context and execution alive. Running tasks hand off with the **Branched** result; activation checks and cooldowns are not repeated. Destinations can be bound, including weighted random choices using shared random values.
-
-| Subfeature | What it gives us |
-| :--- | :--- |
-| **Independent phase settings** | Length, play-rate multiplier, Finish All Tasks, loop range and bindable maximum iterations per timeline. |
-| **Two exit routes** | Separate decisions for normal completion and channel failure; finish the ability or go to another timeline. Tabs show the routes. |
-| **Alternate attacks in one asset** | Optional independent cooldown and targeting, including its own Requires Target setting. Activation, range and cooldown APIs accept timeline indices. |
-| **Dynamic selection** | Find Timeline, Pick Random Timeline and Pick Weighted Random Timeline; bind the next phase or choose a starting phase from AI/Blueprint. |
-| **Continuity** | Targets, stacks, ability scratchpad and the execution context carry across the transition; Start/End describe the whole ability. |
-| **Asset editing** | Add, rename, duplicate, reorder and remove timelines. Stable identities keep their tasks associated during reordering. Dependencies stay within a timeline. |
-
-**Example:** one enemy ability can hold Swipe, Bite and Roar, each with its own range and cooldown, while a charged player move uses Wind Up, Sustain and Recovery.
+*The phase tabs show what runs next.*
 
 <details>
-<summary><strong>Look closer: timeline and input settings</strong></summary>
+<summary><strong>Look closer: held loops and independent attacks</strong></summary>
 
-![Sustained Attack timeline with looping, an Input channel condition and a route to Recovery.](images/timeline-settings.png)
+| Sustain until input ends | Give a phase its own attack settings |
+| :---: | :---: |
+| ![Sustained Attack loops and routes to Recovery when its input channel fails.](images/timeline-settings.png) | ![A timeline owns a three-second cooldown and Cross Slash targeting with automatic range.](images/timeline-targeting.png) |
+| **Channel failure → Recovery.** | **Own cooldown, target requirement and shape.** |
 
-*The demonstration shows a two-second loop, an Input channel condition, and Recovery as the channel-failure destination.*
+- Bind playback, loop count and destinations; route completion and channel failure separately.
+- Choose a starting phase, find one by name, or pick random/weighted destinations using shared random values.
+- Targets, stacks and scratchpads survive transitions. Tasks end with **Branched**; activation checks and cooldowns are not repeated.
+- Add, rename, duplicate, reorder or remove phases; stable identities retain their tasks. Dependencies stay within a timeline.
 
 </details>
-
 
 ---
 
 <a name="gameplay-events"></a>
 
-## 03 · Let abilities respond to gameplay
+## 03 · React when gameplay happens
 
-### Typed gameplay events
+**Typed gameplay events — respond to a result, instead of guessing its timing.**
 
-**A task can react to a result, instead of guessing when it happened.**
+Tags declare payload types. Send and Get Payload expose those types in Blueprint; Listen tasks release response groups when a matching event arrives.
 
-Tasks publish tagged notifications when they start, finish, are interrupted, or produce a supported result. Damage, spawn, collision, and barrel-shot events carry the data captured at the result site.
+![Typed Send Gameplay Event and Get Gameplay Event Payload nodes expose Scalable Float members from the selected tag.](images/typed-event-nodes.png)
 
-![Gameplay Event Registry showing tags paired with payload struct types.](images/event-registry.png)
+*An existing registry tag supplies the payload type. Split pins expose its members.*
 
-*The live project's registry: each tag declares its payload type. These are the project's existing entries, not newly registered showcase events.*
+<details>
+<summary><strong>Look closer: the registry and repeated responses</strong></summary>
 
-The **Gameplay Event Registry** gives Send, Wait, and Get Payload nodes typed Blueprint pins. Whole-payload and per-field bindings keep authored values and dynamic values together.
+![The project's Gameplay Event Registry pairs tags with payload structs.](images/event-registry.png)
 
-![Listen for Gameplay Event task configured for repeated listening, with response controls.](images/event-listener.png)
+*Declare the tag and type once; author with typed pins.*
 
-*Unsaved demonstration of the Listen task's Repeat mode. A gameplay tag still needs to be assigned before use.*
+![Listen for Gameplay Event uses Repeat, Queue, eight queued responses and a two-second response watchdog.](images/event-response-settings.png)
 
-**Listen for Gameplay Event** releases dependent task groups on receipt. Responses get their own context and scratchpads, with one-shot or repeated listening, busy policies, bounded queues, and a response watchdog. Blueprint waits can listen across multiple components.
+*Listen repeatedly, queue accepted events, and bound how long a response may run.*
 
-### From notification to an independent response
+- **Publish:** Started, Completed, Interrupted, Manual and supported Result events. Damage, spawn, query and committed barrel-shot results carry captured outcomes.
+- **Route:** Self, Instigator, Targets or a specified component; combine sources and Blueprint waits across components.
+- **Respond:** Once/Repeat, Ignore While Busy/Queue, limits and overflow counts. Dependents use event-relative delay or timeline timing.
+- **Isolate:** each response gets its own context and scratchpads; optionally target the event subject. Read captured payload and source metadata.
+- **Bind and diagnose:** whole payloads or individual fields, child-tag type inheritance, bounded dispatch, dropped-event counters, trace and clean cancellation.
 
-| Subfeature | What it gives us |
-| :--- | :--- |
-| **Typed registry** | A tag declares its payload struct or No Payload. Child tags can inherit the nearest registered parent's type. Nodes rebuild when the registry changes. |
-| **Typed Send, Wait and Get Payload** | Struct pins appear from the selected tag, without manual Instanced Struct packing. A wait can observe several component wires through one input. |
-| **Task lifecycle notifications** | Started, Completed and Interrupted events, plus explicit Manual sends. These report task execution; supported Result events carry the outcome captured by gameplay. |
-| **Actual result payloads** | Damage: calculated/applied damage and target. Spawn: attempted actor and success/failure. Collision/raycast/overlap: filtered results, including misses. Fire Barrel: authority-side committed shot data. |
-| **Component routing** | Send to Self, Instigator, Targets or a specified component. Listen can combine those sources, deduplicate them and identify the Receiving Component separately from the original sender. |
-| **Response scheduling** | Descendants of a Listen task form its response group. Event Relative timing preserves duration and applies delay after receipt; Ability Timeline retains absolute timing. |
-| **Repeated reactions** | Once or Repeat, Ignore While Busy or a bounded Queue, overflow counts and a maximum response-duration watchdog. Accepted responses can drain after the listening window closes. |
-| **Isolated response data** | A separate context and scratchpads protect the parent execution's targets. Optionally target the event subject; read its payload and captured source metadata through the response context. |
-| **Bindings at two levels** | Bind the whole payload or individual fields. Whole-payload bindings belong to the tag and can be shared by tasks sending that tag. |
-| **Diagnosis and cleanup** | Bounded component dispatch, dropped-event counters, an optional development trace, cancelable waits, and unsubscribe/response cleanup on interruption or teardown. |
+Gameplay events are **local**; they do not automatically replicate or activate abilities. Ability Callbacks remain separate.
 
-**Example:** a running retaliation passive listens for confirmed damage, queues accepted hits, and runs a reaction group using each hit's captured damage and target.
-
-Ability Callbacks remain a separate mechanism: **Notify Ability / Callback Name** calls that ability's Blueprint. Gameplay events notify component listeners. Result getters and source-target getters expose captured data; retained actor references can expire.
-
-**Enables:** reactions to confirmed hits, chained effects, repeated responses, and coordination between running abilities. Gameplay events remain local; they do not automatically replicate or activate abilities.
-
+</details>
 
 ---
 
@@ -180,190 +127,177 @@ Ability Callbacks remain a separate mechanism: **Notify Ability / Callback Name*
 
 ## 04 · Remember between activations
 
-### Ability State
+**Ability State — structured memory for each caster.**
 
-**An ability can retain structured data for each caster.**
+Keep charges, combo progress or a previous target on the Ability Component. Typed Get/Set nodes expose the selected struct's members.
 
-Store combo progress, charges, a previous target, or character-specific values in a typed struct owned by the Ability Component. Get/Set Ability State nodes expose the struct's members directly.
+![Get Ability State reads Has Charged, Charges and Combo Step; Set Ability State writes a changed charge count.](images/ability-state-nodes.png)
 
-- **State Key:** share state between related abilities using a Gameplay Tag.
-- **State Override:** give a particular component different starting values.
-- **Use State:** decide whether a caster needs storage at all.
-- **Replication:** choose local state or server-authoritative state sent to the owning client.
+*Read the caster's values, change one, and retain the others.*
 
-| Subfeature | Why it matters |
-| :--- | :--- |
-| **Lazy creation and Has State** | Storage is made on first use; a caster with Use State disabled has none. Get/Set report whether state exists. |
-| **Typed Get/Set nodes** | Member pins follow the selected struct. In the ability, use Context; elsewhere, use the Ability Component and selected ability, even without a running execution. |
-| **Partial updates** | Leave Unchanged hides a Set member pin and preserves its stored value. Read-only structs instead use whole-state replacement from a connected struct. |
-| **Per-character defaults** | Component State Overrides initialize a boss, player or AI differently, including abilities sharing a State Key. |
-| **Reset controls** | Reset one state's shared key or all component states; subsequent use initializes it again. |
-| **Editor feedback** | Selecting the State struct updates the Get/Set nodes immediately; recompiling updates member changes within the struct. |
+<details>
+<summary><strong>Look closer: defaults, sharing and replication</strong></summary>
+
+![Ability State selects ST Ability Memory, initializes three charges and uses Server replication.](images/ability-state-settings.png)
+
+*Choose the struct, starting values, sharing key and replication policy together.*
+
+- **Lazy storage:** create on first use; **Use State** can disable storage for selected casters. **Has State** reports availability.
+- **Shared memory:** related abilities share a **State Key**. Component **State Overrides** supply different defaults.
+- **Typed updates:** Context inside an ability; Component + Ability elsewhere. **Leave Unchanged** preserves a member without a Set pin; read-only structs use whole-state replacement.
+- **Lifecycle:** reset one key or all states; struct/member edits refresh nodes.
+- **Replication:** Local per machine, or server-authoritative values sent to the owning client.
+
+</details>
+
+---
 
 <a name="passives"></a>
 
 ## 05 · Keep each player's effects independent
 
-### Passives per instigator
+**Passives per instigator — separate stacks, expiry and attribution.**
 
-Two players can apply the same Burn to one enemy without sharing stacks or expiry. Each instigator gets a separate passive instance, duration, decay, and attribution. Queries and cancellation can address one instigator's application.
+Two players can apply the same Burn to one enemy without sharing its lifetime. Query, change or cancel one instigator's application.
 
-![Ability State setup controls and a passive example using Unique Per Instigator with five maximum stacks.](images/ability-state-passives.png)
+![Passive settings use Unique Per Instigator, five maximum stacks and duration refresh on new stacks.](images/passive-settings.png)
 
-*Unsaved demonstration. Above: State creation, sharing, and replication controls, with no State struct selected. Below: a passive configured as Unique Per Instigator with a maximum of five stacks.*
+*One ability type. A separate passive instance for each instigator.*
 
-Temporary gameplay tags are reference-counted, so one Burn ending does not clear `Status.Burning` while another still owns it.
+<details>
+<summary><strong>Look closer: inspect ownership and cancel selectively</strong></summary>
 
-The passive APIs accept an optional **Instigator** for targeted stack queries, stack changes, cancellation and timing. **Get Passive Instigators** lists the applications; **Get Current Passive Abilities** lists each ability once. Cancel Ability can filter passives with **Only Passives From**, and Remove One removes a stack from each affected instance. Replication carries separate instances and their stack changes.
+![Get Passive Instigators and Get Current Stack Count for Passive Ability expose per-instigator query controls.](images/passive-instigator-nodes.png)
 
+*List the applying actors, then inspect a particular actor's stacks.*
+
+![Cancel Ability uses Remove One and filters Only Passives From Self.](images/passive-cancellation.png)
+
+*Remove your own application without clearing somebody else's.*
+
+Stacks, duration, decay and cooldowns are independent. APIs accept an optional **Instigator**; Get Current Passive Abilities lists each ability type once. Replication carries separate instances and stack changes.
+
+Temporary tags are reference-counted: one effect ending keeps `Status.Burning` while another still owns it. **Remove One** removes a stack from each affected instance.
+
+</details>
 
 ---
 
 <a name="enhanced-input"></a>
 
-## 06 · Make input part of the execution
+## 06 · Make input part of the move
 
-### Enhanced Input
+**Enhanced Input — hold, release and branch with Input Actions.**
 
-Branch and channel conditions use **Input Actions and trigger callbacks**. An activation carries its default action; an individual reader can override it. Listener state belongs to that execution and is detached when its listening window ends.
+Use the activation's Context Input or select a Manual Input. Channel and branch readers listen to trigger callbacks for their execution window.
 
-![Enhanced Input channel settings using Context Input and the Started trigger event.](images/enhanced-input.png)
+![Enhanced Input channel controls use Context Input, Started and While Input Is Active.](images/enhanced-input.png)
 
-*Unsaved demonstration: channel while the context's input is active, then route to Recovery when the channel fails.*
+*Hold the channel; route to Recovery when input stops.*
 
-**Enables:** hold-to-channel attacks, release transitions, trigger-based branch windows, and reuse of one ability with different input actions.
+<details>
+<summary><strong>Look closer: input modes and listening windows</strong></summary>
 
-| Subfeature | Authoring choice |
-| :--- | :--- |
-| **Context Input** | Supply the action at activation; readers use that execution's default action. Same-component Branch/Play Ability can inherit it. |
-| **Manual Input** | Pick or bind an action on the reader. The chosen action and trigger event are resolved once for the listening window. |
-| **On Input branch conditions** | Remember a matching callback during the task window, so other branch conditions can become satisfied afterward. |
-| **While Input Is Active** | Maintain a held channel from the action lifecycle; completion/cancellation clears it. An already-active action initializes from current input state. |
-| **Until Event Occurs** | Keep channeling until the chosen callback, commonly Completed for release. Canceled also ends a Completed-based channel. |
-| **Typed trigger selection** | Started, Ongoing, Triggered, Completed and Canceled follow Enhanced Input's action rules. Trigger Event can be bound too. |
-| **Execution lifetime** | Separate listener state per execution, exact-handle cleanup and stale-callback guards; readers handle local input component replacement and lost mappings. |
+- **On Input branches** remember a callback while other conditions become ready.
+- **While Input Is Active** follows the action lifecycle; **Until Event Occurs** ends on the selected callback, commonly Completed for release.
+- Choose **Started, Ongoing, Triggered, Completed or Canceled**. Bind the action/trigger; same-component Branch/Play Ability can inherit Context Input.
+- Listeners belong to one execution and detach at the window's end, including input-component replacement and lost mappings.
 
-Enhanced Input mappings and physical hold/release behavior still belong to the game's Input Actions and mapping contexts.
+Physical hold/release behavior comes from the game's Input Actions and mapping contexts.
 
+</details>
 
 ---
 
 <a name="root-motion"></a>
 
-## 07 · Author movement as part of the ability
+## 07 · Author the movement
 
-### Root-motion tasks
+**Root-motion tasks — dashes, pulls, knockbacks and leaps.**
 
-**Dashes, pulls, knockbacks, and leaps now have dedicated tasks.**
+Four dedicated tasks use Character Movement sources. Bind values, shape motion with curves, and control how velocity finishes.
 
-Constant Force, Radial Force, Move To, and Jump use Character Movement root-motion sources. Bindable values, curves, moving destinations, movement-mode handling, and finish-velocity controls make the tasks useful across different moves.
+![Root Motion Radial Force displays its radius and origin gizmo in the viewport beside its settings.](images/root-motion-editor.png)
 
-![Root Motion Radial Force selected in the ability editor, with its radius and location gizmo visible alongside bindable settings.](images/root-motion-editor.png)
-
-*Unsaved authoring demonstration: the orange volume visualizes the radial force's radius, and the location gizmo places its origin. This is an editor view, not a recorded movement test.*
-
-| Movement | Major controls | Example use |
-| :--- | :--- | :--- |
-| **Constant Force** | World, Actor, Control Rotation or Control Yaw direction space; strength-over-time curve; optional gravity. | A forward dash or a dash along the player's aim. |
-| **Radial Force** | Push/pull, radius, moving origin, horizontal-only force, fixed direction and distance/time falloff curves. | An explosion knockback, suction field or wind effect. |
-| **Move To** | Target-type destination, tracking, stop distance, acceptance radius, keep height, path offset and time mapping curves. | Close the gap to a moving enemy and stop short of it. |
-| **Jump** | Rotation space, distance, height, path/time curves, landing completion and minimum landed time. | A forward leap or backward evasive hop. |
-
-All four share **additive/override behavior, priority, source naming, removal on task end, finish velocity, and temporary movement-mode controls**. Duration follows the ability's play rate; Move To and Jump can finish early once the character sources finish. Character Movement provides the source replication, with server and owning-client application in the default realm.
+*Place the origin. Preview the radius. Author the push or pull.*
 
 <details>
-<summary><strong>Look closer: directional force, destination tracking and jumping</strong></summary>
+<summary><strong>Look closer: directional force, tracking and jumping</strong></summary>
 
-![Constant Force inspector with direction space, strength curve and shared root-motion finish controls.](images/root-motion-constant.png)
+![Constant Force exposes direction space, strength-over-time and finish-velocity controls.](images/root-motion-constant.png)
 
-*Constant Force: an authored direction and strength, with a curve slot and explicit source-cleanup/finish behavior.*
+*Choose the direction space and strength curve for a dash.*
 
-| Track a destination | Shape a jump |
+| Close the gap | Leave the ground |
 | :---: | :---: |
-| ![Move To inspector with destination, tracking, stop distance and path/time curves.](images/root-motion-move.png) | ![Jump inspector with distance, height and Finish On Landed.](images/root-motion-jump.png) |
-| **Move To:** follow a target, maintain height and tune the path. | **Jump:** set an arc and decide when landing completes it. |
+| ![Move To exposes destination tracking, stop distance and path curves.](images/root-motion-move.png) | ![Jump exposes distance, height and Finish On Landed.](images/root-motion-jump.png) |
+| **Move To:** track a destination and stop short. | **Jump:** shape the arc and finish on landing. |
 
-*Unsaved task inspectors. These captures show authoring options; movement was not played or measured.*
+| Task | Main controls |
+| :--- | :--- |
+| **Constant Force** | World/Actor/Control Rotation/Control Yaw direction, strength curve, gravity. |
+| **Radial Force** | Push/pull, moving origin, radius, horizontal force, fixed direction, distance/time falloff. |
+| **Move To** | Tracking, stop distance, acceptance radius, keep height, path offset/time curves. |
+| **Jump** | Rotation space, distance, height, path/time curves, minimum landed time. |
+
+All share additive/override behavior, priority, source naming, cleanup, finish velocity and temporary movement-mode controls. Duration follows play rate; Move To/Jump can finish early. Character Movement provides source replication, with server and owning-client application by default.
 
 </details>
 
+---
 
 <a name="ability-editor"></a>
 
-## 08 · Edit where the action happens
+## 08 · Read the ability at a glance
 
-### Ability Editor improvements
+**Ability Editor — clearer tracks, phase routes and preview controls.**
 
-Task locations and supported values can be adjusted directly with **viewport gizmos**, including properties exposed by custom tasks. Timeline tabs, task groups, reordering, zooming, panning, and clearer task bars improve navigation.
+Task groups separate presentation, collision, damage, movement and reactions. Search and collapse tracks to keep a larger ability readable.
 
-Preview playback gained **No Loop, Loop Ability, Loop Timeline, and Timeline Once**, plus **Force Transition** to inspect exit routes. Faster asset pickers and a repaired new-ability workflow round out the authoring improvements.
+![Animation, collision, damage, movement and gameplay-event tasks are separated into timeline groups.](images/task-groups.png)
 
-![The timeline groups animation, collision, damage, movement and gameplay-event tasks into separate sections.](images/task-groups.png)
+*Follow each system's timing without losing the whole move.*
 
-*Unsaved demonstration after Organize → Group Ungrouped Tasks by Category. Each group can collapse and has its own Add Task control.*
+<details>
+<summary><strong>Look closer: editing and preview improvements</strong></summary>
 
-| Authoring improvement | What changed |
-| :--- | :--- |
-| **Task organization** | Named groups, drag reordering, moving tasks between groups, category grouping, expanded descriptions and searching by task/category/group. Filtering reveals matches inside collapsed groups. |
-| **Timeline navigation** | Alt + wheel zooms around the cursor; Shift + wheel pans. A draggable time/frame readout supports scrubbing, and coloured leading edges make task bars easier to identify. |
-| **Preview modes** | Play through the ability, replay the whole ability, loop only the current timeline, or inspect a timeline once. Force Transition follows the relevant channel-fail/finish route. |
-| **Viewport editing** | W moves and E rotates supported task gizmos. Labels and per-value visibility buttons identify the value being edited; each drag is one undo. |
-| **Custom-task support** | C++ metadata or a Task Blueprint variable's Ability Editor settings specify a gizmo, relative space, socket and default visibility. |
-| **Preview actors and targets** | Named toolbar pickers use the Asset Registry, with search and Respawn. Add Target and Override Target show what the preview uses; F frames the actor or selected targets. |
-| **New-asset workflow** | The engine class picker creates an ability with its initial timeline. A missing preview actor gets a Choose Preview Actor card. |
-| **Cleaner inspection** | Expanded Location controls, immediate State-node pin refresh and Control Rig bones following Show → Bones. |
+- **Organization:** named groups, drag reordering, moving tasks between groups and category grouping. Search task/category/group, including collapsed matches.
+- **Navigation:** cursor-centred Alt + wheel zoom, Shift + wheel pan, draggable time/frame scrubbing and clearer task bars.
+- **Spatial editing:** W/E moves/rotates labelled task gizmos; per-value visibility and one undo per drag. Custom task variables can declare relative space, socket and visibility.
+- **Preview:** No Loop, Loop Ability, Loop Timeline, Timeline Once and Force Transition. Faster searchable actor/target pickers, Respawn, Add/Override Target and an initial-timeline new-asset workflow.
 
+</details>
 
 ---
 
 <a name="task-library"></a>
 
-## 09 · Get more from the existing task library
+## 09 · Bind it. Spawn it. Present it.
 
-### Bindings, spawning, animation, and feedback
+**Richer task authoring — customize each use of the move.**
 
-![Play Animation's reorganized playback, duration, speed and blending controls.](images/animation-controls.png)
+Spawn Actor exposes the chosen class's spawn variables with dynamic bindings. Animation and camera-shake controls make presentation easier to configure.
 
-*Unsaved demonstration of the reorganized Play Animation inspector. No animation asset is assigned in this capture.*
+![Spawn Actor exposes the Throwable class's bindable Data, Time Cooked and Instigator spawn variables.](images/spawn-variables.png)
 
-| Improvement | What it makes possible |
-| :--- | :--- |
-| **Per-field bindings** | Mix fixed and dynamic values in event payloads, property bags, and shape Params. |
-| **Expose On Spawn variables** | Set bindable actor properties before deferred spawning finishes. |
-| **Clearer animation controls** | Choose playback, duration, speed source, and end behavior explicitly. |
-| **Nearby feedback** | Apply camera shakes and force feedback around a bindable epicenter. |
-| **Task correctness fixes** | More dependable movement completion, controller turning, damage events, sound, particles, spawning, and possession cleanup. |
+*The selected class supplies the fields. Bind values for this execution.*
 
-### Spawn with the right data already in place
+<details>
+<summary><strong>Look closer: animation, camera shake and task bindings</strong></summary>
 
-![Spawn Actor configured with the existing Throwable class, showing its bindable Data, Time Cooked and Instigator spawn variables.](images/spawn-variables.png)
+| Author the playback | Share the impact |
+| :---: | :---: |
+| ![Play Animation groups playback, duration, speed and blending controls.](images/animation-controls.png) | ![Nearby camera shake exposes epicenter, radii and falloff controls.](images/nearby-shake.png) |
+| **Animation:** explicit playback, timing and blending. | **Camera shake:** nearby players with spatial falloff. |
 
-*Unsaved demonstration using the project's existing `Throwable` class. Expose On Spawn displays its Data, Time Cooked and Instigator fields. No actor was spawned.*
+- **Spawn:** class-aware typed variables, defaults/bindings, deferred initialization, attachment and result events.
+- **Animation:** playback mode, duration/speed policies, start position, looping, blending, end behavior and migration validation.
+- **Shake:** target/nearby recipients, bindable epicenter/radii/falloff, and owned-instance cleanup.
+- **Bindings:** broader dynamic values, identifiers and Create/View Binding controls. Effects, sound and ability playback receive supporting authoring/lifecycle improvements.
 
-Expose On Spawn values are written **before Construction Script and BeginPlay**, and before a server-spawned actor first replicates. Each value can bind independently and resolve per spawned actor. The list follows the selected class; untouched defaults follow later class-default changes, while explicit overrides are retained. Initial Velocity uses the spawn rotation, and the task's setup callback supports additional deferred initialization.
+Smaller completion, cancellation, attachment, damage, turning and cleanup fixes are grouped here rather than listed task by task.
 
-### Make animation choices explicit
-
-| Choice | Supported modes and behavior |
-| :--- | :--- |
-| **Playback** | Sequence in Slot, Montage, Ability Animation Node or Direct Mesh; each exposes its relevant controls. |
-| **Duration** | Animation Length or a finite Custom Duration; timeline bars show an authoring estimate for animation-driven duration. |
-| **Speed** | Independent playback or following ability/timeline rates, with a bindable speed multiplier. |
-| **Entry and repetition** | Start offset, montage start section, blend controls, finite repeat count and supported duration-based looping. |
-| **End behavior** | Blend Out or Let Animation Finish for supported finite playback; advanced montage Exit Section on Timed End. |
-| **Playback ownership** | Cleanup addresses the task's owned montage instance. Direct Mesh restores its recorded configuration when that playback still owns the mesh. |
-| **Compatibility** | Old settings migrate; configurations needing author review receive validation messages. Existing binding identities are preserved. |
-
-### Carry feedback beyond the selected target
-
-![Play Camera Shake in Everyone Nearby mode, with a bindable epicenter, radii and falloff controls.](images/nearby-shake.png)
-
-*Unsaved demonstration: Everyone Nearby exposes the epicenter, inner/outer radii, falloff and orientation controls. No shake asset is selected.*
-
-Camera Shake and Force Feedback can reach **Everyone Nearby** around a bindable epicenter, as well as the target players. Together with per-field bindings and viewport placement, this supports reuse of one authored task across different attack strengths and locations.
-
-The smaller correctness changes are grouped here: task completion and cancellation, bindings, attachment, point/radial damage, controller turning, and cleanup behave more consistently. These supporting fixes underpin the larger features shown above.
-
+</details>
 
 ---
 
@@ -371,158 +305,147 @@ The smaller correctness changes are grouped here: task completion and cancellati
 
 ## 10 · Make collision cheaper—and visible
 
-### Native execution, caching, and ACE Profiler
+**Native shape execution, caching and ACE Profiler.**
 
-Supported Build Shape graphs compile into **native execution steps**. Geometry and hull caches avoid rebuilding known work; tighter candidate filtering, optimized overlaps/sweeps, and parallel batches reduce query overhead.
+Supported shape graphs compile into native execution steps. Geometry reuse and tighter queries reduce repeated work; the profiler separates build and query costs by shape.
 
-![ACE Profiler with recording controls, a cost graph, and the per-shape cost table.](images/ace-profiler.png)
+![ACE Profiler exposes recording, cost graphs and a per-shape cost table.](images/ace-profiler.png)
 
-*Captured from Tools → ACE Profiler before recording. The empty graph shows the interface; it is not a performance result.*
+*The profiler interface, captured idle. No measurements are shown here.*
 
-The profiler separates build and query costs by shape class and can display costs relative to an engine-sphere baseline. Recorded optimization experiments live alongside reproducible collision measurements in **AbleTests**.
+<details>
+<summary><strong>Look closer: where the savings come from</strong></summary>
 
-**Evidence boundary:** the repository's A/B results describe specific measured workloads. They do not establish one universal speedup for every ability or game.
+- **Native Build Shape:** supported math, Params, composition, Branch and Select avoid Blueprint VM dispatch. Unsupported graphs retain the VM with diagnostics.
+- **Reuse:** bounded Params caches, shared hulls, cross-build caching and source-change invalidation.
+- **Geometry:** faster outline merging, known-face checks and query-only builds; compatible touching pieces can merge on reuse.
+- **Queries:** adaptive broadphase, tighter bounds rejection, less scene locking and sweep tests ordered to find earlier blocking hits.
+- **Batches and visibility:** worker-thread batches, tunable thresholds, per-shape build/query recording and an engine-sphere comparison baseline.
 
-| Improvement | Where the savings come from |
-| :--- | :--- |
-| **Native Build Shape** | Supported graph data flow compiles to saved native steps; math, Params, composition, Branch and Select can avoid Blueprint VM dispatch. Unsupported graphs retain the VM, with compiler/preview diagnostics. |
-| **Per-shape Params cache** | Geometry is reused for equal Params, with value hashing confirmed by an exact comparison, bounded least-recently-used storage and invalidation when shape/struct/defaults change. |
-| **Shared compiled hulls** | Copies and transforms share hull data; known faces avoid unnecessary hull wrapping. A cross-build hull cache reuses compiled shapes. |
-| **Cheaper new builds** | Faster concave-outline merging, known-face checks and shape-name lookup; query-only hulls skip mass-property work. |
-| **Adaptive broadphase** | Choose suitable bounds for the shape, gather candidates once, and retain engine fallbacks for supported complex body arrangements. |
-| **Tighter narrowphase** | Reject candidates and parts using bounds before exact testing; reduce repeated scene locking and test only relevant parts. |
-| **Better sweeps** | Gather the sweep's candidates once, order part tests by reach and stop when remaining parts cannot improve the earliest blocking hit. Single-part shapes use exact engine queries. |
-| **Reuse and parallel work** | Merge compatible touching pieces on reuse; batches use worker threads from the measured threshold of four queries. |
+Repository A/B measurements cover specific workloads, not a universal speedup. The production profiler is separate from the optional test plugin.
 
-**ACE Profiler** records build and query costs by shape class, displays a cost graph/table, and supports comparison with an engine-sphere baseline. Its production editor UI is separate from the optional measurement/test plugin. Cache sizes and parallel thresholds remain tunable.
-
+</details>
 
 ---
 
 <a name="networking-apis"></a>
 
-## 11 · Reduce networking and integration overhead
+## 11 · Start abilities. Follow the result.
 
-### Replication and everyday APIs
+**Simpler APIs and leaner replication underneath.**
 
-- **Compact contexts** omit fields whose values are implied or default.
-- **Push-model support** avoids unnecessary property comparisons when enabled by the project.
-- **Ability State** replicates to the owning client using compact keys.
-- **Ability restarts** travel through normal active-ability replication without the extra restart multicast.
-- **Try Activate Ability** combines context creation and activation into one Blueprint node.
-- **Cooldown events** expose started, changed, and ended notifications; adjustment functions add or remove cooldown time.
+Try Activate Ability creates the context and reports Activated/Failed in one node. Cooldown notifications and adjustments give UI and gameplay direct timer control.
 
-These changes improve the framework beneath the editor features. They are source-backed changes, rather than behaviors a static screenshot can verify.
+![Try Activate Ability exposes Activated, Failed, the created Context and the start result.](images/try-activate-ability.png)
 
-| Everyday API | Practical benefit |
-| :--- | :--- |
-| **Try Activate Ability** | Select an ability, get Activated/Failed execution outputs, Start Result and the created Context. Optional inputs include instigator, input action, timeline and target location. |
-| **Cooldown lifecycle events** | Started, Changed and Ended let UI react without polling. Get Ability Cooldown Remaining reads seconds; Change Cooldown and Change All Cooldowns adjust existing timers. |
-| **Timeline-aware activation** | Start a chosen phase from context factories, Branch, Play Ability or AI; the AI path can read its timeline index from an Integer blackboard key. |
-| **Shared random values** | Per-visit random Int/Float values support corresponding choices between machines; weighted/unweighted timeline selection uses that shared source. |
-
-Push model remains a project opt-in. Gameplay events remain local. Predicting-client timeline requests validate the destination's existence; gameplay-critical transition choices still need server control. Remaining replication limits include same-timeline restarts, passive timeline changes, and late-join shared-random behavior.
-
-
-<a name="weapon-integrations"></a>
-
-## 12 · Connect weapons and individual executions
-
-### EasyBallistics and bindable contexts
-
-The **EasyBallistics bridge** provides Fire Barrel and Barrel Command tasks, dynamic weapon settings, shot-time aiming, and external stat overrides. Committed shots can publish gameplay-event results.
-
-**Bindable contexts** expose lifecycle delegates for one particular execution, including timeline changes, so callers can follow the ability they started.
-
-Both integrations were already present in the repository's earliest snapshot. Their later evolution is part of this generation's work; the repository does not establish their original creation date.
-
-### Weapons controlled from the ability timeline
-
-![Fire Barrel task showing held-fire cleanup options, explicit barrel selection and bindable configuration groups.](images/fire-barrel.png)
-
-*Unsaved inspector demonstration. Refresh, restoration and burst-interruption controls are visible; a barrel still needs to be selected or bound.*
-
-| Subfeature | What it gives us |
-| :--- | :--- |
-| **Held Fire Barrel** | The ability controls a firing window while the selected barrel retains its semi-auto, automatic, burst or gatling behavior. Cleanup can interrupt a burst on completion/interruption. |
-| **Explicit barrel resolution** | Bind a component directly, or select an actor plus component name/tag. Ambiguous matches fail; the held task keeps its selected barrel for consistent cleanup. |
-| **Dynamic configuration** | Bind Fire Options, Overrides, Aim, Barrel Settings, Bullet Settings and Stat Provider. Apply flags choose the groups to change. |
-| **Stable baselines** | Bind From Barrel Defaults supplies original settings to a binding; held-fire refresh reuses that baseline instead of repeatedly compounding a modifier. |
-| **Refresh and restore** | Refresh configuration during the task; optionally restore changed groups on end. Ammo, cooldown and spooling state are not rewound. |
-| **Control ownership** | Exclusive held-fire bridge control prevents overlapping bridge tasks/configuration commands from silently taking over the same barrel. Stop/Block commands remain available. |
-| **Shot results** | Committed authority-side shots expose ammo class, muzzle, launch velocity, bullets and shot number as a gameplay-event result. Refused shots do not publish a shot result. |
+*Start the selected ability and handle the outcome directly.*
 
 <details>
-<summary><strong>Look closer: command vocabulary and shot-time aiming</strong></summary>
+<summary><strong>Look closer: cooldown controls and networking changes</strong></summary>
 
-![Barrel Command dropdown listing Fire Once, Stop Firing, Configure, Set Ammo, Charge, Unload Chambered, Switch Fire Mode, Set Spooling and Set Shooting Blocked.](images/barrel-commands.png)
+![Change Cooldown and Get Ability Cooldown Remaining expose Timeline Index and Instigator controls.](images/cooldown-controls.png)
 
-*Nine commands cover firing, configuration, ammunition, chambering, fire modes, spool control and blocking.*
+*Adjust a timer in seconds, or read one phase/instigator's remaining time.*
 
-![Easy Aim settings in View Trace mode with view-source and obstruction controls.](images/easy-aim.png)
+- **Activation:** optional instigator, input action, starting timeline and target location. Blueprint and AI can select an attack phase.
+- **Cooldowns:** Started/Changed/Ended notifications, remaining seconds and single/all-timer adjustments.
+- **Replication:** compact contexts omit implied/default values; project opt-in push model avoids unnecessary comparisons. State uses compact keys for owning-client replication; restarts use normal active-ability replication.
+- **Shared choices:** per-visit random Int/Float values support corresponding timeline selections between machines.
 
-*View Trace authoring controls in the unsaved demonstration. The view component/controller and actual weapon setup are still unassigned.*
+Screenshots show the APIs, not network traffic. Gameplay-critical transitions still need server control. Remaining replication limits include same-timeline restarts, passive timeline changes and late-join shared randomness; gameplay events stay local.
 
 </details>
 
-### Aim from the current muzzle to the current target
+---
 
-Easy Aim provides **Barrel Forward, View Direction, View Trace, World Location, World Direction and Target Actor** modes. Camera/target transforms resolve at each shot, so animated guns can launch from their moving muzzle toward the view's target. Explicit view transforms and supplied components/controllers support different camera setups.
+<a name="weapon-integrations"></a>
 
-Trace range, channel, complexity, ignored/attached actors, sweep radius and maximum correction angle are configurable. **Check View To Muzzle**, **Check Muzzle Path**, **Block When Obstructed** and behind-muzzle rejection make cover handling explicit. **Resolve Easy Aim** supports reticle previews without firing; **Last Aim Result** exposes obstruction and failure information. This aligns direction; ballistic drop/target leading remains the game's responsibility.
+## 12 · Connect the weapon to the move
 
-### Connect character and weapon stats
+**EasyBallistics and bindable execution contexts.**
 
-The actor **Easy Ballistics Value Interface** exposes **139 typed getters**: 23 barrel configuration, 80 bullet configuration, 20 aim configuration, 13 barrel-state and 3 bullet-state queries. Unchanged getters pass through their supplied defaults. Configuration resolves per shot; live-state overrides affect query results, while ammo/control commands change actual resources.
+Fire Barrel and Barrel Command put weapon control on the timeline. Bind settings, aim at shot time, and publish committed-shot gameplay results.
 
-**Example:** implement the two bullet muzzle-velocity getters on a weapon or character and return `DefaultValue × 1.2`. Other settings keep their defaults, and repeated resolution does not compound the multiplier.
+![Fire Barrel exposes held-fire cleanup, barrel selection and bindable weapon configuration.](images/fire-barrel.png)
 
-### Follow exactly the execution you started
+*Refresh configuration while firing; choose how it restores or stops.*
 
-Bindable contexts forward **Start, End, Interrupt, Branched and Timeline Changed** for that context. Create it, bind the delegates, then activate. The optional factory makes a fresh context; choosing the bindable context class in Able settings also supports the normal context-factory/pooling route with explicit conversion. End disconnects forwarding and clears listeners before reuse. The bridge remains optional and its subscriptions local.
+<details>
+<summary><strong>Look closer: barrel commands and shot-time aiming</strong></summary>
 
+| Control the weapon | Resolve the aim |
+| :---: | :---: |
+| ![Barrel Command lists firing, configuration, ammo, charge, chamber and spool operations.](images/barrel-commands.png) | ![Easy Aim in View Trace mode exposes view-source and obstruction settings.](images/easy-aim.png) |
+| **Commands:** fire, stop, configure, reload and more. | **Easy Aim:** choose the source and handle obstructions. |
+
+- Select barrels explicitly or through targets; bind configuration and refresh/restore policy.
+- Command firing, ammo, charge, chamber unloading, fire mode, spooling and shooting blocking.
+- Aim through View Trace, a world point, actor or component; configure view source, offsets and obstructions. Dynamic binding and barrel delegates remain available.
+- Apply external stat overrides with **139 typed value getters**. Result events expose committed authority-side shot data and captured bullet references.
+
+</details>
+
+<details>
+<summary><strong>Look closer: follow one execution's lifecycle</strong></summary>
+
+![A bindable execution context supplies Bind Event to On Ability Timeline Changed and On Ability End.](images/context-lifecycle.png)
+
+*Subscribe to the execution you started. Connect event handlers to react.*
+
+Bindable contexts expose Start, End, Interrupt, Branch and Timeline Changed delegates. Typed factories and conversion support ordinary and pooled contexts; end cleanup removes forwarding/listeners before reuse. The integration is optional and local.
+
+Both bridges existed in the repository's earliest snapshot; their later evolution is part of this generation.
+
+</details>
 
 ---
+
+<a name="the-foundation-underneath"></a>
 
 ## The foundation underneath
 
-**AbleTests** collects editor automation, collision fixtures, and performance measurements in an optional, removable plugin. Runtime and editor responsibilities have been separated, and older assets have migration paths for timelines, collision volumes, and animation settings. Some changes still require reauthoring; the table below summarizes the main migration areas.
+**Optional test tooling. Clearer plugin boundaries. Upgrade paths for existing assets.**
 
-The historical October review records **213 passing automated tests at that checkpoint**. That is historical evidence, not a new test run or a claim that every feature has multiplayer/runtime coverage.
+AbleTests groups editor automation, collision fixtures and reproducible measurements in a removable editor plugin. Production plugins do not depend on it.
 
-| Foundation | What changed |
+![Able Tests is an optional plugin for automation, collision benchmarks, fixtures and reports, shown disabled.](images/able-tests-plugin.png)
+
+*Available when needed; disabled in the captured editor session.*
+
+<details>
+<summary><strong>Look closer: modular plugins and migration</strong></summary>
+
+![Plugin browser separates Able, Able Collision Engine, EasyBallistics, optional Able Tests and bindable contexts.](images/modular-plugins.png)
+
+*The framework, collision engine and bridges have distinct responsibilities.*
+
+Automation covers shape builds, query variants, batches, filters and lifecycle behavior. Reports record workloads, environment, seeds and latency distributions. The October review recorded **213 passing tests at that checkpoint**; this showcase did not run a new suite.
+
+| Existing authoring | Main upgrade path |
 | :--- | :--- |
-| **Optional AbleTests plugin** | Correctness automation, fixture generation, visual capture tools and performance measurements live in a removable editor-only plugin, disabled by default. Production plugins do not depend on it. |
-| **Broader collision evidence** | Tests compare native/VM builds, exact shapes, sync/async queries, batches and mixed collision scenes, including welded components and filtering. |
-| **Reproducible measurements** | Distribution reports include workload, environment, seed, query results and latency samples; curated A/B results explain optimizations kept or dropped. |
-| **Focused source organization** | Runtime/editor separation and files grouped by responsibility make the framework and collision engine easier to maintain. |
-| **Lifecycle fixes** | More consistent input teardown, event dispatch, task completion and passive cancellation. Cooldown updates stay on the game thread; world-changing/Blueprint task callbacks avoid unsafe worker execution. |
+| Ability-level playback | Move to Timeline 0; author later phases separately. |
+| Fixed collision volumes | Load matching ACE presets through compatibility conversion. |
+| Arbitrary event payloads | Register tag/type pairs; use typed Send/Wait/Get nodes. |
+| Legacy input | Adopt Input Actions; review unsupported old timing/name arrays. |
+| Animation checkboxes | Review explicit playback, duration, speed and end policies. |
+| Context named parameters | Use retained Ability State or per-use dynamic bindings. |
+| Events, tags and cancellation | Review Event/Callback naming, task realm and end-result assumptions. |
 
-### Existing assets: the main upgrade paths
+Some assets need deliberate reauthoring; this is a feature tour, not a complete compatibility checklist.
 
-| Previous authoring | Generation 2.0 path |
-| :--- | :--- |
-| Ability-level length, looping and channeling | Timeline 0 receives those settings; later phases can be authored separately. |
-| Fixed Box/Sphere/Capsule/Cone volumes | Matching ACE presets load through the compatibility path. Able now depends on ACE. |
-| Unregistered arbitrary event payloads | Register each payload tag/type, then use typed Send/Wait/Get nodes. Mismatched payloads are omitted with diagnostics. |
-| Legacy key/action-name input readers | Convert supported selections and deliberately reauthor unsupported name arrays/timing behavior using Input Actions. |
-| Animation checkbox combinations | Migrate to explicit playback/duration/speed/end choices and review validation messages. |
-| Context named parameters | Rewire to Ability State for retained data or dynamic bindings for per-use values. |
-| Old event/callback names | Gameplay Event naming distinguishes component notifications from Notify Ability / Callback Name. |
-| Tag task server defaults and passive cancellation | Review intended realm and end-result assumptions; tag tasks now default to Client And Server, and passive cancellation preserves its requested result. |
+</details>
 
-The showcase covers the major feature families and their validation limits. It is not a compatibility checklist for every saved asset.
+<a name="capture-notes"></a>
 
+<details>
+<summary><strong>About these captures</strong></summary>
 
-## Capture notes
+Captured directly from **shootcramental / Unreal Engine 5.8** on **11 October 2026**. Cross Slash, Morning Star and registry entries are existing assets. The profiler is idle; AbleTests is disabled.
 
-- Screenshots were taken directly from the open **shootcramental / Unreal Engine 5.8** editor on **11 October 2026**.
-- Cross Slash, Morning Star, and the event-registry entries came from the existing project. The profiler was captured idle.
-- `AB_20_Showcase` was a temporary, unsaved authoring demonstration for timeline, input, task, passive, spawn and weapon controls. Its screenshots illustrate implemented UI, not a finished or validated gameplay ability. Selecting `Throwable` reads an existing actor class; its asset was not edited.
-- Images are tightly framed screen captures. Captions describe what is visible; no UI values or profiler results were painted into the screenshots.
-- The cover is an original vector illustration. No C++ build, gameplay test suite, benchmark run, or network validation was performed for this document.
-- The plain Markdown and styled HTML share the same content and local images. Keep the `images` directory beside them when sharing the showcase.
+`AB_20_Showcase` and `ST_AbilityMemory` are temporary, unsaved authoring examples. Graphs and inspectors demonstrate controls, not validated gameplay implementations. Existing asset classes and registry entries were read without editing them.
 
----
+Images are tightly framed screen captures; UI values/results were not painted into them. The cover is an original vector. No C++ build, gameplay suite, benchmark or network validation was run for this document.
 
-This repository contains the visual showcase and its screenshots. Able plugin source and the Unreal project are maintained separately.
+Markdown and the website share content and local images. This public repository contains only the showcase/media; plugin source and the Unreal project are maintained separately.
+
+</details>
