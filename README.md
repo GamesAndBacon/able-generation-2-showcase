@@ -8,7 +8,7 @@ Multi-phase abilities. Gameplay that reacts to events. State that survives betwe
 
 Built on Able 3.96, targeting Unreal Engine 5.8. “Generation 2.0” describes this project's evolution, not the vendor's version number.
 
-[Screenshot notes](#capture-notes) · [Styled HTML companion](index.html) *(download and open locally)*
+**[Open the full visual showcase →](https://gamesandbacon.github.io/able-generation-2-showcase/)** · [Screenshot notes](#capture-notes)
 
 | Author | Orchestrate | Retain | Measure |
 | :--- | :--- | :--- | :--- |
