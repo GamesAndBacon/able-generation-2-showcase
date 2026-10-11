@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc">
+<title id="title">Able — Generation 2.0</title><desc id="desc">Build richer abilities. See what you author. A visual tour of twelve major improvements.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0b1729"/><stop offset="1" stop-color="#080c15"/></linearGradient><linearGradient id="accent"><stop stop-color="#60e5ed"/><stop offset="1" stop-color="#8b82ff"/></linearGradient><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#a6c2e8" stroke-opacity=".07"/></pattern></defs>
+<rect width="1600" height="600" rx="24" fill="url(#bg)"/><rect width="1600" height="600" rx="24" fill="url(#grid)"/>
+<path d="M0 0H1600" stroke="url(#accent)" stroke-width="8"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="78" y="80" fill="#69dde7" font-size="17" letter-spacing="5">THE CUSTOM ABLE SHOWCASE</text>
+<text x="70" y="257" fill="#f0f5ff" font-size="164" font-weight="750" letter-spacing="-8">ABLE</text><text x="75" y="316" fill="#97a9c2" font-size="25" letter-spacing="9">GENERATION 2.0</text>
+<text x="78" y="398" fill="#edf5ff" font-size="31" font-weight="600">Build richer abilities.</text><text x="78" y="442" fill="#edf5ff" font-size="31" font-weight="600">See what you author.</text>
+<text x="78" y="538" fill="#93a5be" font-size="16">12 MAJOR IMPROVEMENTS</text><circle cx="325" cy="532" r="3" fill="#69dde7"/><text x="346" y="538" fill="#93a5be" font-size="16">UNREAL ENGINE 5.8</text>
+<text x="975" y="360" fill="#182a42" font-size="288" font-weight="800" letter-spacing="-24">2.0</text>
+<g stroke="url(#accent)" stroke-width="2" fill="none"><path d="M873 147L1023 84L1173 147L1173 291L1023 360L873 291Z"/><path d="M873 147L1023 220L1173 147M1023 220V360M1023 84V220M873 291L1023 220L1173 291" opacity=".6"/><circle cx="1023" cy="220" r="112" opacity=".23"/></g>
+<g fill="#69dde7"><circle cx="873" cy="147" r="5"/><circle cx="1023" cy="84" r="5"/><circle cx="1173" cy="147" r="5"/><circle cx="1023" cy="220" r="6"/><circle cx="1023" cy="360" r="5"/></g>
+<g fill="#0f1c2d" stroke="#2c415e"><rect x="850" y="442" width="172" height="58" rx="10"/><rect x="1050" y="442" width="172" height="58" rx="10"/><rect x="1250" y="442" width="172" height="58" rx="10"/></g>
+<g font-size="17" text-anchor="middle" fill="#d9e8ff"><text x="936" y="478">WIND UP</text><text x="1136" y="478">SUSTAIN</text><text x="1336" y="478">RECOVER</text></g><g fill="#69dde7" font-size="22"><text x="1029" y="478">›</text><text x="1229" y="478">›</text></g>
+<text x="850" y="540" fill="#93a5be" font-size="16">AUTHOR · ORCHESTRATE · RETAIN · MEASURE</text></g></svg>
