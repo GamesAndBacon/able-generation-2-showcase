@@ -1,98 +1,71 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Able · Generation 2.0</title><meta name="description" content="An illustrated tour of custom Able: 12 feature chapters and 33 Unreal Engine screenshots."><style>
-:root { color-scheme: dark; --bg:#0b101b; --panel:#131d2d; --ink:#e9f0f8; --muted:#a5b5ca; --cyan:#64e0df; --line:#2a3950 }
-* { box-sizing:border-box } html { scroll-behavior:smooth } body { margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 'Segoe UI',Arial,sans-serif }
-main { max-width:1120px;margin:auto;padding:40px 48px 100px } main>p:first-child { margin:0 -24px 42px } main>p:first-child img { border:0;border-radius:20px;box-shadow:0 24px 90px #0007 }
-h1,h2,h3 { line-height:1.18;letter-spacing:-.025em } h1 { font-size:46px;margin:0 0 20px } h2 { font-size:32px;margin:64px 0 18px;border-top:1px solid var(--line);padding-top:36px;scroll-margin-top:25px } h3 { font-size:22px;color:var(--cyan);margin:0 0 22px }
-p { margin:18px 0 } a { color:var(--cyan);text-decoration:none } a:hover { text-decoration:underline } strong { font-weight:650 } code { background:#223046;padding:2px 6px;border-radius:4px;font-size:.9em }
-img { display:block;max-width:100%;height:auto;border:1px solid #34445c;border-radius:10px;margin:26px auto 0;cursor:zoom-in }
-p:has(>em:only-child) { color:var(--muted);font-size:14px;line-height:1.6;margin:12px auto 28px;max-width:92%;text-align:center }
-table { border-collapse:separate;border-spacing:0;width:100%;margin:28px 0;overflow:hidden;border:1px solid var(--line);border-radius:10px;font-size:15px;line-height:1.6 } th,td { padding:15px 18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top } th { background:#1b2a3e;color:var(--cyan);font-weight:600 } td { background:var(--panel) } tr:last-child td { border-bottom:0 } td img { margin:0;width:100% } table:has(img) { table-layout:fixed } table:has(img) td { padding:12px }
-ul { padding-left:25px } li { padding:5px 0 } hr { border:0;height:1px;background:linear-gradient(90deg,var(--cyan),#937bdf,transparent);margin:56px 0 -28px;opacity:.5 } hr+h2 { border-top:0 } details { background:var(--panel);padding:16px 22px;border:1px solid var(--line);border-radius:10px;margin:28px 0 } summary { cursor:pointer;color:var(--cyan) } details img { max-height:920px;width:auto }
-footer { color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:24px;margin-top:48px } dialog { background:#0b101bf5;border:1px solid var(--line);padding:14px;max-width:98vw;max-height:98vh;overflow:auto } dialog::backdrop { background:#000d } dialog img { margin:0;max-width:94vw;max-height:90vh;object-fit:contain;cursor:zoom-out;border:0 } dialog button { position:fixed;right:24px;top:18px;background:#213249;color:white;border:1px solid #526782;border-radius:8px;padding:10px 16px;cursor:pointer }
-@media(max-width:700px) { main { padding:20px 20px 60px } main>p:first-child { margin:0 0 28px } h1 { font-size:34px } h2 { font-size:26px } body { font-size:16px } th,td { padding:10px;overflow-wrap:anywhere } table { font-size:13px;table-layout:fixed } }
-@media print { :root { color-scheme:light } body { background:white;color:#142238 } main { padding:0;max-width:none } a,h3 { color:#08777c } img { break-inside:avoid } h2,h3 { break-after:avoid } td,th { background:#f1f5f8;color:#142238 } details { background:#f1f5f8 } }
-
-body { font-size:17px;line-height:1.7 } main { padding-top:32px }
-main>h2 { margin-top:44px;padding-top:30px } main>p:has(>strong:only-child) { font-size:18px }
-details { padding:0;overflow:hidden;background:linear-gradient(145deg,#142135,#111a29) }
-summary { padding:18px 22px;font-size:16px;font-weight:600;line-height:1.5;transition:background .15s }
-summary:hover { background:#1d3047 } details[open]>summary { border-bottom:1px solid var(--line);margin-bottom:24px }
-details>p,details>ul,details>table { margin-left:22px;margin-right:22px } details>table { width:calc(100% - 44px) }
-details>p:last-child,details>ul:last-child,details>table:last-child { margin-bottom:24px }
-details table:has(img) img { width:auto;max-height:540px;object-fit:contain }
-.site-bar { position:sticky;top:0;z-index:5;background:#0b101bed;border-bottom:1px solid #2a3950;backdrop-filter:blur(14px) }
-.site-bar nav { max-width:1120px;margin:auto;padding:12px 48px;display:flex;align-items:center;gap:18px;font-size:14px }
-.brand { color:var(--ink);font-weight:700;letter-spacing:.08em;margin-right:auto;white-space:nowrap }
-.brand span { color:var(--cyan) } select,.site-bar button { background:#17263a;color:var(--ink);border:1px solid #3a4e68;border-radius:7px;padding:8px;font:inherit }
-.site-bar button { cursor:pointer;white-space:nowrap }.site-bar button:hover { border-color:var(--cyan) }
-a[name],h2 { scroll-margin-top:90px } summary:focus-visible,button:focus-visible,select:focus-visible,img:focus-visible { outline:2px solid var(--cyan);outline-offset:4px }
-.gallery { display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:16px;margin:24px 22px }.gallery figure { margin:0;padding:14px;background:#101a2a;border:1px solid var(--line);border-radius:10px;min-width:0 }.gallery img { margin:0 auto;max-height:540px;width:auto;object-fit:contain }.gallery figcaption { margin-top:14px;font-size:14px;color:var(--muted);text-align:center;line-height:1.5 }
-main>hr { display:none }
-.code-heading { border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted) }.code-heading strong { color:var(--cyan);letter-spacing:.04em }.code-directory { margin-top:12px;font-size:14px;table-layout:fixed }.code-directory th:first-child { width:38% }.code-directory td,.code-directory th { padding:11px 14px;overflow-wrap:anywhere }.code-directory td a { font-family:Consolas,monospace;font-size:13px }.code-directory sub { font-size:11px;color:var(--muted);vertical-align:baseline }.source-path-key { table-layout:fixed }.source-path-key td { overflow-wrap:anywhere }.source-path-key code { font-size:11px }
-@media(max-width:700px) { .gallery { grid-template-columns:1fr;margin:20px 14px }.gallery img { max-height:none } }
-@media(max-width:700px) { .site-bar nav { padding:10px 16px;gap:10px;flex-wrap:wrap }.site-bar select { max-width:175px }.site-bar button { font-size:12px }.site-bar .github-link { display:none } main>p:has(>strong:only-child) { font-size:17px } summary { padding:15px;font-size:15px } details>p,details>ul,details>table { margin-left:14px;margin-right:14px } details>table { width:calc(100% - 28px) } table:has(img) { display:block;border:0;background:none } table:has(img) thead { display:none } table:has(img) tbody { display:block } table:has(img) tr { display:grid;grid-template-columns:1fr;gap:14px } table:has(img) td { display:block;border:1px solid var(--line);border-radius:9px;padding:12px } table:has(img) tr:last-child { grid-template-columns:1fr 1fr;gap:10px;font-size:12px;margin-top:12px } table:has(img) img { width:auto;max-height:none } }
-@media print { .site-bar { display:none } details { overflow:visible } }
-</style></head><body><header class="site-bar"><nav aria-label="Showcase navigation"><a class="brand" href="#">ABLE <span>2.0</span></a><select id="chapter-picker" aria-label="Jump to chapter"><option value="">Choose a chapter</option><option value="collision-shapes">01 · Collision Shapes</option><option value="timelines">02 · Multiple timelines</option><option value="gameplay-events">03 · Gameplay events</option><option value="ability-state">04 · Ability State</option><option value="passives">05 · Passives</option><option value="enhanced-input">06 · Enhanced Input</option><option value="root-motion">07 · Root motion</option><option value="ability-editor">08 · Ability Editor</option><option value="task-library">09 · Bindings and presentation</option><option value="collision-performance">10 · Collision performance</option><option value="networking-apis">11 · Networking and APIs</option><option value="weapon-integrations">12 · Weapon integrations</option><option value="the-foundation-underneath">Testing and migration</option></select><button id="details-toggle" type="button">Show all details</button><a class="github-link" href="https://github.com/GamesAndBacon/able-generation-2-showcase">GitHub ↗</a></nav></header><main><p><img alt="Able Generation 2.0 — Build richer abilities. See what you author." src="images/cover.svg" /></p>
-<h1 id="able-generation-20">Able · Generation 2.0</h1>
-<p><strong>Richer abilities. Clearer authoring. More control over every execution.</strong></p>
-<p>A visual tour of our custom Able: collision shapes, multiple phases, reactive gameplay, persistent state, and weapon integration.</p>
-<p><a href="https://github.com/GamesAndBacon/able-generation-2-showcase">View on GitHub</a></p>
-<p>Built on Able 3.96 for Unreal Engine 5.8. “Generation 2.0” names this project's evolution.</p>
-<h3 id="choose-a-chapter">Choose a chapter</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Build the move</th>
-<th style="text-align: left;">Control the execution</th>
-<th style="text-align: left;">Improve the framework</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a href="#collision-shapes">01 · Collision Shapes</a></td>
-<td style="text-align: left;"><a href="#timelines">02 · Multiple timelines</a></td>
-<td style="text-align: left;"><a href="#collision-performance">10 · Collision performance</a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#root-motion">07 · Root motion</a></td>
-<td style="text-align: left;"><a href="#gameplay-events">03 · Gameplay events</a></td>
-<td style="text-align: left;"><a href="#networking-apis">11 · Networking and APIs</a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#ability-editor">08 · Ability Editor</a></td>
-<td style="text-align: left;"><a href="#ability-state">04 · Ability State</a></td>
-<td style="text-align: left;"><a href="#weapon-integrations">12 · Weapon integrations</a></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#task-library">09 · Bindings and presentation</a></td>
-<td style="text-align: left;"><a href="#passives">05 · Passives</a> · <a href="#enhanced-input">06 · Input</a></td>
-<td style="text-align: left;"><a href="#the-foundation-underneath">Testing and migration</a></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Browse the images. Open Look closer for the controls behind them.</strong> On the website, click any image to enlarge it.</p>
-<p>Each <strong>Look closer</strong> panel includes a compact code directory. File links open the private development repo at revision <strong><code>030798f</code></strong> (12 October 2026), so the line numbers stay fixed. Repository access is required to open the source.</p>
-<hr />
-<p><a name="collision-shapes"></a></p>
-<h2 id="01-shape-the-attack">01 · Shape the attack</h2>
-<p><strong>Able Collision Engine — hitboxes that match the move.</strong></p>
-<p>Build reusable Collision Shapes from presets, outlines, and repeated pieces. Preview the volume beside its graph; expose dimensions through typed Params.</p>
-<p><img alt="Cross Slash's construction graph, live shape preview and parameter controls." src="images/ace-cross-slash.png" /></p>
-<p><em>Cross Slash: build the arc, inspect the volume, adjust its dimensions.</em></p>
-<details>
-<summary><strong>Look closer: shapes, handles and individual bindings</strong></summary>
-<div class="gallery"><figure><img alt="Cross Slash preview with debug points and viewport parameter handles." src="images/ace-preview.png" /><figcaption><strong>Cross Slash:</strong> debug a node and drag its handles.</figcaption></figure><figure><img alt="Morning Star composed from a sphere and repeated cone spikes." src="images/ace-morning-star.png" /><figcaption><strong>Morning Star:</strong> reuse and repeat smaller pieces.</figcaption></figure></div>
-<p><img alt="Collision Query exposes Cross Slash's Radius, Thickness, Angle, Height and Tilt with separate binding controls." src="images/shape-parameters.png" /></p>
-<p><em>Bind one dimension without replacing the whole parameter struct.</em></p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Able · Generation 2.0</title>
+<meta name="description" content="A visual tour of custom Able for Unreal Engine 5.8: collision shapes you can author visually, multiple phases, reactive gameplay, persistent state and weapon integration.">
+<meta property="og:title" content="Able · Generation 2.0">
+<meta property="og:description" content="Richer abilities. Clearer authoring. More control over every execution.">
+<meta name="theme-color" content="#07090f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar"><nav aria-label="Showcase navigation">
+<a class="brand" href="#top"><span class="brand-mark">A</span>ABLE <em>2.0</em></a>
+<select id="chapter-picker" aria-label="Jump to chapter"><option value="">Chapters</option><option value="collision-shapes">01 · Shape the attack</option><option value="timelines">02 · Give one ability several phases</option><option value="gameplay-events">03 · React when gameplay happens</option><option value="ability-state">04 · Remember between activations</option><option value="passives">05 · Keep each player&#x27;s effects independent</option><option value="enhanced-input">06 · Make input part of the move</option><option value="root-motion">07 · Author the movement</option><option value="ability-editor">08 · Read the ability at a glance</option><option value="task-library">09 · Bind it. Spawn it. Present it.</option><option value="collision-performance">10 · Make collision cheaper—and visible</option><option value="networking-apis">11 · Start abilities. Follow the result.</option><option value="weapon-integrations">12 · Connect the weapon to the move</option><option value="the-foundation-underneath">+ · The foundation underneath</option></select>
+<button id="details-toggle" type="button">Open every drawer</button>
+<a class="gh" href="https://github.com/GamesAndBacon/able-generation-2-showcase">GitHub ↗</a>
+</nav></header>
+<nav class="rail" aria-label="Chapters"><span class="rail-track"><span class="rail-fill"></span></span><a class="rail-node" href="#collision-shapes" style="--hue:186" data-target="collision-shapes"><span class="rail-dot"></span><span class="rail-label"><b>01</b> Shape the attack</span></a><a class="rail-node" href="#timelines" style="--hue:200" data-target="timelines"><span class="rail-dot"></span><span class="rail-label"><b>02</b> Give one ability several phases</span></a><a class="rail-node" href="#gameplay-events" style="--hue:220" data-target="gameplay-events"><span class="rail-dot"></span><span class="rail-label"><b>03</b> React when gameplay happens</span></a><a class="rail-node" href="#ability-state" style="--hue:245" data-target="ability-state"><span class="rail-dot"></span><span class="rail-label"><b>04</b> Remember between activations</span></a><a class="rail-node" href="#passives" style="--hue:268" data-target="passives"><span class="rail-dot"></span><span class="rail-label"><b>05</b> Keep each player&#x27;s effects independent</span></a><a class="rail-node" href="#enhanced-input" style="--hue:290" data-target="enhanced-input"><span class="rail-dot"></span><span class="rail-label"><b>06</b> Make input part of the move</span></a><a class="rail-node" href="#root-motion" style="--hue:315" data-target="root-motion"><span class="rail-dot"></span><span class="rail-label"><b>07</b> Author the movement</span></a><a class="rail-node" href="#ability-editor" style="--hue:340" data-target="ability-editor"><span class="rail-dot"></span><span class="rail-label"><b>08</b> Read the ability at a glance</span></a><a class="rail-node" href="#task-library" style="--hue:12" data-target="task-library"><span class="rail-dot"></span><span class="rail-label"><b>09</b> Bind it. Spawn it. Present it.</span></a><a class="rail-node" href="#collision-performance" style="--hue:36" data-target="collision-performance"><span class="rail-dot"></span><span class="rail-label"><b>10</b> Make collision cheaper—and visible</span></a><a class="rail-node" href="#networking-apis" style="--hue:150" data-target="networking-apis"><span class="rail-dot"></span><span class="rail-label"><b>11</b> Start abilities. Follow the result.</span></a><a class="rail-node" href="#weapon-integrations" style="--hue:168" data-target="weapon-integrations"><span class="rail-dot"></span><span class="rail-label"><b>12</b> Connect the weapon to the move</span></a><a class="rail-node" href="#the-foundation-underneath" style="--hue:205" data-target="the-foundation-underneath"><span class="rail-dot"></span><span class="rail-label"><b>+</b> The foundation underneath</span></a></nav>
+<main id="top">
+<section class="hero">
+<div class="hero-copy">
+<p class="kicker">Custom Able · Unreal Engine 5.8</p>
+<h1><span class="h1-able">Able</span><span class="h1-gen">Generation 2.0</span></h1>
+<p class="tagline">Richer abilities. Clearer authoring. More control over every execution.</p>
+<p class="lede">A visual tour of our custom Able: collision shapes, multiple phases, reactive gameplay, persistent state, and weapon integration.</p>
+<p class="cta"><a class="button primary" href="#collision-shapes">Start the tour</a><a class="button" href="https://github.com/GamesAndBacon/able-generation-2-showcase">View on GitHub</a></p>
+<p class="built">Built on Able 3.96 for Unreal Engine 5.8. “Generation 2.0” names this project's evolution.</p>
+</div>
+<svg class="hero-art" viewBox="0 90 720 440" role="img" aria-label="A ring-shaped hitbox built from convex pieces, with editor handles for its outer radius, height and angle.">
+<defs><linearGradient id="wire" x1="0" x2="1"><stop offset="0" stop-color="#5ff0ff"/><stop offset=".55" stop-color="#8f7bff"/><stop offset="1" stop-color="#ff5fd2"/></linearGradient>
+<radialGradient id="floor" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#5ff0ff" stop-opacity=".18"/><stop offset="1" stop-color="#5ff0ff" stop-opacity="0"/></radialGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<g class="grid"><path d="M60,120 L-120.0,500"/><path d="M120,120 L-24.0,500"/><path d="M180,120 L72.0,500"/><path d="M240,120 L168.0,500"/><path d="M300,120 L264.0,500"/><path d="M360,120 L360.0,500"/><path d="M420,120 L456.0,500"/><path d="M480,120 L552.0,500"/><path d="M540,120 L648.0,500"/><path d="M600,120 L744.0,500"/><path d="M660,120 L840.0,500"/><path d="M-40,130 L760,130"/><path d="M-40,168 L760,168"/><path d="M-40,206 L760,206"/><path d="M-40,244 L760,244"/><path d="M-40,282 L760,282"/><path d="M-40,320 L760,320"/><path d="M-40,358 L760,358"/><path d="M-40,396 L760,396"/><path d="M-40,434 L760,434"/><path d="M-40,472 L760,472"/></g><ellipse cx="360" cy="310" rx="330" ry="150" fill="url(#floor)"/>
+<g class="ring" filter="url(#glow)"><g class="piece" style="--i:0"><path class="face" d="M669.9,331.7 L649.8,371.3 L586.1,361.8 L601.7,330.9 Z"/><path d="M669.9,273.7 L669.9,331.7"/><path d="M649.8,313.3 L649.8,371.3"/><path d="M586.1,303.8 L586.1,361.8"/><path d="M601.7,272.9 L601.7,330.9"/><path class="face top" d="M669.9,273.7 L649.8,313.3 L586.1,303.8 L601.7,272.9 Z"/></g><g class="piece" style="--i:1"><path class="face" d="M642.7,378.0 L585.7,411.6 L536.0,393.2 L580.5,367.0 Z"/><path d="M642.7,320.0 L642.7,378.0"/><path d="M585.7,353.6 L585.7,411.6"/><path d="M536.0,335.2 L536.0,393.2"/><path d="M580.5,309.0 L580.5,367.0"/><path class="face top" d="M642.7,320.0 L585.7,353.6 L536.0,335.2 L580.5,309.0 Z"/></g><g class="piece" style="--i:2"><path class="face" d="M572.5,416.8 L487.2,439.3 L459.2,414.8 L525.8,397.3 Z"/><path d="M572.5,358.8 L572.5,416.8"/><path d="M487.2,381.3 L487.2,439.3"/><path d="M459.2,356.8 L459.2,414.8"/><path d="M525.8,339.3 L525.8,397.3"/><path class="face top" d="M572.5,358.8 L487.2,381.3 L459.2,356.8 L525.8,339.3 Z"/></g><g class="piece" style="--i:3"><path class="face" d="M470.0,442.1 L369.3,449.9 L367.3,423.1 L445.8,417.0 Z"/><path d="M470.0,384.1 L470.0,442.1"/><path d="M369.3,391.9 L369.3,449.9"/><path d="M367.3,365.1 L367.3,423.1"/><path d="M445.8,359.0 L445.8,417.0"/><path class="face top" d="M470.0,384.1 L369.3,391.9 L367.3,365.1 L445.8,359.0 Z"/></g><g class="piece" style="--i:4"><path class="face" d="M350.7,449.9 L250.0,442.1 L274.2,417.0 L352.7,423.1 Z"/><path d="M350.7,391.9 L350.7,449.9"/><path d="M250.0,384.1 L250.0,442.1"/><path d="M274.2,359.0 L274.2,417.0"/><path d="M352.7,365.1 L352.7,423.1"/><path class="face top" d="M350.7,391.9 L250.0,384.1 L274.2,359.0 L352.7,365.1 Z"/></g><g class="piece" style="--i:5"><path class="face" d="M232.8,439.3 L147.5,416.8 L194.2,397.3 L260.8,414.8 Z"/><path d="M232.8,381.3 L232.8,439.3"/><path d="M147.5,358.8 L147.5,416.8"/><path d="M194.2,339.3 L194.2,397.3"/><path d="M260.8,356.8 L260.8,414.8"/><path class="face top" d="M232.8,381.3 L147.5,358.8 L194.2,339.3 L260.8,356.8 Z"/></g><g class="piece" style="--i:6"><path class="face" d="M134.3,411.6 L77.3,378.0 L139.5,367.0 L184.0,393.2 Z"/><path d="M134.3,353.6 L134.3,411.6"/><path d="M77.3,320.0 L77.3,378.0"/><path d="M139.5,309.0 L139.5,367.0"/><path d="M184.0,335.2 L184.0,393.2"/><path class="face top" d="M134.3,353.6 L77.3,320.0 L139.5,309.0 L184.0,335.2 Z"/></g><g class="piece" style="--i:7"><path class="face" d="M70.2,371.3 L50.1,331.7 L118.3,330.9 L133.9,361.8 Z"/><path d="M70.2,313.3 L70.2,371.3"/><path d="M50.1,273.7 L50.1,331.7"/><path d="M118.3,272.9 L118.3,330.9"/><path d="M133.9,303.8 L133.9,361.8"/><path class="face top" d="M70.2,313.3 L50.1,273.7 L118.3,272.9 L133.9,303.8 Z"/></g><g class="piece" style="--i:8"><path class="face" d="M50.1,324.3 L70.2,284.7 L133.9,294.2 L118.3,325.1 Z"/><path d="M50.1,266.3 L50.1,324.3"/><path d="M70.2,226.7 L70.2,284.7"/><path d="M133.9,236.2 L133.9,294.2"/><path d="M118.3,267.1 L118.3,325.1"/><path class="face top" d="M50.1,266.3 L70.2,226.7 L133.9,236.2 L118.3,267.1 Z"/></g><g class="piece" style="--i:9"><path class="face" d="M77.3,278.0 L134.3,244.4 L184.0,262.8 L139.5,289.0 Z"/><path d="M77.3,220.0 L77.3,278.0"/><path d="M134.3,186.4 L134.3,244.4"/><path d="M184.0,204.8 L184.0,262.8"/><path d="M139.5,231.0 L139.5,289.0"/><path class="face top" d="M77.3,220.0 L134.3,186.4 L184.0,204.8 L139.5,231.0 Z"/></g><g class="piece" style="--i:10"><path class="face" d="M147.5,239.2 L232.8,216.7 L260.8,241.2 L194.2,258.7 Z"/><path d="M147.5,181.2 L147.5,239.2"/><path d="M232.8,158.7 L232.8,216.7"/><path d="M260.8,183.2 L260.8,241.2"/><path d="M194.2,200.7 L194.2,258.7"/><path class="face top" d="M147.5,181.2 L232.8,158.7 L260.8,183.2 L194.2,200.7 Z"/></g><g class="piece" style="--i:11"><path class="face" d="M250.0,213.9 L350.7,206.1 L352.7,232.9 L274.2,239.0 Z"/><path d="M250.0,155.9 L250.0,213.9"/><path d="M350.7,148.1 L350.7,206.1"/><path d="M352.7,174.9 L352.7,232.9"/><path d="M274.2,181.0 L274.2,239.0"/><path class="face top" d="M250.0,155.9 L350.7,148.1 L352.7,174.9 L274.2,181.0 Z"/></g><g class="piece" style="--i:12"><path class="face" d="M369.3,206.1 L470.0,213.9 L445.8,239.0 L367.3,232.9 Z"/><path d="M369.3,148.1 L369.3,206.1"/><path d="M470.0,155.9 L470.0,213.9"/><path d="M445.8,181.0 L445.8,239.0"/><path d="M367.3,174.9 L367.3,232.9"/><path class="face top" d="M369.3,148.1 L470.0,155.9 L445.8,181.0 L367.3,174.9 Z"/></g><g class="piece" style="--i:13"><path class="face" d="M487.2,216.7 L572.5,239.2 L525.8,258.7 L459.2,241.2 Z"/><path d="M487.2,158.7 L487.2,216.7"/><path d="M572.5,181.2 L572.5,239.2"/><path d="M525.8,200.7 L525.8,258.7"/><path d="M459.2,183.2 L459.2,241.2"/><path class="face top" d="M487.2,158.7 L572.5,181.2 L525.8,200.7 L459.2,183.2 Z"/></g><g class="piece" style="--i:14"><path class="face" d="M585.7,244.4 L642.7,278.0 L580.5,289.0 L536.0,262.8 Z"/><path d="M585.7,186.4 L585.7,244.4"/><path d="M642.7,220.0 L642.7,278.0"/><path d="M580.5,231.0 L580.5,289.0"/><path d="M536.0,204.8 L536.0,262.8"/><path class="face top" d="M585.7,186.4 L642.7,220.0 L580.5,231.0 L536.0,204.8 Z"/></g><g class="piece" style="--i:15"><path class="face" d="M649.8,284.7 L669.9,324.3 L601.7,325.1 L586.1,294.2 Z"/><path d="M649.8,226.7 L649.8,284.7"/><path d="M669.9,266.3 L669.9,324.3"/><path d="M601.7,267.1 L601.7,325.1"/><path d="M586.1,236.2 L586.1,294.2"/><path class="face top" d="M649.8,226.7 L669.9,266.3 L601.7,267.1 L586.1,236.2 Z"/></g><path class="spoke" style="--i:0" d="M360,299.0 L582.7,336.1"/><path class="spoke" style="--i:1" d="M360,299.0 L266.0,386.7"/><path class="spoke" style="--i:2" d="M360,299.0 L137.1,262.1"/><path class="spoke" style="--i:3" d="M360,299.0 L453.6,211.3"/></g>
+<g class="dome" filter="url(#glow)"><path d="M290,290 A70,44 0 0 1 430,290"/><path d="M290,290 A70,20 0 0 0 430,290"/></g>
+<g class="handle h-radius"><line x1="360" y1="270" x2="645" y2="215"/><circle cx="645" cy="215" r="9"/><text x="631" y="199" text-anchor="end">Outer Radius  450</text></g>
+<g class="handle h-height"><line x1="190" y1="224" x2="190" y2="140"/><circle cx="190" cy="140" r="8"/><text x="58" y="128">Height  50</text></g>
+<g class="handle h-angle"><circle cx="390" cy="456" r="8"/><text x="408" y="484">Angle  360</text></g>
+<g class="handle h-location"><circle cx="360" cy="270" r="12"/><text x="380" y="304">Location</text></g>
+</svg>
+</section>
+<section class="cards" aria-label="Chapters"><a class="card" href="#collision-shapes" style="--hue:186"><span class="card-num">01</span><span class="card-title">Shape the attack</span><span class="card-sub">Able Collision Engine — hitboxes that match the move.</span></a><a class="card" href="#timelines" style="--hue:200"><span class="card-num">02</span><span class="card-title">Give one ability several phases</span><span class="card-sub">Wind up. Sustain. Recover. Keep one execution.</span></a><a class="card" href="#gameplay-events" style="--hue:220"><span class="card-num">03</span><span class="card-title">React when gameplay happens</span><span class="card-sub">Typed gameplay events — respond to a result, instead of guessing its timing.</span></a><a class="card" href="#ability-state" style="--hue:245"><span class="card-num">04</span><span class="card-title">Remember between activations</span><span class="card-sub">Ability State — structured memory for each caster.</span></a><a class="card" href="#passives" style="--hue:268"><span class="card-num">05</span><span class="card-title">Keep each player&#x27;s effects independent</span><span class="card-sub">Passives per instigator — separate stacks, expiry and attribution.</span></a><a class="card" href="#enhanced-input" style="--hue:290"><span class="card-num">06</span><span class="card-title">Make input part of the move</span><span class="card-sub">Enhanced Input — hold, release and branch with Input Actions.</span></a><a class="card" href="#root-motion" style="--hue:315"><span class="card-num">07</span><span class="card-title">Author the movement</span><span class="card-sub">Root-motion tasks — dashes, pulls, knockbacks and leaps.</span></a><a class="card" href="#ability-editor" style="--hue:340"><span class="card-num">08</span><span class="card-title">Read the ability at a glance</span><span class="card-sub">Ability Editor — clearer tracks, phase routes and preview controls.</span></a><a class="card" href="#task-library" style="--hue:12"><span class="card-num">09</span><span class="card-title">Bind it. Spawn it. Present it.</span><span class="card-sub">Richer task authoring — customize each use of the move.</span></a><a class="card" href="#collision-performance" style="--hue:36"><span class="card-num">10</span><span class="card-title">Make collision cheaper—and visible</span><span class="card-sub">Native shape execution, caching and ACE Profiler.</span></a><a class="card" href="#networking-apis" style="--hue:150"><span class="card-num">11</span><span class="card-title">Start abilities. Follow the result.</span><span class="card-sub">Simpler APIs and leaner replication underneath.</span></a><a class="card" href="#weapon-integrations" style="--hue:168"><span class="card-num">12</span><span class="card-title">Connect the weapon to the move</span><span class="card-sub">EasyBallistics and bindable execution contexts.</span></a><a class="card" href="#the-foundation-underneath" style="--hue:205"><span class="card-num">+</span><span class="card-title">The foundation underneath</span><span class="card-sub">Optional test tooling. Clearer plugin boundaries. No compatibility code left.</span></a></section>
+<aside class="howto"><p><strong>Browse the images. Open Look closer for the controls behind them.</strong> On the website, click any image to enlarge it.</p><p>Each <strong>Look closer</strong> panel includes a compact code directory. File links open the private development repo at revision <strong><code>5d605e0</code></strong> (12 October 2026), so the line numbers stay fixed. Repository access is required to open the source.</p></aside>
+<section class="chapter" id="collision-shapes" style="--hue:186"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">01</span><div><p class="eyebrow">Chapter 01</p><h2>Shape the attack</h2><p class="subtitle">Able Collision Engine — hitboxes that match the move.</p></div></header><div class="chapter-body"><p>Build reusable Collision Shapes from presets, outlines, and repeated pieces. Preview the volume beside its graph, drag its dimensions into place, and expose them through typed Params.</p>
+<figure class="shot"><img alt="Cross Slash's construction graph, live shape preview and parameter controls." src="images/ace-cross-slash.png" /><figcaption>Cross Slash: build the arc, inspect the volume, adjust its dimensions.</figcaption></figure>
+<div class="gallery"><figure class="shot"><img alt="Ground Slam's Arc Shape node selected: Outer Radius, Height, Angle and Location handles on the ring, its inputs in Details." src="images/ace-shape-handles.png" /><figcaption><strong>Handles:</strong> select a node, then drag its radius, height, angle or location.</figcaption></figure><figure class="shot"><img alt="Cross Slash's Transform Hulls in Details: Transform traced to Make Transform, Rotation to Make Rotator, X (Roll) as the Tilt Param." src="images/ace-node-details.png" /><figcaption><strong>Details:</strong> follow a wire back to the Param behind it.</figcaption></figure></div>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: handles, Details, ranges and abilities</strong></summary>
+<div class="gallery"><figure class="shot"><img alt="Cross Slash's Generate Arc Points selected: its points drawn along the arc, with Radius, Angle and Center handles." src="images/ace-generator-handles.png" /><figcaption><strong>Generate Arc Points:</strong> points, with Radius, Angle and Center handles.</figcaption></figure><figure class="shot"><img alt="GrenadeExplosion's Collision Query: a Sphere Shape of radius 500 in the Ability Editor viewport, with its location gizmo." src="images/ace-in-ability.png" /><figcaption><strong>GrenadeExplosion:</strong> a Sphere Shape query, drawn and placed in the viewport.</figcaption></figure></div>
+<div class="gallery"><figure class="shot"><img alt="Cross Slash preview with debug points and viewport parameter handles." src="images/ace-preview.png" /><figcaption><strong>Cross Slash:</strong> debug a node and drag its handles.</figcaption></figure><figure class="shot"><img alt="Morning Star composed from a sphere and repeated cone spikes." src="images/ace-morning-star.png" /><figcaption><strong>Morning Star:</strong> reuse and repeat smaller pieces.</figcaption></figure></div>
+<figure class="shot"><img alt="Collision Query exposes Cross Slash's Radius, Thickness, Angle, Height and Tilt with separate binding controls." src="images/shape-parameters.png" /><figcaption>Bind one dimension without replacing the whole parameter struct.</figcaption></figure>
 <ul>
+<li><strong>Handles:</strong> a drag writes the value where it lives: the pin's own value, or the Param it's wired from. Each drag is one undo; values computed by other nodes aren't draggable.</li>
+<li><strong>Node Details:</strong> a selected node's inputs edit as on the node. Inputs from Get Shape Params name their Param, "X (Roll) (Tilt Param)"; inputs from other nodes fold out into those nodes' inputs, up to four nodes back, with lists folded.</li>
+<li><strong>Ranges:</strong> a Params member's Value Range clamps every build, so a random 0 can't reach Build Shape. The Preview names each clamp.</li>
 <li><strong>Presets:</strong> Box, Sphere, Capsule, Segment, Cylinder, Cone, Vision Cone, Arc, Dome, Star, Prism and Path.</li>
 <li><strong>Construction:</strong> Hull, Extrude and Revolve; concave outlines split into convex pieces. Polygon, Rectangle, Star and Arc generators supply outlines.</li>
 <li><strong>Composition:</strong> Merge, Transform, Duplicate, Repeat, Mirror and nested Shapes. Blueprint and native C++ share the building blocks.</li>
-<li><strong>Inspection:</strong> coloured hulls, selected pieces, points, dimensions, warnings and undoable viewport handles.</li>
+<li><strong>Inspection:</strong> coloured hulls with the node that made each, points, dimensions, warnings, <strong>D</strong> to see one node's output, and a preview that rebuilds as you edit.</li>
 <li><strong>Integration:</strong> Query, Sweep, Watch for Overlap and targeting; negative query shapes, automatic range and per-field bindings. Ordinary Blueprint queries support typed Params and async completion.</li>
 </ul>
 <p>Async completion returns to the game thread. Worker-safe shapes can also build off-thread; raycasts retain line-trace behavior.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -103,52 +76,54 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Preset volumes</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblPresetShapes.cpp#L13" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblPresetShapes.cpp">AblPresetShapes.cpp · L13</a><br><sub>ACE · Private/Shape</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblPresetShapes.cpp#L13" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblPresetShapes.cpp">AblPresetShapes.cpp · L13</a><br><sub>ACE · Private/Shape</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Hull, outline and composition nodes</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblCustomShapeNodes.cpp#L46" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblCustomShapeNodes.cpp">AblCustomShapeNodes.cpp · L46</a><br><sub>ACE · Private/Shape</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblCustomShapeNodes.cpp#L46" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblCustomShapeNodes.cpp">AblCustomShapeNodes.cpp · L46</a><br><sub>ACE · Private/Shape</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Concave outline decomposition</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Build/AblShapeBuildPolygons.cpp#L110" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Build/AblShapeBuildPolygons.cpp">AblShapeBuildPolygons.cpp · L110</a><br><sub>ACE · Private/Build</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Build/AblShapeBuildPolygons.cpp#L110" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Build/AblShapeBuildPolygons.cpp">AblShapeBuildPolygons.cpp · L110</a><br><sub>ACE · Private/Build</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Ability query integration and Params</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablCollisionShapes.cpp#L15" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablCollisionShapes.cpp">ablCollisionShapes.cpp · L15</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablCollisionShapes.cpp#L11" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablCollisionShapes.cpp">ablCollisionShapes.cpp · L11</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Per-field value bindings</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablMemberBindings.cpp#L91" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablMemberBindings.cpp">ablMemberBindings.cpp · L91</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablMemberBindings.cpp#L91" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablMemberBindings.cpp">ablMemberBindings.cpp · L91</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Typed Blueprint query pins</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngineGraph/Private/K2Node_AblShapeQuery.cpp#L217" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineGraph/Private/K2Node_AblShapeQuery.cpp">K2Node_AblShapeQuery.cpp · L217</a><br><sub>ACE Graph · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineGraph/Private/K2Node_AblShapeQuery.cpp#L217" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineGraph/Private/K2Node_AblShapeQuery.cpp">K2Node_AblShapeQuery.cpp · L217</a><br><sub>ACE Graph · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Viewport node handles</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapeNodeHandles.cpp#L344" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapeNodeHandles.cpp">AblShapeNodeHandles.cpp · L344</a><br><sub>ACE Editor · Private/Preview</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapeNodeHandles.cpp#L282" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapeNodeHandles.cpp">AblShapeNodeHandles.cpp · L282</a><br><sub>ACE Editor · Private/Preview</sub></td>
 </tr>
 </tbody>
 </table>
+<p>| Node Details, traced through wires | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeNodeDetails.cpp#L206" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeNodeDetails.cpp">AblShapeNodeDetails.cpp · L206</a><br><sub>ACE Editor · Private/Blueprint</sub> |
+| Details for the selected node | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/ShapeEditor/AblShapeNodeSelection.cpp#L36" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/ShapeEditor/AblShapeNodeSelection.cpp">AblShapeNodeSelection.cpp · L36</a><br><sub>ACE Editor · Private/ShapeEditor</sub> |
+| A value written where it lives | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapePinValues.cpp#L213" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapePinValues.cpp">AblShapePinValues.cpp · L213</a><br><sub>ACE Editor · Private/Preview</sub> |
+| Generator handles | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblGeneratorHandles.cpp#L7" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblGeneratorHandles.cpp">AblGeneratorHandles.cpp · L7</a><br><sub>ACE Editor · Private/Preview</sub> |
+| Params kept in range | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsLimits.cpp#L67" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsLimits.cpp">AblShapeParamsLimits.cpp · L67</a><br><sub>ACE · Private/Shape</sub> |
+| Create Params Struct | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeEditorUtils.cpp#L84" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeEditorUtils.cpp">AblShapeEditorUtils.cpp · L84</a><br><sub>ACE Editor · Private/Blueprint</sub> |</p>
 </details>
 <hr />
-<p><a name="timelines"></a></p>
-<h2 id="02-give-one-ability-several-phases">02 · Give one ability several phases</h2>
-<p><strong>Wind up. Sustain. Recover. Keep one execution.</strong></p>
-<p>Each timeline owns its tasks, playback, loops and exit routes. Phase transitions preserve the running context; alternate attacks can also own separate cooldowns and targeting.</p>
-<p><img alt="Wind Up, Sustained Attack and Recovery tabs show the routes between phases." src="images/timeline-phases.png" /></p>
-<p><em>The phase tabs show what runs next.</em></p>
-<details>
-<summary><strong>Look closer: held loops and independent attacks</strong></summary>
-<div class="gallery"><figure><img alt="Sustained Attack loops and routes to Recovery when its input channel fails." src="images/timeline-settings.png" /><figcaption><strong>Channel failure → Recovery.</strong></figcaption></figure><figure><img alt="A timeline owns a three-second cooldown and Cross Slash targeting with automatic range." src="images/timeline-targeting.png" /><figcaption><strong>Own cooldown, target requirement and shape.</strong></figcaption></figure></div>
+</div></section><section class="chapter" id="timelines" style="--hue:200"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">02</span><div><p class="eyebrow">Chapter 02</p><h2>Give one ability several phases</h2><p class="subtitle">Wind up. Sustain. Recover. Keep one execution.</p></div></header><div class="chapter-body"><p>Each timeline owns its tasks, playback, loops and exit routes. Phase transitions preserve the running context; alternate attacks can also own separate cooldowns and targeting.</p>
+<figure class="shot"><img alt="Wind Up, Sustained Attack and Recovery tabs show the routes between phases." src="images/timeline-phases.png" /><figcaption>The phase tabs show what runs next.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: held loops and independent attacks</strong></summary>
+<div class="gallery"><figure class="shot"><img alt="Sustained Attack loops and routes to Recovery when its input channel fails." src="images/timeline-settings.png" /><figcaption><strong>Channel failure → Recovery.</strong></figcaption></figure><figure class="shot"><img alt="A timeline owns a three-second cooldown and Cross Slash targeting with automatic range." src="images/timeline-targeting.png" /><figcaption><strong>Own cooldown, target requirement and shape.</strong></figcaption></figure></div>
 <ul>
 <li>Bind playback, loop count and destinations; route completion and channel failure separately.</li>
 <li>Choose a starting phase, find one by name, or pick random/weighted destinations using shared random values.</li>
 <li>Targets, stacks and scratchpads survive transitions. Tasks end with <strong>Branched</strong>; activation checks and cooldowns are not repeated.</li>
 <li>Add, rename, duplicate, reorder or remove phases; stable identities retain their tasks. Dependencies stay within a timeline.</li>
 </ul>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -159,44 +134,38 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Phase settings and defaults</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityTimeline.cpp#L11" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityTimeline.cpp">ablAbilityTimeline.cpp · L11</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityTimeline.cpp#L11" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityTimeline.cpp">ablAbilityTimeline.cpp · L11</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Transition, retained context and task queues</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp#L1118" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp">ablAbilityInstance.cpp · L1118</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp#L1118" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp">ablAbilityInstance.cpp · L1118</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Completion and channel-failure routes</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp#L343" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp">ablAbilityInstance.cpp · L343</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp#L343" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityInstance.cpp">ablAbilityInstance.cpp · L343</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Request a phase; random destinations below</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp#L348" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp">ablAbilityContext.cpp · L348</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp#L348" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp">ablAbilityContext.cpp · L348</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Per-phase targeting; cooldown keys below</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L692" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L692</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L587" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L587</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Tabs, routes and phase actions</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineSelector.cpp#L135" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineSelector.cpp">SAbilityTimelineSelector.cpp · L135</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineSelector.cpp#L135" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineSelector.cpp">SAbilityTimelineSelector.cpp · L135</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="gameplay-events"></a></p>
-<h2 id="03-react-when-gameplay-happens">03 · React when gameplay happens</h2>
-<p><strong>Typed gameplay events — respond to a result, instead of guessing its timing.</strong></p>
-<p>Tags declare payload types. Send and Get Payload expose those types in Blueprint; Listen tasks release response groups when a matching event arrives.</p>
-<p><img alt="Typed Send Gameplay Event and Get Gameplay Event Payload nodes expose Scalable Float members from the selected tag." src="images/typed-event-nodes.png" /></p>
-<p><em>An existing registry tag supplies the payload type. Split pins expose its members.</em></p>
-<details>
-<summary><strong>Look closer: the registry and repeated responses</strong></summary>
-<p><img alt="The project's Gameplay Event Registry pairs tags with payload structs." src="images/event-registry.png" /></p>
-<p><em>Declare the tag and type once; author with typed pins.</em></p>
-<p><img alt="Listen for Gameplay Event uses Repeat, Queue, eight queued responses and a two-second response watchdog." src="images/event-response-settings.png" /></p>
-<p><em>Listen repeatedly, queue accepted events, and bound how long a response may run.</em></p>
+</div></section><section class="chapter" id="gameplay-events" style="--hue:220"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">03</span><div><p class="eyebrow">Chapter 03</p><h2>React when gameplay happens</h2><p class="subtitle">Typed gameplay events — respond to a result, instead of guessing its timing.</p></div></header><div class="chapter-body"><p>Tags declare payload types. Send and Get Payload expose those types in Blueprint; Listen tasks release response groups when a matching event arrives.</p>
+<figure class="shot"><img alt="Typed Send Gameplay Event and Get Gameplay Event Payload nodes expose Scalable Float members from the selected tag." src="images/typed-event-nodes.png" /><figcaption>An existing registry tag supplies the payload type. Split pins expose its members.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: the registry and repeated responses</strong></summary>
+<figure class="shot"><img alt="The project's Gameplay Event Registry pairs tags with payload structs." src="images/event-registry.png" /><figcaption>Declare the tag and type once; author with typed pins.</figcaption></figure>
+<figure class="shot"><img alt="Listen for Gameplay Event uses Repeat, Queue, eight queued responses and a two-second response watchdog." src="images/event-response-settings.png" /><figcaption>Listen repeatedly, queue accepted events, and bound how long a response may run.</figcaption></figure>
 <ul>
 <li><strong>Publish:</strong> Started, Completed, Interrupted, Manual and supported Result events. Damage, spawn, query and committed barrel-shot results carry captured outcomes.</li>
 <li><strong>Route:</strong> Self, Instigator, Targets or a specified component; combine sources and Blueprint waits across components.</li>
@@ -205,7 +174,7 @@ main>hr { display:none }
 <li><strong>Bind and diagnose:</strong> whole payloads or individual fields, child-tag type inheritance, bounded dispatch, dropped-event counters, trace and clean cancellation.</li>
 </ul>
 <p>Gameplay events are <strong>local</strong>; they do not automatically replicate or activate abilities. Ability Callbacks remain separate.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -216,42 +185,37 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Tag registry and inherited payload types</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRegistry.cpp#L21" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRegistry.cpp">ablGameplayEventRegistry.cpp · L21</a><br><sub>AbleCore · Private/Events</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRegistry.cpp#L21" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRegistry.cpp">ablGameplayEventRegistry.cpp · L21</a><br><sub>AbleCore · Private/Events</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Routing, dispatch limits and tracing</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRouter.cpp#L69" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRouter.cpp">ablGameplayEventRouter.cpp · L69</a><br><sub>AbleCore · Private/Events</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRouter.cpp#L69" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablGameplayEventRouter.cpp">ablGameplayEventRouter.cpp · L69</a><br><sub>AbleCore · Private/Events</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Listen windows, sources and cancellation</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablListenEventTask.cpp#L72" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablListenEventTask.cpp">ablListenEventTask.cpp · L72</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablListenEventTask.cpp#L48" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablListenEventTask.cpp">ablListenEventTask.cpp · L48</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Response queues and isolated execution</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablEventExecution.cpp#L187" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablEventExecution.cpp">ablEventExecution.cpp · L187</a><br><sub>AbleCore · Private/Events</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablEventExecution.cpp#L187" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Events/ablEventExecution.cpp">ablEventExecution.cpp · L187</a><br><sub>AbleCore · Private/Events</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Typed Send node</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblSendGameplayEvent.cpp#L39" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblSendGameplayEvent.cpp">K2Node_AblSendGameplayEvent.cpp · L39</a><br><sub>AbleEditor · Private/Blueprint</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblSendGameplayEvent.cpp#L39" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblSendGameplayEvent.cpp">K2Node_AblSendGameplayEvent.cpp · L39</a><br><sub>AbleEditor · Private/Blueprint</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Typed Get Payload node</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblGetGameplayEventPayload.cpp#L33" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblGetGameplayEventPayload.cpp">K2Node_AblGetGameplayEventPayload.cpp · L33</a><br><sub>AbleEditor · Private/Blueprint</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblGetGameplayEventPayload.cpp#L33" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblGetGameplayEventPayload.cpp">K2Node_AblGetGameplayEventPayload.cpp · L33</a><br><sub>AbleEditor · Private/Blueprint</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="ability-state"></a></p>
-<h2 id="04-remember-between-activations">04 · Remember between activations</h2>
-<p><strong>Ability State — structured memory for each caster.</strong></p>
-<p>Keep charges, combo progress or a previous target on the Ability Component. Typed Get/Set nodes expose the selected struct's members.</p>
-<p><img alt="Get Ability State reads Has Charged, Charges and Combo Step; Set Ability State writes a changed charge count." src="images/ability-state-nodes.png" /></p>
-<p><em>Read the caster's values, change one, and retain the others.</em></p>
-<details>
-<summary><strong>Look closer: defaults, sharing and replication</strong></summary>
-<p><img alt="Ability State selects ST Ability Memory, initializes three charges and uses Server replication." src="images/ability-state-settings.png" /></p>
-<p><em>Choose the struct, starting values, sharing key and replication policy together.</em></p>
+</div></section><section class="chapter" id="ability-state" style="--hue:245"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">04</span><div><p class="eyebrow">Chapter 04</p><h2>Remember between activations</h2><p class="subtitle">Ability State — structured memory for each caster.</p></div></header><div class="chapter-body"><p>Keep charges, combo progress or a previous target on the Ability Component. Typed Get/Set nodes expose the selected struct's members.</p>
+<figure class="shot"><img alt="Get Ability State reads Has Charged, Charges and Combo Step; Set Ability State writes a changed charge count." src="images/ability-state-nodes.png" /><figcaption>Read the caster's values, change one, and retain the others.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: defaults, sharing and replication</strong></summary>
+<figure class="shot"><img alt="Ability State selects ST Ability Memory, initializes three charges and uses Server replication." src="images/ability-state-settings.png" /><figcaption>Choose the struct, starting values, sharing key and replication policy together.</figcaption></figure>
 <ul>
 <li><strong>Lazy storage:</strong> create on first use; <strong>Use State</strong> can disable storage for selected casters. <strong>Has State</strong> reports availability.</li>
 <li><strong>Shared memory:</strong> related abilities share a <strong>State Key</strong>. Component <strong>State Overrides</strong> supply different defaults.</li>
@@ -259,7 +223,7 @@ main>hr { display:none }
 <li><strong>Lifecycle:</strong> reset one key or all states; struct/member edits refresh nodes.</li>
 <li><strong>Replication:</strong> Local per machine, or server-authoritative values sent to the owning client.</li>
 </ul>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -270,43 +234,37 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Lazy storage, overrides and reset APIs</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L488" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L488</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L488" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L488</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Shared state keys and struct selection</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L165" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L165</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L82" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L82</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Replication callbacks and typed Get/Set</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityState.cpp#L11" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityState.cpp">ablAbilityState.cpp · L11</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityState.cpp#L11" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityState.cpp">ablAbilityState.cpp · L11</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Typed pins and Leave Unchanged</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblAbilityState.cpp#L428" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblAbilityState.cpp">K2Node_AblAbilityState.cpp · L428</a><br><sub>AbleEditor · Private/Blueprint</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblAbilityState.cpp#L428" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/Blueprint/K2Node_AblAbilityState.cpp">K2Node_AblAbilityState.cpp · L428</a><br><sub>AbleEditor · Private/Blueprint</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">State defaults inspector</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblAbilityStateDetails.cpp#L30" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblAbilityStateDetails.cpp">AblAbilityStateDetails.cpp · L30</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblAbilityStateDetails.cpp#L30" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblAbilityStateDetails.cpp">AblAbilityStateDetails.cpp · L30</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="passives"></a></p>
-<h2 id="05-keep-each-players-effects-independent">05 · Keep each player's effects independent</h2>
-<p><strong>Passives per instigator — separate stacks, expiry and attribution.</strong></p>
-<p>Two players can apply the same Burn to one enemy without sharing its lifetime. Query, change or cancel one instigator's application.</p>
-<p><img alt="Passive settings use Unique Per Instigator, five maximum stacks and duration refresh on new stacks." src="images/passive-settings.png" /></p>
-<p><em>One ability type. A separate passive instance for each instigator.</em></p>
-<details>
-<summary><strong>Look closer: inspect ownership and cancel selectively</strong></summary>
-<p><img alt="Get Passive Instigators and Get Current Stack Count for Passive Ability expose per-instigator query controls." src="images/passive-instigator-nodes.png" /></p>
-<p><em>List the applying actors, then inspect a particular actor's stacks.</em></p>
-<p><img alt="Cancel Ability uses Remove One and filters Only Passives From Self." src="images/passive-cancellation.png" /></p>
-<p><em>Remove your own application without clearing somebody else's.</em></p>
+</div></section><section class="chapter" id="passives" style="--hue:268"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">05</span><div><p class="eyebrow">Chapter 05</p><h2>Keep each player's effects independent</h2><p class="subtitle">Passives per instigator — separate stacks, expiry and attribution.</p></div></header><div class="chapter-body"><p>Two players can apply the same Burn to one enemy without sharing its lifetime. Query, change or cancel one instigator's application.</p>
+<figure class="shot"><img alt="Passive settings use Unique Per Instigator, five maximum stacks and duration refresh on new stacks." src="images/passive-settings.png" /><figcaption>One ability type. A separate passive instance for each instigator.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: inspect ownership and cancel selectively</strong></summary>
+<figure class="shot"><img alt="Get Passive Instigators and Get Current Stack Count for Passive Ability expose per-instigator query controls." src="images/passive-instigator-nodes.png" /><figcaption>List the applying actors, then inspect a particular actor's stacks.</figcaption></figure>
+<figure class="shot"><img alt="Cancel Ability uses Remove One and filters Only Passives From Self." src="images/passive-cancellation.png" /><figcaption>Remove your own application without clearing somebody else's.</figcaption></figure>
 <p>Stacks, duration, decay and cooldowns are independent. APIs accept an optional <strong>Instigator</strong>; Get Current Passive Abilities lists each ability type once. Replication carries separate instances and stack changes.</p>
 <p>Temporary tags are reference-counted: one effect ending keeps <code>Status.Burning</code> while another still owns it. <strong>Remove One</strong> removes a stack from each affected instance.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -317,32 +275,28 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Per-instigator activation and stacking</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L953" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L953</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L953" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L953</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Stack queries; instigator listing below</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L1134" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L1134</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L1134" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L1134</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Selective passive and stack cancellation</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablCancelAbilityTask.cpp#L31" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablCancelAbilityTask.cpp">ablCancelAbilityTask.cpp · L31</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablCancelAbilityTask.cpp#L31" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablCancelAbilityTask.cpp">ablCancelAbilityTask.cpp · L31</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Temporary-tag reference counting</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L2662" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L2662</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L2662" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L2662</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="enhanced-input"></a></p>
-<h2 id="06-make-input-part-of-the-move">06 · Make input part of the move</h2>
-<p><strong>Enhanced Input — hold, release and branch with Input Actions.</strong></p>
-<p>Use the activation's Context Input or select a Manual Input. Channel and branch readers listen to trigger callbacks for their execution window.</p>
-<p><img alt="Enhanced Input channel controls use Context Input, Started and While Input Is Active." src="images/enhanced-input.png" /></p>
-<p><em>Hold the channel; route to Recovery when input stops.</em></p>
-<details>
-<summary><strong>Look closer: input modes and listening windows</strong></summary>
+</div></section><section class="chapter" id="enhanced-input" style="--hue:290"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">06</span><div><p class="eyebrow">Chapter 06</p><h2>Make input part of the move</h2><p class="subtitle">Enhanced Input — hold, release and branch with Input Actions.</p></div></header><div class="chapter-body"><p>Use the activation's Context Input or select a Manual Input. Channel and branch readers listen to trigger callbacks for their execution window.</p>
+<figure class="shot"><img alt="Enhanced Input channel controls use Context Input, Started and While Input Is Active." src="images/enhanced-input.png" /><figcaption>Hold the channel; route to Recovery when input stops.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: input modes and listening windows</strong></summary>
 <ul>
 <li><strong>On Input branches</strong> remember a callback while other conditions become ready.</li>
 <li><strong>While Input Is Active</strong> follows the action lifecycle; <strong>Until Event Occurs</strong> ends on the selected callback, commonly Completed for release.</li>
@@ -350,7 +304,7 @@ main>hr { display:none }
 <li>Listeners belong to one execution and detach at the window's end, including input-component replacement and lost mappings.</li>
 </ul>
 <p>Physical hold/release behavior comes from the game's Input Actions and mapping contexts.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -361,35 +315,30 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Supported trigger events and active phases</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputTypes.cpp#L10" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputTypes.cpp">ablInputTypes.cpp · L10</a><br><sub>AbleCore · Private/Input</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputTypes.cpp#L10" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputTypes.cpp">ablInputTypes.cpp · L10</a><br><sub>AbleCore · Private/Input</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Trigger callbacks, active state and cleanup</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputListener.cpp#L80" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputListener.cpp">ablInputListener.cpp · L80</a><br><sub>AbleCore · Private/Input</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputListener.cpp#L80" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Input/ablInputListener.cpp">ablInputListener.cpp · L80</a><br><sub>AbleCore · Private/Input</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Hold/release channel conditions</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Channeling/ablChannelingConditions.cpp#L37" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Channeling/ablChannelingConditions.cpp">ablChannelingConditions.cpp · L37</a><br><sub>AbleCore · Private/Channeling</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Channeling/ablChannelingConditions.cpp#L36" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Channeling/ablChannelingConditions.cpp">ablChannelingConditions.cpp · L36</a><br><sub>AbleCore · Private/Channeling</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Latched On Input branch conditions</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablBranchCondition.cpp#L61" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablBranchCondition.cpp">ablBranchCondition.cpp · L61</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablBranchCondition.cpp#L60" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablBranchCondition.cpp">ablBranchCondition.cpp · L60</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="root-motion"></a></p>
-<h2 id="07-author-the-movement">07 · Author the movement</h2>
-<p><strong>Root-motion tasks — dashes, pulls, knockbacks and leaps.</strong></p>
-<p>Four dedicated tasks use Character Movement sources. Bind values, shape motion with curves, and control how velocity finishes.</p>
-<p><img alt="Root Motion Radial Force displays its radius and origin gizmo in the viewport beside its settings." src="images/root-motion-editor.png" /></p>
-<p><em>Place the origin. Preview the radius. Author the push or pull.</em></p>
-<details>
-<summary><strong>Look closer: directional force, tracking and jumping</strong></summary>
-<p><img alt="Constant Force exposes direction space, strength-over-time and finish-velocity controls." src="images/root-motion-constant.png" /></p>
-<p><em>Choose the direction space and strength curve for a dash.</em></p>
-<div class="gallery"><figure><img alt="Move To exposes destination tracking, stop distance and path curves." src="images/root-motion-move.png" /><figcaption><strong>Move To:</strong> track a destination and stop short.</figcaption></figure><figure><img alt="Jump exposes distance, height and Finish On Landed." src="images/root-motion-jump.png" /><figcaption><strong>Jump:</strong> shape the arc and finish on landing.</figcaption></figure></div>
+</div></section><section class="chapter" id="root-motion" style="--hue:315"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">07</span><div><p class="eyebrow">Chapter 07</p><h2>Author the movement</h2><p class="subtitle">Root-motion tasks — dashes, pulls, knockbacks and leaps.</p></div></header><div class="chapter-body"><p>Four dedicated tasks use Character Movement sources. Bind values, shape motion with curves, and control how velocity finishes.</p>
+<figure class="shot"><img alt="Root Motion Radial Force displays its radius and origin gizmo in the viewport beside its settings." src="images/root-motion-editor.png" /><figcaption>Place the origin. Preview the radius. Author the push or pull.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: directional force, tracking and jumping</strong></summary>
+<figure class="shot"><img alt="Constant Force exposes direction space, strength-over-time and finish-velocity controls." src="images/root-motion-constant.png" /><figcaption>Choose the direction space and strength curve for a dash.</figcaption></figure>
+<div class="gallery"><figure class="shot"><img alt="Move To exposes destination tracking, stop distance and path curves." src="images/root-motion-move.png" /><figcaption><strong>Move To:</strong> track a destination and stop short.</figcaption></figure><figure class="shot"><img alt="Jump exposes distance, height and Finish On Landed." src="images/root-motion-jump.png" /><figcaption><strong>Jump:</strong> shape the arc and finish on landing.</figcaption></figure></div>
 <table>
 <thead>
 <tr>
@@ -417,7 +366,7 @@ main>hr { display:none }
 </tbody>
 </table>
 <p>All share additive/override behavior, priority, source naming, cleanup, finish velocity and temporary movement-mode controls. Duration follows play rate; Move To/Jump can finish early. Character Movement provides source replication, with server and owning-client application by default.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -428,43 +377,39 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Shared application, finish velocity and cleanup</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L93" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L93</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L93" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L93</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Constant Force source</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L380" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L380</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L380" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L380</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Radial Force source</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L441" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L441</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L441" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L441</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Move To source and destination tracking</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L547" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L547</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L547" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L547</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Jump source and landing behavior</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L661" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L661</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp#L661" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablRootMotionTasks.cpp">ablRootMotionTasks.cpp · L661</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="ability-editor"></a></p>
-<h2 id="08-read-the-ability-at-a-glance">08 · Read the ability at a glance</h2>
-<p><strong>Ability Editor — clearer tracks, phase routes and preview controls.</strong></p>
-<p>Task groups separate presentation, collision, damage, movement and reactions. Search and collapse tracks to keep a larger ability readable.</p>
-<p><img alt="Animation, collision, damage, movement and gameplay-event tasks are separated into timeline groups." src="images/task-groups.png" /></p>
-<p><em>Follow each system's timing without losing the whole move.</em></p>
-<details>
-<summary><strong>Look closer: editing and preview improvements</strong></summary>
+</div></section><section class="chapter" id="ability-editor" style="--hue:340"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">08</span><div><p class="eyebrow">Chapter 08</p><h2>Read the ability at a glance</h2><p class="subtitle">Ability Editor — clearer tracks, phase routes and preview controls.</p></div></header><div class="chapter-body"><p>Task groups separate presentation, collision, damage, movement and reactions. Search and collapse tracks to keep a larger ability readable.</p>
+<figure class="shot"><img alt="Animation, collision, damage, movement and gameplay-event tasks are separated into timeline groups." src="images/task-groups.png" /><figcaption>Follow each system's timing without losing the whole move.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: editing and preview improvements</strong></summary>
 <ul>
 <li><strong>Organization:</strong> named groups, drag reordering, moving tasks between groups and category grouping. Search task/category/group, including collapsed matches.</li>
 <li><strong>Navigation:</strong> cursor-centred Alt + wheel zoom, Shift + wheel pan, draggable time/frame scrubbing and clearer task bars.</li>
 <li><strong>Spatial editing:</strong> W/E moves/rotates labelled task gizmos; per-value visibility and one undo per drag. Custom task variables can declare relative space, socket and visibility.</li>
 <li><strong>Preview:</strong> No Loop, Loop Ability, Loop Timeline, Timeline Once and Force Transition. Faster searchable actor/target pickers, Respawn, Add/Override Target and an initial-timeline new-asset workflow.</li>
 </ul>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -475,41 +420,37 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Groups, ordering and category organization</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp#L590" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp">ablAbilityEditor.cpp · L590</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp#L590" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp">ablAbilityEditor.cpp · L590</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Task search and track construction</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimeline.cpp#L283" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimeline.cpp">SAbilityTimeline.cpp · L283</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimeline.cpp#L283" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimeline.cpp">SAbilityTimeline.cpp · L283</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Group headers and drag/drop rows</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineRows.cpp#L274" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineRows.cpp">SAbilityTimelineRows.cpp · L274</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineRows.cpp#L274" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityTimelineRows.cpp">SAbilityTimelineRows.cpp · L274</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Cursor-centred zoom and panning</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp#L1685" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp">ablAbilityEditor.cpp · L1685</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp#L1685" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp">ablAbilityEditor.cpp · L1685</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Task gizmo transforms</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblTaskGizmos.cpp#L219" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblTaskGizmos.cpp">AblTaskGizmos.cpp · L219</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblTaskGizmos.cpp#L219" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/AblTaskGizmos.cpp">AblTaskGizmos.cpp · L219</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Preview loop modes</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp#L2445" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp">ablAbilityEditor.cpp · L2445</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp#L2445" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/ablAbilityEditor.cpp">ablAbilityEditor.cpp · L2445</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="task-library"></a></p>
-<h2 id="09-bind-it-spawn-it-present-it">09 · Bind it. Spawn it. Present it.</h2>
-<p><strong>Richer task authoring — customize each use of the move.</strong></p>
-<p>Spawn Actor exposes the chosen class's spawn variables with dynamic bindings. Animation and camera-shake controls make presentation easier to configure.</p>
-<p><img alt="Spawn Actor exposes the Throwable class's bindable Data, Time Cooked and Instigator spawn variables." src="images/spawn-variables.png" /></p>
-<p><em>The selected class supplies the fields. Bind values for this execution.</em></p>
-<details>
-<summary><strong>Look closer: animation, camera shake and task bindings</strong></summary>
-<div class="gallery"><figure><img alt="Play Animation groups playback, duration, speed and blending controls." src="images/animation-controls.png" /><figcaption><strong>Animation:</strong> explicit playback, timing and blending.</figcaption></figure><figure><img alt="Nearby camera shake exposes epicenter, radii and falloff controls." src="images/nearby-shake.png" /><figcaption><strong>Camera shake:</strong> nearby players with spatial falloff.</figcaption></figure></div>
+</div></section><section class="chapter" id="task-library" style="--hue:12"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">09</span><div><p class="eyebrow">Chapter 09</p><h2>Bind it. Spawn it. Present it.</h2><p class="subtitle">Richer task authoring — customize each use of the move.</p></div></header><div class="chapter-body"><p>Spawn Actor exposes the chosen class's spawn variables with dynamic bindings. Animation and camera-shake controls make presentation easier to configure.</p>
+<figure class="shot"><img alt="Spawn Actor exposes the Throwable class's bindable Data, Time Cooked and Instigator spawn variables." src="images/spawn-variables.png" /><figcaption>The selected class supplies the fields. Bind values for this execution.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: animation, camera shake and task bindings</strong></summary>
+<div class="gallery"><figure class="shot"><img alt="Play Animation groups playback, duration, speed and blending controls." src="images/animation-controls.png" /><figcaption><strong>Animation:</strong> explicit playback, timing and blending.</figcaption></figure><figure class="shot"><img alt="Nearby camera shake exposes epicenter, radii and falloff controls." src="images/nearby-shake.png" /><figcaption><strong>Camera shake:</strong> nearby players with spatial falloff.</figcaption></figure></div>
 <ul>
 <li><strong>Spawn:</strong> class-aware typed variables, defaults/bindings, deferred initialization, attachment and result events.</li>
 <li><strong>Animation:</strong> playback mode, duration/speed policies, start position, looping, blending, end behavior and migration validation.</li>
@@ -517,7 +458,7 @@ main>hr { display:none }
 <li><strong>Bindings:</strong> broader dynamic values, identifiers and Create/View Binding controls. Effects, sound and ability playback receive supporting authoring/lifecycle improvements.</li>
 </ul>
 <p>Smaller completion, cancellation, attachment, damage, turning and cleanup fixes are grouped here rather than listed task by task.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -528,45 +469,43 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Class-aware spawn fields and deferred values</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablSpawnActorTask.cpp#L354" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablSpawnActorTask.cpp">ablSpawnActorTask.cpp · L354</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablSpawnActorTask.cpp#L354" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablSpawnActorTask.cpp">ablSpawnActorTask.cpp · L354</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Animation playback and lifecycle</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayAnimationTask.cpp#L143" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayAnimationTask.cpp">ablPlayAnimationTask.cpp · L143</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayAnimationTask.cpp#L91" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayAnimationTask.cpp">ablPlayAnimationTask.cpp · L91</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Nearby camera shake and owned instances</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayCameraShakeTask.cpp#L46" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayCameraShakeTask.cpp">ablPlayCameraShakeTask.cpp · L46</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayCameraShakeTask.cpp#L46" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayCameraShakeTask.cpp">ablPlayCameraShakeTask.cpp · L46</a><br><sub>AbleCore · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Dynamic property binding registration</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L580" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L580</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L476" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L476</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Create/View Binding editor controls</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityPropertyBinding.cpp#L201" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityPropertyBinding.cpp">SAbilityPropertyBinding.cpp · L201</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityPropertyBinding.cpp#L200" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleEditor/Private/AbilityEditor/SAbilityPropertyBinding.cpp">SAbilityPropertyBinding.cpp · L200</a><br><sub>AbleEditor · Private/AbilityEditor</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="collision-performance"></a></p>
-<h2 id="10-make-collision-cheaperand-visible">10 · Make collision cheaper—and visible</h2>
-<p><strong>Native shape execution, caching and ACE Profiler.</strong></p>
-<p>Supported shape graphs compile into native execution steps. Geometry reuse and tighter queries reduce repeated work; the profiler separates build and query costs by shape.</p>
-<p><img alt="ACE Profiler exposes recording, cost graphs and a per-shape cost table." src="images/ace-profiler.png" /></p>
-<p><em>The profiler interface, captured idle. No measurements are shown here.</em></p>
-<details>
-<summary><strong>Look closer: where the savings come from</strong></summary>
+</div></section><section class="chapter" id="collision-performance" style="--hue:36"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">10</span><div><p class="eyebrow">Chapter 10</p><h2>Make collision cheaper—and visible</h2><p class="subtitle">Native shape execution, caching and ACE Profiler.</p></div></header><div class="chapter-body"><p>Supported shape graphs compile into native execution steps. Geometry reuse and tighter queries reduce repeated work; the profiler separates build and query costs by shape.</p>
+<figure class="shot"><img alt="ACE Profiler recording three Shape classes: the cost graph with a hover readout, the per-class table, and Worst frames below." src="images/ace-profiler.png" /><figcaption>A synthetic test workload: hover the graph to read every line; Worst frames takes the costliest apart.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: where the savings come from</strong></summary>
 <ul>
 <li><strong>Native Build Shape:</strong> supported math, Params, composition, Branch and Select avoid Blueprint VM dispatch. Unsupported graphs retain the VM with diagnostics.</li>
 <li><strong>Reuse:</strong> bounded Params caches, shared hulls, cross-build caching and source-change invalidation.</li>
 <li><strong>Geometry:</strong> faster outline merging, known-face checks and query-only builds; compatible touching pieces can merge on reuse.</li>
 <li><strong>Queries:</strong> adaptive broadphase, tighter bounds rejection, less scene locking and sweep tests ordered to find earlier blocking hits.</li>
 <li><strong>Batches and visibility:</strong> worker-thread batches, tunable thresholds, per-shape build/query recording and an engine-sphere comparison baseline.</li>
+<li><strong>Worst frames:</strong> each class's queries and builds, the slowest of each, the Params that slowest build was for, the game frame's length and hull cache pruning.</li>
+<li><strong>Saved recordings:</strong> the last five, as a CSV of every frame and a summary; <strong>Recordings</strong> reopens one in the graph.</li>
 </ul>
 <p>Repository A/B measurements cover specific workloads, not a universal speedup. The production profiler is separate from the optional test plugin.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -577,50 +516,47 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Native shape graph compilation</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Program/AblShapeProgramCompiler.cpp#L94" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Program/AblShapeProgramCompiler.cpp">AblShapeProgramCompiler.cpp · L94</a><br><sub>ACE Editor · Private/Program</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Program/AblShapeProgramCompiler.cpp#L94" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Program/AblShapeProgramCompiler.cpp">AblShapeProgramCompiler.cpp · L94</a><br><sub>ACE Editor · Private/Program</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Native execution steps</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Program/AblShapeProgramRunner.cpp#L92" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Program/AblShapeProgramRunner.cpp">AblShapeProgramRunner.cpp · L92</a><br><sub>ACE · Private/Program</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Program/AblShapeProgramRunner.cpp#L92" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Program/AblShapeProgramRunner.cpp">AblShapeProgramRunner.cpp · L92</a><br><sub>ACE · Private/Program</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Params cache and bounded reuse</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsCache.cpp#L94" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsCache.cpp">AblShapeParamsCache.cpp · L94</a><br><sub>ACE · Private/Shape</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsCache.cpp#L94" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsCache.cpp">AblShapeParamsCache.cpp · L94</a><br><sub>ACE · Private/Shape</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Shared hull cache</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Geometry/AblHullCache.cpp#L54" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Geometry/AblHullCache.cpp">AblHullCache.cpp · L54</a><br><sub>ACE · Private/Geometry</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Geometry/AblHullCache.cpp#L54" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Geometry/AblHullCache.cpp">AblHullCache.cpp · L54</a><br><sub>ACE · Private/Geometry</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Adaptive candidate broadphase</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblShapeBroadphase.cpp#L19" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblShapeBroadphase.cpp">AblShapeBroadphase.cpp · L19</a><br><sub>ACE · Private/Query</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblShapeBroadphase.cpp#L19" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblShapeBroadphase.cpp">AblShapeBroadphase.cpp · L19</a><br><sub>ACE · Private/Query</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Batch queries and overlap/sweep dispatch</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblCollisionShapeQuery.cpp#L282" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblCollisionShapeQuery.cpp">AblCollisionShapeQuery.cpp · L282</a><br><sub>ACE · Private/Query</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblCollisionShapeQuery.cpp#L282" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Query/AblCollisionShapeQuery.cpp">AblCollisionShapeQuery.cpp · L282</a><br><sub>ACE · Private/Query</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Per-shape cost recording</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Profiling/AblCollisionProfiler.cpp#L202" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Profiling/AblCollisionProfiler.cpp">AblCollisionProfiler.cpp · L202</a><br><sub>ACE · Private/Profiling</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Profiling/AblCollisionProfiler.cpp#L202" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Profiling/AblCollisionProfiler.cpp">AblCollisionProfiler.cpp · L202</a><br><sub>ACE · Private/Profiling</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Profiler window and cost breakdown</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp#L80" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp">SAblCollisionProfiler.cpp · L80</a><br><sub>ACE Editor · Private/Profiler</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp#L80" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp">SAblCollisionProfiler.cpp · L80</a><br><sub>ACE Editor · Private/Profiler</sub></td>
 </tr>
 </tbody>
 </table>
+<p>| Saved recordings and summaries | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Profiling/AblProfilerRecordings.cpp#L128" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Profiling/AblProfilerRecordings.cpp">AblProfilerRecordings.cpp · L128</a><br><sub>ACE · Private/Profiling</sub> |
+| Worst frames panel | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp#L558" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp">SAblCollisionProfiler.cpp · L558</a><br><sub>ACE Editor · Private/Profiler</sub> |</p>
 </details>
 <hr />
-<p><a name="networking-apis"></a></p>
-<h2 id="11-start-abilities-follow-the-result">11 · Start abilities. Follow the result.</h2>
-<p><strong>Simpler APIs and leaner replication underneath.</strong></p>
-<p>Try Activate Ability creates the context and reports Activated/Failed in one node. Cooldown notifications and adjustments give UI and gameplay direct timer control.</p>
-<p><img alt="Try Activate Ability exposes Activated, Failed, the created Context and the start result." src="images/try-activate-ability.png" /></p>
-<p><em>Start the selected ability and handle the outcome directly.</em></p>
-<details>
-<summary><strong>Look closer: cooldown controls and networking changes</strong></summary>
-<p><img alt="Change Cooldown and Get Ability Cooldown Remaining expose Timeline Index and Instigator controls." src="images/cooldown-controls.png" /></p>
-<p><em>Adjust a timer in seconds, or read one phase/instigator's remaining time.</em></p>
+</div></section><section class="chapter" id="networking-apis" style="--hue:150"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">11</span><div><p class="eyebrow">Chapter 11</p><h2>Start abilities. Follow the result.</h2><p class="subtitle">Simpler APIs and leaner replication underneath.</p></div></header><div class="chapter-body"><p>Try Activate Ability creates the context and reports Activated/Failed in one node. Cooldown notifications and adjustments give UI and gameplay direct timer control.</p>
+<figure class="shot"><img alt="Try Activate Ability exposes Activated, Failed, the created Context and the start result." src="images/try-activate-ability.png" /><figcaption>Start the selected ability and handle the outcome directly.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: cooldown controls and networking changes</strong></summary>
+<figure class="shot"><img alt="Change Cooldown and Get Ability Cooldown Remaining expose Timeline Index and Instigator controls." src="images/cooldown-controls.png" /><figcaption>Adjust a timer in seconds, or read one phase/instigator's remaining time.</figcaption></figure>
 <ul>
 <li><strong>Activation:</strong> optional instigator, input action, starting timeline and target location. Blueprint and AI can select an attack phase.</li>
 <li><strong>Cooldowns:</strong> Started/Changed/Ended notifications, remaining seconds and single/all-timer adjustments.</li>
@@ -628,7 +564,7 @@ main>hr { display:none }
 <li><strong>Shared choices:</strong> per-visit random Int/Float values support corresponding timeline selections between machines.</li>
 </ul>
 <p>Screenshots show the APIs, not network traffic. Gameplay-critical transitions still need server control. Remaining replication limits include same-timeline restarts, passive timeline changes and late-join shared randomness; gameplay events stay local.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -639,44 +575,40 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Try Activate Ability</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L803" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L803</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L803" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L803</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Cooldown adjustments and notifications</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L1771" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L1771</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L1771" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L1771</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Compact context serialization</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp#L532" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp">ablAbilityContext.cpp · L532</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp#L532" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp">ablAbilityContext.cpp · L532</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Replication conditions and push-model opt-in</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L412" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L412</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp#L412" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityComponent.cpp">ablAbilityComponent.cpp · L412</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Shared per-visit random values</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp#L828" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp">ablAbilityContext.cpp · L828</a><br><sub>AbleCore · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp#L828" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbilityContext.cpp">ablAbilityContext.cpp · L828</a><br><sub>AbleCore · Private</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="weapon-integrations"></a></p>
-<h2 id="12-connect-the-weapon-to-the-move">12 · Connect the weapon to the move</h2>
-<p><strong>EasyBallistics and bindable execution contexts.</strong></p>
-<p>Fire Barrel and Barrel Command put weapon control on the timeline. Bind settings, aim at shot time, and publish committed-shot gameplay results.</p>
-<p><img alt="Fire Barrel exposes held-fire cleanup, barrel selection and bindable weapon configuration." src="images/fire-barrel.png" /></p>
-<p><em>Refresh configuration while firing; choose how it restores or stops.</em></p>
-<details>
-<summary><strong>Look closer: barrel commands and shot-time aiming</strong></summary>
-<div class="gallery"><figure><img alt="Barrel Command lists firing, configuration, ammo, charge, chamber and spool operations." src="images/barrel-commands.png" /><figcaption><strong>Commands:</strong> fire, stop, configure, reload and more.</figcaption></figure><figure><img alt="Easy Aim in View Trace mode exposes view-source and obstruction settings." src="images/easy-aim.png" /><figcaption><strong>Easy Aim:</strong> choose the source and handle obstructions.</figcaption></figure></div>
+</div></section><section class="chapter" id="weapon-integrations" style="--hue:168"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">12</span><div><p class="eyebrow">Chapter 12</p><h2>Connect the weapon to the move</h2><p class="subtitle">EasyBallistics and bindable execution contexts.</p></div></header><div class="chapter-body"><p>Fire Barrel and Barrel Command put weapon control on the timeline. Bind settings, aim at shot time, and publish committed-shot gameplay results.</p>
+<figure class="shot"><img alt="Fire Barrel exposes held-fire cleanup, barrel selection and bindable weapon configuration." src="images/fire-barrel.png" /><figcaption>Refresh configuration while firing; choose how it restores or stops.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: barrel commands and shot-time aiming</strong></summary>
+<div class="gallery"><figure class="shot"><img alt="Barrel Command lists firing, configuration, ammo, charge, chamber and spool operations." src="images/barrel-commands.png" /><figcaption><strong>Commands:</strong> fire, stop, configure, reload and more.</figcaption></figure><figure class="shot"><img alt="Easy Aim in View Trace mode exposes view-source and obstruction settings." src="images/easy-aim.png" /><figcaption><strong>Easy Aim:</strong> choose the source and handle obstructions.</figcaption></figure></div>
 <ul>
 <li>Select barrels explicitly or through targets; bind configuration and refresh/restore policy.</li>
 <li>Command firing, ammo, charge, chamber unloading, fire mode, spooling and shooting blocking.</li>
 <li>Aim through View Trace, a world point, actor or component; configure view source, offsets and obstructions. Dynamic binding and barrel delegates remain available.</li>
 <li>Apply external stat overrides with <strong>139 typed value getters</strong>. Result events expose committed authority-side shot data and captured bullet references.</li>
 </ul>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -687,34 +619,33 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Fire Barrel lifecycle and shot results</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBFireTask.cpp#L38" title="plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBFireTask.cpp">AblEBFireTask.cpp · L38</a><br><sub>Ballistics bridge · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBFireTask.cpp#L38" title="plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBFireTask.cpp">AblEBFireTask.cpp · L38</a><br><sub>Ballistics bridge · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Barrel commands</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBCommandTask.cpp#L9" title="plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBCommandTask.cpp">AblEBCommandTask.cpp · L9</a><br><sub>Ballistics bridge · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBCommandTask.cpp#L9" title="plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBCommandTask.cpp">AblEBCommandTask.cpp · L9</a><br><sub>Ballistics bridge · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Barrel selection and configuration</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBTaskBase.cpp#L44" title="plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBTaskBase.cpp">AblEBTaskBase.cpp · L44</a><br><sub>Ballistics bridge · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBTaskBase.cpp#L44" title="plugins/AbleEasyBallistics/Source/AbleEasyBallistics/Private/Tasks/AblEBTaskBase.cpp">AblEBTaskBase.cpp · L44</a><br><sub>Ballistics bridge · Private/Tasks</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Shot-time Easy Aim resolution</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Private/Aiming/EBEasyAim.cpp#L8" title="plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Private/Aiming/EBEasyAim.cpp">EBEasyAim.cpp · L8</a><br><sub>EasyBallistics · Private/Aiming</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Private/Aiming/EBEasyAim.cpp#L8" title="plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Private/Aiming/EBEasyAim.cpp">EBEasyAim.cpp · L8</a><br><sub>EasyBallistics · Private/Aiming</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Typed stat getters and overrides</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Public/Stats/EBStatLibrary.h#L8" title="plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Public/Stats/EBStatLibrary.h">EBStatLibrary.h · L8</a><br><sub>EasyBallistics · Public/Stats</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Public/Stats/EBStatLibrary.h#L8" title="plugins/EasyBalle55a27bc8c3fV25/Source/EasyBallistics/Public/Stats/EBStatLibrary.h">EBStatLibrary.h · L8</a><br><sub>EasyBallistics · Public/Stats</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
-<details>
-<summary><strong>Look closer: follow one execution's lifecycle</strong></summary>
-<p><img alt="A bindable execution context supplies Bind Event to On Ability Timeline Changed and On Ability End." src="images/context-lifecycle.png" /></p>
-<p><em>Subscribe to the execution you started. Connect event handlers to react.</em></p>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: follow one execution's lifecycle</strong></summary>
+<figure class="shot"><img alt="A bindable execution context supplies Bind Event to On Ability Timeline Changed and On Ability End." src="images/context-lifecycle.png" /><figcaption>Subscribe to the execution you started. Connect event handlers to react.</figcaption></figure>
 <p>Bindable contexts expose Start, End, Interrupt, Branch and Timeline Changed delegates. Typed factories and conversion support ordinary and pooled contexts; end cleanup removes forwarding/listeners before reuse. The integration is optional and local.</p>
 <p>Both bridges existed in the repository's earliest snapshot; their later evolution is part of this generation.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -725,71 +656,66 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Context factories and conversion</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableBlueprintLibrary.cpp#L5" title="plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableBlueprintLibrary.cpp">AbleContextBindableBlueprintLibrary.cpp · L5</a><br><sub>Bindable contexts · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableBlueprintLibrary.cpp#L5" title="plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableBlueprintLibrary.cpp">AbleContextBindableBlueprintLibrary.cpp · L5</a><br><sub>Bindable contexts · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Delegate forwarding and disconnect</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp#L51" title="plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp">AbleContextBindableContext.cpp · L51</a><br><sub>Bindable contexts · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp#L51" title="plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp">AbleContextBindableContext.cpp · L51</a><br><sub>Bindable contexts · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">End cleanup before context reuse</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp#L120" title="plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp">AbleContextBindableContext.cpp · L120</a><br><sub>Bindable contexts · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp#L120" title="plugins/ableContextBindable/Source/AbleContextBindable/Private/AbleContextBindableContext.cpp">AbleContextBindableContext.cpp · L120</a><br><sub>Bindable contexts · Private</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
 <hr />
-<p><a name="the-foundation-underneath"></a></p>
-<h2 id="the-foundation-underneath">The foundation underneath</h2>
-<p><strong>Optional test tooling. Clearer plugin boundaries. Upgrade paths for existing assets.</strong></p>
-<p>AbleTests groups editor automation, collision fixtures and reproducible measurements in a removable editor plugin. Production plugins do not depend on it.</p>
-<p><img alt="Able Tests is an optional plugin for automation, collision benchmarks, fixtures and reports, shown disabled." src="images/able-tests-plugin.png" /></p>
-<p><em>Available when needed; disabled in the captured editor session.</em></p>
-<details>
-<summary><strong>Look closer: modular plugins and migration</strong></summary>
-<p><img alt="Plugin browser separates Able, Able Collision Engine, EasyBallistics, optional Able Tests and bindable contexts." src="images/modular-plugins.png" /></p>
-<p><em>The framework, collision engine and bridges have distinct responsibilities.</em></p>
-<p>Automation covers shape builds, query variants, batches, filters and lifecycle behavior. Reports record workloads, environment, seeds and latency distributions. The October review recorded <strong>213 passing tests at that checkpoint</strong>; this showcase did not run a new suite.</p>
+</div></section><section class="chapter" id="the-foundation-underneath" style="--hue:205"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">+</span><div><p class="eyebrow">Underneath</p><h2>The foundation underneath</h2><p class="subtitle">Optional test tooling. Clearer plugin boundaries. No compatibility code left.</p></div></header><div class="chapter-body"><p>AbleTests groups editor automation, collision fixtures and reproducible measurements in a removable editor plugin. Production plugins do not depend on it.</p>
+<figure class="shot"><img alt="Able Tests is an optional plugin for automation, collision benchmarks, fixtures and reports, shown disabled." src="images/able-tests-plugin.png" /><figcaption>Available when needed; disabled in the captured editor session.</figcaption></figure>
+<details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: modular plugins and upgrading</strong></summary>
+<figure class="shot"><img alt="Plugin browser separates Able, Able Collision Engine, EasyBallistics, optional Able Tests and bindable contexts." src="images/modular-plugins.png" /><figcaption>The framework, collision engine and bridges have distinct responsibilities.</figcaption></figure>
+<p>Automation covers shape builds, query variants, batches, filters and lifecycle behavior. Reports record workloads, environment, seeds and latency distributions. The October review recorded <strong>213 passing tests at that checkpoint</strong>. On 12 October the Able and Collision Engine product suite ran <strong>73 tests, all passing</strong>, after the compatibility code was removed.</p>
+<p>The project's own assets were converted once and saved in the current format; the conversions were then removed. Coming from the original Able, author these the current way:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Existing authoring</th>
-<th style="text-align: left;">Main upgrade path</th>
+<th style="text-align: left;">Original Able</th>
+<th style="text-align: left;">Generation 2.0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;">Ability-level playback</td>
-<td style="text-align: left;">Move to Timeline 0; author later phases separately.</td>
+<td style="text-align: left;">Timeline settings; Timeline 0 is the first phase.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Fixed collision volumes</td>
-<td style="text-align: left;">Load matching ACE presets through compatibility conversion.</td>
+<td style="text-align: left;">Collision Shape with the matching ACE preset.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Arbitrary event payloads</td>
-<td style="text-align: left;">Register tag/type pairs; use typed Send/Wait/Get nodes.</td>
+<td style="text-align: left;">Registered tag/type pairs and typed Send/Wait/Get nodes.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Legacy input</td>
-<td style="text-align: left;">Adopt Input Actions; review unsupported old timing/name arrays.</td>
+<td style="text-align: left;">Key and action-name input</td>
+<td style="text-align: left;">Input Actions, from the Context or picked by hand.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Animation checkboxes</td>
-<td style="text-align: left;">Review explicit playback, duration, speed and end policies.</td>
+<td style="text-align: left;">Explicit playback, duration, speed and end policies.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Context named parameters</td>
-<td style="text-align: left;">Use retained Ability State or per-use dynamic bindings.</td>
+<td style="text-align: left;">Ability State, or per-use dynamic bindings.</td>
 </tr>
 <tr>
-<td style="text-align: left;">Events, tags and cancellation</td>
-<td style="text-align: left;">Review Event/Callback naming, task realm and end-result assumptions.</td>
+<td style="text-align: left;">Get Cooldown / Get Max Stacks overrides</td>
+<td style="text-align: left;">Cooldown and Max Stacks bindings.</td>
 </tr>
 </tbody>
 </table>
-<p>Some assets need deliberate reauthoring; this is a feature tour, not a complete compatibility checklist.</p>
-<p class="code-heading"><strong>Code directory</strong> · <a href="#source-path-key">Source path key</a></p>
+<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
 <table class="code-directory">
 <thead>
 <tr>
@@ -800,45 +726,31 @@ main>hr { display:none }
 <tbody>
 <tr>
 <td style="text-align: left;">Optional module and measurement command</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleTests/Source/AbleTests/Private/AbleTestsModule.cpp#L13" title="plugins/AbleTests/Source/AbleTests/Private/AbleTestsModule.cpp">AbleTestsModule.cpp · L13</a><br><sub>AbleTests · Private</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleTests/Source/AbleTests/Private/AbleTestsModule.cpp#L13" title="plugins/AbleTests/Source/AbleTests/Private/AbleTestsModule.cpp">AbleTestsModule.cpp · L13</a><br><sub>AbleTests · Private</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Ability State coverage</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleTests/Source/AbleTests/Private/Tests/AblAbilityStateTests.cpp#L83" title="plugins/AbleTests/Source/AbleTests/Private/Tests/AblAbilityStateTests.cpp">AblAbilityStateTests.cpp · L83</a><br><sub>AbleTests · Private/Tests</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleTests/Source/AbleTests/Private/Tests/AblAbilityStateTests.cpp#L83" title="plugins/AbleTests/Source/AbleTests/Private/Tests/AblAbilityStateTests.cpp">AblAbilityStateTests.cpp · L83</a><br><sub>AbleTests · Private/Tests</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Serialization and push-model coverage</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleTests/Source/AbleTests/Private/Tests/AblNetworkContextTests.cpp#L68" title="plugins/AbleTests/Source/AbleTests/Private/Tests/AblNetworkContextTests.cpp">AblNetworkContextTests.cpp · L68</a><br><sub>AbleTests · Private/Tests</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleTests/Source/AbleTests/Private/Tests/AblNetworkContextTests.cpp#L68" title="plugins/AbleTests/Source/AbleTests/Private/Tests/AblNetworkContextTests.cpp">AblNetworkContextTests.cpp · L68</a><br><sub>AbleTests · Private/Tests</sub></td>
 </tr>
 <tr>
 <td style="text-align: left;">Collision workloads and build measurements</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleTests/Source/AbleTests/Private/Tests/AblShapePerformanceTests.cpp#L30" title="plugins/AbleTests/Source/AbleTests/Private/Tests/AblShapePerformanceTests.cpp">AblShapePerformanceTests.cpp · L30</a><br><sub>AbleTests · Private/Tests</sub></td>
-</tr>
-<tr>
-<td style="text-align: left;">Legacy ability-to-timeline migration</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp#L136" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablAbility.cpp">ablAbility.cpp · L136</a><br><sub>AbleCore · Private</sub></td>
-</tr>
-<tr>
-<td style="text-align: left;">Legacy collision-volume conversion</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablCollisionShapes.cpp#L130" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/ablCollisionShapes.cpp">ablCollisionShapes.cpp · L130</a><br><sub>AbleCore · Private</sub></td>
-</tr>
-<tr>
-<td style="text-align: left;">Animation policy migration</td>
-<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/030798fee9672718973ba449e880bcb4428dde04/plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayAnimationTask.cpp#L93" title="plugins/AbleAbil334b52ee27f6V10/Source/AbleCore/Private/Tasks/ablPlayAnimationTask.cpp">ablPlayAnimationTask.cpp · L93</a><br><sub>AbleCore · Private/Tasks</sub></td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleTests/Source/AbleTests/Private/Tests/AblShapePerformanceTests.cpp#L30" title="plugins/AbleTests/Source/AbleTests/Private/Tests/AblShapePerformanceTests.cpp">AblShapePerformanceTests.cpp · L30</a><br><sub>AbleTests · Private/Tests</sub></td>
 </tr>
 </tbody>
 </table>
 </details>
-<p><a name="capture-notes"></a></p>
-<details>
-<summary><strong>About these captures</strong></summary>
-<p>Captured directly from <strong>shootcramental / Unreal Engine 5.8</strong> on <strong>11 October 2026</strong>. Cross Slash, Morning Star and registry entries are existing assets. The profiler is idle; AbleTests is disabled.</p>
+</div></section><section class="notes" id="capture-notes"><details class="drawer">
+<summary><span class="plus" aria-hidden="true"></span><strong>About these captures</strong></summary>
+<p>Captured directly from <strong>shootcramental / Unreal Engine 5.8</strong> on <strong>11 October 2026</strong>. Cross Slash, Morning Star and registry entries are existing assets. The Collision Engine's handles, node Details, Shape-in-ability and profiler captures were added on <strong>12 October 2026</strong> by AbleTests' capture tools, which open existing assets without saving them; the profiler records a synthetic test workload.</p>
 <p><code>AB_20_Showcase</code> and <code>ST_AbilityMemory</code> are temporary, unsaved authoring examples. Graphs and inspectors demonstrate controls, not validated gameplay implementations. Existing asset classes and registry entries were read without editing them.</p>
-<p>Images are tightly framed screen captures; UI values/results were not painted into them. The cover is an original vector. No C++ build, gameplay suite, benchmark or network validation was run for this document.</p>
-<p><a name="source-path-key"></a></p>
-<p><strong>Source path key</strong></p>
+<p>Images are tightly framed screen captures; UI values/results were not painted into them. The cover is an original vector. The 12 October captures came from a fresh editor build; no benchmark or network validation was run for this document.</p>
+</section><section class="notes" id="source-path-key"><p><strong>Source path key</strong></p>
 <p>File labels use the module keys below. Append the displayed folder and filename to find the file locally; hovering a file link also shows its full repository path.</p>
-<table class="source-path-key">
+<table>
 <thead>
 <tr>
 <th style="text-align: left;">Module key</th>
@@ -884,14 +796,12 @@ main>hr { display:none }
 </tr>
 </tbody>
 </table>
-<p>Code entry points checked against the committed source revision above on <strong>12 October 2026</strong>.</p>
+<p>Code entry points were moved to the revision above, and checked against it, on <strong>12 October 2026</strong>.</p>
 <p>Markdown and the website share content and local images. This public repository contains only the showcase/media; plugin source and the Unreal project are maintained separately.</p>
-</details><footer>Able · Generation 2.0 — Captured in Unreal Engine 5.8 · 11 October 2026<br>Click any image to enlarge. <a href="https://github.com/GamesAndBacon/able-generation-2-showcase">GitHub showcase repository</a>.</footer></main><dialog id="viewer" aria-label="Enlarged screenshot"><button type="button" aria-label="Close image">Close ×</button><img alt=""></dialog><script>
-const viewer=document.querySelector('#viewer');
-document.querySelectorAll('main img').forEach(img=>{img.tabIndex=0;const show=()=>{viewer.querySelector('img').src=img.src;viewer.querySelector('img').alt=img.alt;viewer.showModal()};img.addEventListener('click',show);img.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();show()}})});
-viewer.addEventListener('click',()=>viewer.close());
-document.querySelector('#chapter-picker').addEventListener('change',e=>{if(e.target.value)location.hash=e.target.value});
-const toggle=document.querySelector('#details-toggle');toggle.addEventListener('click',()=>{const panels=[...document.querySelectorAll('main details')];const open=!panels.every(p=>p.open);panels.forEach(p=>p.open=open);toggle.textContent=open?'Hide all details':'Show all details'});
-function revealHash(){const key=decodeURIComponent(location.hash.slice(1));if(!key)return;const target=document.getElementById(key)||document.getElementsByName(key)[0];if(!target)return;let parent=target.parentElement;let revealed=false;while(parent){if(parent.tagName==='DETAILS'&&!parent.open){parent.open=true;revealed=true}parent=parent.parentElement}if(revealed)requestAnimationFrame(()=>target.scrollIntoView())}
-window.addEventListener('hashchange',revealHash);revealHash();
-</script></body></html>
+</details></section>
+</main>
+<footer class="foot"><div><b>Able · Generation 2.0</b> · captured in Unreal Engine 5.8, 11–12 October 2026</div><div>Click any screenshot to enlarge; arrow keys step through them. <a href="https://github.com/GamesAndBacon/able-generation-2-showcase">Showcase repository</a> · <a href="https://gamesandbacon.github.io/able-generation-2-showcase/">Website</a></div></footer>
+<dialog id="viewer" aria-label="Enlarged screenshot"><button type="button" class="close" aria-label="Close">✕</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="nav prev" aria-label="Previous image">‹</button><button type="button" class="nav next" aria-label="Next image">›</button></dialog>
+<script src="site.js"></script>
+</body>
+</html>
