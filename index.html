@@ -3,57 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Able · Generation 2.0</title>
-<meta name="description" content="A visual tour of custom Able for Unreal Engine 5.8: collision shapes you can author visually, multiple phases, reactive gameplay, persistent state and weapon integration.">
+<title>Able · Generation 2.0 — Field manual</title>
+<meta name="description" content="A field manual for custom Able on Unreal Engine 5.8: collision shapes you author visually, multiple phases, reactive gameplay, persistent state and weapon integration.">
 <meta property="og:title" content="Able · Generation 2.0">
 <meta property="og:description" content="Richer abilities. Clearer authoring. More control over every execution.">
-<meta name="theme-color" content="#07090f">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="progress" aria-hidden="true"><span></span></div>
-<header class="topbar"><nav aria-label="Showcase navigation">
-<a class="brand" href="#top"><span class="brand-mark">A</span>ABLE <em>2.0</em></a>
-<select id="chapter-picker" aria-label="Jump to chapter"><option value="">Chapters</option><option value="collision-shapes">01 · Shape the attack</option><option value="timelines">02 · Give one ability several phases</option><option value="gameplay-events">03 · React when gameplay happens</option><option value="ability-state">04 · Remember between activations</option><option value="passives">05 · Keep each player&#x27;s effects independent</option><option value="enhanced-input">06 · Make input part of the move</option><option value="root-motion">07 · Author the movement</option><option value="ability-editor">08 · Read the ability at a glance</option><option value="task-library">09 · Bind it. Spawn it. Present it.</option><option value="collision-performance">10 · Make collision cheaper—and visible</option><option value="networking-apis">11 · Start abilities. Follow the result.</option><option value="weapon-integrations">12 · Connect the weapon to the move</option><option value="the-foundation-underneath">+ · The foundation underneath</option></select>
-<button id="details-toggle" type="button">Open every drawer</button>
-<a class="gh" href="https://github.com/GamesAndBacon/able-generation-2-showcase">GitHub ↗</a>
+<header class="bar"><nav aria-label="Showcase">
+<a class="mark" href="#top">ABLE<span>/</span>2.0</a>
+<a class="where" href="#contents"><span class="where-n">—</span><span class="where-t">Contents</span></a>
+<button id="specs-toggle" type="button">Open all specs</button>
+<a class="gh" href="https://github.com/GamesAndBacon/able-generation-2-showcase">Source ↗</a>
 </nav></header>
-<nav class="rail" aria-label="Chapters"><span class="rail-track"><span class="rail-fill"></span></span><a class="rail-node" href="#collision-shapes" style="--hue:186" data-target="collision-shapes"><span class="rail-dot"></span><span class="rail-label"><b>01</b> Shape the attack</span></a><a class="rail-node" href="#timelines" style="--hue:200" data-target="timelines"><span class="rail-dot"></span><span class="rail-label"><b>02</b> Give one ability several phases</span></a><a class="rail-node" href="#gameplay-events" style="--hue:220" data-target="gameplay-events"><span class="rail-dot"></span><span class="rail-label"><b>03</b> React when gameplay happens</span></a><a class="rail-node" href="#ability-state" style="--hue:245" data-target="ability-state"><span class="rail-dot"></span><span class="rail-label"><b>04</b> Remember between activations</span></a><a class="rail-node" href="#passives" style="--hue:268" data-target="passives"><span class="rail-dot"></span><span class="rail-label"><b>05</b> Keep each player&#x27;s effects independent</span></a><a class="rail-node" href="#enhanced-input" style="--hue:290" data-target="enhanced-input"><span class="rail-dot"></span><span class="rail-label"><b>06</b> Make input part of the move</span></a><a class="rail-node" href="#root-motion" style="--hue:315" data-target="root-motion"><span class="rail-dot"></span><span class="rail-label"><b>07</b> Author the movement</span></a><a class="rail-node" href="#ability-editor" style="--hue:340" data-target="ability-editor"><span class="rail-dot"></span><span class="rail-label"><b>08</b> Read the ability at a glance</span></a><a class="rail-node" href="#task-library" style="--hue:12" data-target="task-library"><span class="rail-dot"></span><span class="rail-label"><b>09</b> Bind it. Spawn it. Present it.</span></a><a class="rail-node" href="#collision-performance" style="--hue:36" data-target="collision-performance"><span class="rail-dot"></span><span class="rail-label"><b>10</b> Make collision cheaper—and visible</span></a><a class="rail-node" href="#networking-apis" style="--hue:150" data-target="networking-apis"><span class="rail-dot"></span><span class="rail-label"><b>11</b> Start abilities. Follow the result.</span></a><a class="rail-node" href="#weapon-integrations" style="--hue:168" data-target="weapon-integrations"><span class="rail-dot"></span><span class="rail-label"><b>12</b> Connect the weapon to the move</span></a><a class="rail-node" href="#the-foundation-underneath" style="--hue:205" data-target="the-foundation-underneath"><span class="rail-dot"></span><span class="rail-label"><b>+</b> The foundation underneath</span></a></nav>
 <main id="top">
-<section class="hero">
-<div class="hero-copy">
-<p class="kicker">Custom Able · Unreal Engine 5.8</p>
-<h1><span class="h1-able">Able</span><span class="h1-gen">Generation 2.0</span></h1>
+<section class="cover">
+<div class="docline"><span>Doc. AB-2.0</span><span>Field manual · Unreal Engine 5.8</span><span>Rev. 5d605e0</span><span>12 · 10 · 2026</span></div>
+<div class="cover-grid">
+<div class="cover-copy">
+<h1><span class="h1-a">Able</span><span class="h1-b">Generation 2.0</span></h1>
 <p class="tagline">Richer abilities. Clearer authoring. More control over every execution.</p>
 <p class="lede">A visual tour of our custom Able: collision shapes, multiple phases, reactive gameplay, persistent state, and weapon integration.</p>
-<p class="cta"><a class="button primary" href="#collision-shapes">Start the tour</a><a class="button" href="https://github.com/GamesAndBacon/able-generation-2-showcase">View on GitHub</a></p>
 <p class="built">Built on Able 3.96 for Unreal Engine 5.8. “Generation 2.0” names this project's evolution.</p>
+<p class="cta"><a href="#contents">Read the contents</a><a href="https://github.com/GamesAndBacon/able-generation-2-showcase">View the source repository</a></p>
 </div>
-<svg class="hero-art" viewBox="0 90 720 440" role="img" aria-label="A ring-shaped hitbox built from convex pieces, with editor handles for its outer radius, height and angle.">
-<defs><linearGradient id="wire" x1="0" x2="1"><stop offset="0" stop-color="#5ff0ff"/><stop offset=".55" stop-color="#8f7bff"/><stop offset="1" stop-color="#ff5fd2"/></linearGradient>
-<radialGradient id="floor" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#5ff0ff" stop-opacity=".18"/><stop offset="1" stop-color="#5ff0ff" stop-opacity="0"/></radialGradient>
-<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-<g class="grid"><path d="M60,120 L-120.0,500"/><path d="M120,120 L-24.0,500"/><path d="M180,120 L72.0,500"/><path d="M240,120 L168.0,500"/><path d="M300,120 L264.0,500"/><path d="M360,120 L360.0,500"/><path d="M420,120 L456.0,500"/><path d="M480,120 L552.0,500"/><path d="M540,120 L648.0,500"/><path d="M600,120 L744.0,500"/><path d="M660,120 L840.0,500"/><path d="M-40,130 L760,130"/><path d="M-40,168 L760,168"/><path d="M-40,206 L760,206"/><path d="M-40,244 L760,244"/><path d="M-40,282 L760,282"/><path d="M-40,320 L760,320"/><path d="M-40,358 L760,358"/><path d="M-40,396 L760,396"/><path d="M-40,434 L760,434"/><path d="M-40,472 L760,472"/></g><ellipse cx="360" cy="310" rx="330" ry="150" fill="url(#floor)"/>
-<g class="ring" filter="url(#glow)"><g class="piece" style="--i:0"><path class="face" d="M669.9,331.7 L649.8,371.3 L586.1,361.8 L601.7,330.9 Z"/><path d="M669.9,273.7 L669.9,331.7"/><path d="M649.8,313.3 L649.8,371.3"/><path d="M586.1,303.8 L586.1,361.8"/><path d="M601.7,272.9 L601.7,330.9"/><path class="face top" d="M669.9,273.7 L649.8,313.3 L586.1,303.8 L601.7,272.9 Z"/></g><g class="piece" style="--i:1"><path class="face" d="M642.7,378.0 L585.7,411.6 L536.0,393.2 L580.5,367.0 Z"/><path d="M642.7,320.0 L642.7,378.0"/><path d="M585.7,353.6 L585.7,411.6"/><path d="M536.0,335.2 L536.0,393.2"/><path d="M580.5,309.0 L580.5,367.0"/><path class="face top" d="M642.7,320.0 L585.7,353.6 L536.0,335.2 L580.5,309.0 Z"/></g><g class="piece" style="--i:2"><path class="face" d="M572.5,416.8 L487.2,439.3 L459.2,414.8 L525.8,397.3 Z"/><path d="M572.5,358.8 L572.5,416.8"/><path d="M487.2,381.3 L487.2,439.3"/><path d="M459.2,356.8 L459.2,414.8"/><path d="M525.8,339.3 L525.8,397.3"/><path class="face top" d="M572.5,358.8 L487.2,381.3 L459.2,356.8 L525.8,339.3 Z"/></g><g class="piece" style="--i:3"><path class="face" d="M470.0,442.1 L369.3,449.9 L367.3,423.1 L445.8,417.0 Z"/><path d="M470.0,384.1 L470.0,442.1"/><path d="M369.3,391.9 L369.3,449.9"/><path d="M367.3,365.1 L367.3,423.1"/><path d="M445.8,359.0 L445.8,417.0"/><path class="face top" d="M470.0,384.1 L369.3,391.9 L367.3,365.1 L445.8,359.0 Z"/></g><g class="piece" style="--i:4"><path class="face" d="M350.7,449.9 L250.0,442.1 L274.2,417.0 L352.7,423.1 Z"/><path d="M350.7,391.9 L350.7,449.9"/><path d="M250.0,384.1 L250.0,442.1"/><path d="M274.2,359.0 L274.2,417.0"/><path d="M352.7,365.1 L352.7,423.1"/><path class="face top" d="M350.7,391.9 L250.0,384.1 L274.2,359.0 L352.7,365.1 Z"/></g><g class="piece" style="--i:5"><path class="face" d="M232.8,439.3 L147.5,416.8 L194.2,397.3 L260.8,414.8 Z"/><path d="M232.8,381.3 L232.8,439.3"/><path d="M147.5,358.8 L147.5,416.8"/><path d="M194.2,339.3 L194.2,397.3"/><path d="M260.8,356.8 L260.8,414.8"/><path class="face top" d="M232.8,381.3 L147.5,358.8 L194.2,339.3 L260.8,356.8 Z"/></g><g class="piece" style="--i:6"><path class="face" d="M134.3,411.6 L77.3,378.0 L139.5,367.0 L184.0,393.2 Z"/><path d="M134.3,353.6 L134.3,411.6"/><path d="M77.3,320.0 L77.3,378.0"/><path d="M139.5,309.0 L139.5,367.0"/><path d="M184.0,335.2 L184.0,393.2"/><path class="face top" d="M134.3,353.6 L77.3,320.0 L139.5,309.0 L184.0,335.2 Z"/></g><g class="piece" style="--i:7"><path class="face" d="M70.2,371.3 L50.1,331.7 L118.3,330.9 L133.9,361.8 Z"/><path d="M70.2,313.3 L70.2,371.3"/><path d="M50.1,273.7 L50.1,331.7"/><path d="M118.3,272.9 L118.3,330.9"/><path d="M133.9,303.8 L133.9,361.8"/><path class="face top" d="M70.2,313.3 L50.1,273.7 L118.3,272.9 L133.9,303.8 Z"/></g><g class="piece" style="--i:8"><path class="face" d="M50.1,324.3 L70.2,284.7 L133.9,294.2 L118.3,325.1 Z"/><path d="M50.1,266.3 L50.1,324.3"/><path d="M70.2,226.7 L70.2,284.7"/><path d="M133.9,236.2 L133.9,294.2"/><path d="M118.3,267.1 L118.3,325.1"/><path class="face top" d="M50.1,266.3 L70.2,226.7 L133.9,236.2 L118.3,267.1 Z"/></g><g class="piece" style="--i:9"><path class="face" d="M77.3,278.0 L134.3,244.4 L184.0,262.8 L139.5,289.0 Z"/><path d="M77.3,220.0 L77.3,278.0"/><path d="M134.3,186.4 L134.3,244.4"/><path d="M184.0,204.8 L184.0,262.8"/><path d="M139.5,231.0 L139.5,289.0"/><path class="face top" d="M77.3,220.0 L134.3,186.4 L184.0,204.8 L139.5,231.0 Z"/></g><g class="piece" style="--i:10"><path class="face" d="M147.5,239.2 L232.8,216.7 L260.8,241.2 L194.2,258.7 Z"/><path d="M147.5,181.2 L147.5,239.2"/><path d="M232.8,158.7 L232.8,216.7"/><path d="M260.8,183.2 L260.8,241.2"/><path d="M194.2,200.7 L194.2,258.7"/><path class="face top" d="M147.5,181.2 L232.8,158.7 L260.8,183.2 L194.2,200.7 Z"/></g><g class="piece" style="--i:11"><path class="face" d="M250.0,213.9 L350.7,206.1 L352.7,232.9 L274.2,239.0 Z"/><path d="M250.0,155.9 L250.0,213.9"/><path d="M350.7,148.1 L350.7,206.1"/><path d="M352.7,174.9 L352.7,232.9"/><path d="M274.2,181.0 L274.2,239.0"/><path class="face top" d="M250.0,155.9 L350.7,148.1 L352.7,174.9 L274.2,181.0 Z"/></g><g class="piece" style="--i:12"><path class="face" d="M369.3,206.1 L470.0,213.9 L445.8,239.0 L367.3,232.9 Z"/><path d="M369.3,148.1 L369.3,206.1"/><path d="M470.0,155.9 L470.0,213.9"/><path d="M445.8,181.0 L445.8,239.0"/><path d="M367.3,174.9 L367.3,232.9"/><path class="face top" d="M369.3,148.1 L470.0,155.9 L445.8,181.0 L367.3,174.9 Z"/></g><g class="piece" style="--i:13"><path class="face" d="M487.2,216.7 L572.5,239.2 L525.8,258.7 L459.2,241.2 Z"/><path d="M487.2,158.7 L487.2,216.7"/><path d="M572.5,181.2 L572.5,239.2"/><path d="M525.8,200.7 L525.8,258.7"/><path d="M459.2,183.2 L459.2,241.2"/><path class="face top" d="M487.2,158.7 L572.5,181.2 L525.8,200.7 L459.2,183.2 Z"/></g><g class="piece" style="--i:14"><path class="face" d="M585.7,244.4 L642.7,278.0 L580.5,289.0 L536.0,262.8 Z"/><path d="M585.7,186.4 L585.7,244.4"/><path d="M642.7,220.0 L642.7,278.0"/><path d="M580.5,231.0 L580.5,289.0"/><path d="M536.0,204.8 L536.0,262.8"/><path class="face top" d="M585.7,186.4 L642.7,220.0 L580.5,231.0 L536.0,204.8 Z"/></g><g class="piece" style="--i:15"><path class="face" d="M649.8,284.7 L669.9,324.3 L601.7,325.1 L586.1,294.2 Z"/><path d="M649.8,226.7 L649.8,284.7"/><path d="M669.9,266.3 L669.9,324.3"/><path d="M601.7,267.1 L601.7,325.1"/><path d="M586.1,236.2 L586.1,294.2"/><path class="face top" d="M649.8,226.7 L669.9,266.3 L601.7,267.1 L586.1,236.2 Z"/></g><path class="spoke" style="--i:0" d="M360,299.0 L582.7,336.1"/><path class="spoke" style="--i:1" d="M360,299.0 L266.0,386.7"/><path class="spoke" style="--i:2" d="M360,299.0 L137.1,262.1"/><path class="spoke" style="--i:3" d="M360,299.0 L453.6,211.3"/></g>
-<g class="dome" filter="url(#glow)"><path d="M290,290 A70,44 0 0 1 430,290"/><path d="M290,290 A70,20 0 0 0 430,290"/></g>
-<g class="handle h-radius"><line x1="360" y1="270" x2="645" y2="215"/><circle cx="645" cy="215" r="9"/><text x="631" y="199" text-anchor="end">Outer Radius  450</text></g>
-<g class="handle h-height"><line x1="190" y1="224" x2="190" y2="140"/><circle cx="190" cy="140" r="8"/><text x="58" y="128">Height  50</text></g>
-<g class="handle h-angle"><circle cx="390" cy="456" r="8"/><text x="408" y="484">Angle  360</text></g>
-<g class="handle h-location"><circle cx="360" cy="270" r="12"/><text x="380" y="304">Location</text></g>
-</svg>
+<figure class="drawing-wrap"><svg class="drawing" viewBox="0 0 760 620" role="img" aria-label="An engineering drawing of the Ground Slam Collision Shape: a plan of its ring and dome dimensioned at 900 across, a 60 wide wave and a 120 impact radius, an elevation 50 high, and a title block."><rect class="sheet" x="1" y="1" width="758" height="618"/><g style="--i:0"><circle class="ink" cx="300.0" cy="230.0" r="170.0" pathLength="1"/></g><g style="--i:1"><circle class="ink" cx="300.0" cy="230.0" r="140.0" pathLength="1"/></g><g style="--i:2"><circle class="ink" cx="300.0" cy="230.0" r="46.0" pathLength="1"/></g><g style="--i:3"><line class="thin" x1="440.0" y1="230.0" x2="470.0" y2="230.0" pathLength="1"/></g><g style="--i:4"><line class="thin" x1="435.2" y1="266.2" x2="464.2" y2="274.0" pathLength="1"/></g><g style="--i:5"><line class="thin" x1="421.2" y1="300.0" x2="447.2" y2="315.0" pathLength="1"/></g><g style="--i:6"><line class="thin" x1="399.0" y1="329.0" x2="420.2" y2="350.2" pathLength="1"/></g><g style="--i:7"><line class="thin" x1="370.0" y1="351.2" x2="385.0" y2="377.2" pathLength="1"/></g><g style="--i:8"><line class="thin" x1="336.2" y1="365.2" x2="344.0" y2="394.2" pathLength="1"/></g><g style="--i:9"><line class="thin" x1="300.0" y1="370.0" x2="300.0" y2="400.0" pathLength="1"/></g><g style="--i:10"><line class="thin" x1="263.8" y1="365.2" x2="256.0" y2="394.2" pathLength="1"/></g><g style="--i:11"><line class="thin" x1="230.0" y1="351.2" x2="215.0" y2="377.2" pathLength="1"/></g><g style="--i:12"><line class="thin" x1="201.0" y1="329.0" x2="179.8" y2="350.2" pathLength="1"/></g><g style="--i:13"><line class="thin" x1="178.8" y1="300.0" x2="152.8" y2="315.0" pathLength="1"/></g><g style="--i:14"><line class="thin" x1="164.8" y1="266.2" x2="135.8" y2="274.0" pathLength="1"/></g><g style="--i:15"><line class="thin" x1="160.0" y1="230.0" x2="130.0" y2="230.0" pathLength="1"/></g><g style="--i:16"><line class="thin" x1="164.8" y1="193.8" x2="135.8" y2="186.0" pathLength="1"/></g><g style="--i:17"><line class="thin" x1="178.8" y1="160.0" x2="152.8" y2="145.0" pathLength="1"/></g><g style="--i:18"><line class="thin" x1="201.0" y1="131.0" x2="179.8" y2="109.8" pathLength="1"/></g><g style="--i:19"><line class="thin" x1="230.0" y1="108.8" x2="215.0" y2="82.8" pathLength="1"/></g><g style="--i:20"><line class="thin" x1="263.8" y1="94.8" x2="256.0" y2="65.8" pathLength="1"/></g><g style="--i:21"><line class="thin" x1="300.0" y1="90.0" x2="300.0" y2="60.0" pathLength="1"/></g><g style="--i:22"><line class="thin" x1="336.2" y1="94.8" x2="344.0" y2="65.8" pathLength="1"/></g><g style="--i:23"><line class="thin" x1="370.0" y1="108.8" x2="385.0" y2="82.8" pathLength="1"/></g><g style="--i:24"><line class="thin" x1="399.0" y1="131.0" x2="420.2" y2="109.8" pathLength="1"/></g><g style="--i:25"><line class="thin" x1="421.2" y1="160.0" x2="447.2" y2="145.0" pathLength="1"/></g><g style="--i:26"><line class="thin" x1="435.2" y1="193.8" x2="464.2" y2="186.0" pathLength="1"/></g><g style="--i:27"><line class="thin" x1="342.8" y1="248.2" x2="433.9" y2="271.4" pathLength="1"/></g><g style="--i:28"><line class="thin" x1="346.3" y1="234.6" x2="437.4" y2="257.9" pathLength="1"/></g><g style="--i:29"><line class="thin" x1="281.9" y1="272.9" x2="258.7" y2="363.9" pathLength="1"/></g><g style="--i:30"><line class="thin" x1="295.4" y1="276.3" x2="272.3" y2="367.4" pathLength="1"/></g><g style="--i:31"><line class="thin" x1="257.1" y1="211.9" x2="166.0" y2="188.8" pathLength="1"/></g><g style="--i:32"><line class="thin" x1="253.7" y1="225.5" x2="162.6" y2="202.4" pathLength="1"/></g><g style="--i:33"><line class="thin" x1="318.1" y1="187.1" x2="341.1" y2="96.0" pathLength="1"/></g><g style="--i:34"><line class="thin" x1="304.5" y1="183.7" x2="327.5" y2="92.6" pathLength="1"/></g><g style="--i:35"><line class="centre" x1="108.0" y1="230.0" x2="492.0" y2="230.0" pathLength="1"/></g><g style="--i:36"><line class="centre" x1="300.0" y1="38.0" x2="300.0" y2="422.0" pathLength="1"/></g><g style="--i:37"><line class="ext" x1="130.0" y1="236.0" x2="130.0" y2="440.0" pathLength="1"/></g><g style="--i:38"><line class="ext" x1="470.0" y1="236.0" x2="470.0" y2="440.0" pathLength="1"/></g><g style="--i:39"><line class="dimline" x1="130.0" y1="434.0" x2="470.0" y2="434.0" pathLength="1"/></g><g style="--i:40"><text class="dim" x="300.0" y="427.0" text-anchor="middle">Ø 900</text></g><g style="--i:41"><line class="dimline" x1="440.0" y1="168.0" x2="470.0" y2="168.0" pathLength="1"/></g><g style="--i:42"><text class="dim" x="480.0" y="172.0" text-anchor="start">W 60</text></g><g style="--i:43"><line class="leader" x1="269.4" y1="195.7" x2="199.4" y2="143.7" pathLength="1"/></g><g style="--i:44"><line class="leader" x1="199.4" y1="143.7" x2="141.4" y2="143.7" pathLength="1"/></g><g style="--i:45"><text class="dim" x="139.4" y="137.7" text-anchor="start">R 120 · IMPACT</text></g><g style="--i:46"><path class="dimline" d="M496.0,230.0 A196,196 0 0 0 421.8,76.5" pathLength="1"/></g><g style="--i:47"><text class="dim" x="489.1" y="138.7" text-anchor="start">360°</text></g><g style="--i:48"><text class="label" x="112.0" y="54.0" text-anchor="start">PLAN</text></g><g style="--i:49"><text class="label" x="112.0" y="466.0" text-anchor="start">ELEVATION</text></g><g style="--i:50"><line class="centre" x1="108.0" y1="520.0" x2="492.0" y2="520.0" pathLength="1"/></g><g style="--i:51"><rect class="section" x="130.0" y="492.0" width="30.0" height="28.0"/></g><g style="--i:52"><rect class="section" x="440.0" y="492.0" width="30.0" height="28.0"/></g><g style="--i:53"><path class="ink" d="M254.0,520.0 A46,41.4 0 0 1 346.0,520.0" pathLength="1"/></g><g style="--i:54"><line class="ext" x1="478.0" y1="520.0" x2="500.0" y2="520.0" pathLength="1"/></g><g style="--i:55"><line class="ext" x1="478.0" y1="492.0" x2="500.0" y2="492.0" pathLength="1"/></g><g style="--i:56"><line class="dimline" x1="494.0" y1="520.0" x2="494.0" y2="492.0" pathLength="1"/></g><g style="--i:57"><text class="dim" x="502.0" y="510.0" text-anchor="start">H 50</text></g><g style="--i:58"><rect class="block" x="528" y="22" width="210" height="144"/></g><g style="--i:59"><text class="block-title" x="538" y="39">ABLE COLLISION ENGINE</text></g><g style="--i:60"><line class="thin" x1="528" y1="46" x2="738" y2="46"/></g><g style="--i:61"><text class="block-key" x="538" y="62">PART</text><text class="block-val" x="598" y="62">CS_GroundSlam</text></g><g style="--i:62"><line class="thin" x1="528" y1="70" x2="738" y2="70"/></g><g style="--i:63"><text class="block-key" x="538" y="86">BUILD</text><text class="block-val" x="598" y="86">28 hulls · 3 exact</text></g><g style="--i:64"><line class="thin" x1="528" y1="94" x2="738" y2="94"/></g><g style="--i:65"><text class="block-key" x="538" y="110">BOUNDS</text><text class="block-val" x="598" y="110">900 × 900 × 145</text></g><g style="--i:66"><line class="thin" x1="528" y1="118" x2="738" y2="118"/></g><g style="--i:67"><text class="block-key" x="538" y="134">UNITS</text><text class="block-val" x="598" y="134">cm</text></g><g style="--i:68"><line class="thin" x1="528" y1="142" x2="738" y2="142"/></g><g style="--i:69"><text class="block-key" x="538" y="158">REV</text><text class="block-val" x="598" y="158">5d605e0</text></g><g style="--i:70"><line class="thin" x1="590" y1="46" x2="590" y2="166"/></g></svg><figcaption><span class="fig-no">Fig. 00</span> Ground Slam, one of the project's Collision Shapes, as the Shape Preview measures it.</figcaption></figure>
+</div>
 </section>
-<section class="cards" aria-label="Chapters"><a class="card" href="#collision-shapes" style="--hue:186"><span class="card-num">01</span><span class="card-title">Shape the attack</span><span class="card-sub">Able Collision Engine — hitboxes that match the move.</span></a><a class="card" href="#timelines" style="--hue:200"><span class="card-num">02</span><span class="card-title">Give one ability several phases</span><span class="card-sub">Wind up. Sustain. Recover. Keep one execution.</span></a><a class="card" href="#gameplay-events" style="--hue:220"><span class="card-num">03</span><span class="card-title">React when gameplay happens</span><span class="card-sub">Typed gameplay events — respond to a result, instead of guessing its timing.</span></a><a class="card" href="#ability-state" style="--hue:245"><span class="card-num">04</span><span class="card-title">Remember between activations</span><span class="card-sub">Ability State — structured memory for each caster.</span></a><a class="card" href="#passives" style="--hue:268"><span class="card-num">05</span><span class="card-title">Keep each player&#x27;s effects independent</span><span class="card-sub">Passives per instigator — separate stacks, expiry and attribution.</span></a><a class="card" href="#enhanced-input" style="--hue:290"><span class="card-num">06</span><span class="card-title">Make input part of the move</span><span class="card-sub">Enhanced Input — hold, release and branch with Input Actions.</span></a><a class="card" href="#root-motion" style="--hue:315"><span class="card-num">07</span><span class="card-title">Author the movement</span><span class="card-sub">Root-motion tasks — dashes, pulls, knockbacks and leaps.</span></a><a class="card" href="#ability-editor" style="--hue:340"><span class="card-num">08</span><span class="card-title">Read the ability at a glance</span><span class="card-sub">Ability Editor — clearer tracks, phase routes and preview controls.</span></a><a class="card" href="#task-library" style="--hue:12"><span class="card-num">09</span><span class="card-title">Bind it. Spawn it. Present it.</span><span class="card-sub">Richer task authoring — customize each use of the move.</span></a><a class="card" href="#collision-performance" style="--hue:36"><span class="card-num">10</span><span class="card-title">Make collision cheaper—and visible</span><span class="card-sub">Native shape execution, caching and ACE Profiler.</span></a><a class="card" href="#networking-apis" style="--hue:150"><span class="card-num">11</span><span class="card-title">Start abilities. Follow the result.</span><span class="card-sub">Simpler APIs and leaner replication underneath.</span></a><a class="card" href="#weapon-integrations" style="--hue:168"><span class="card-num">12</span><span class="card-title">Connect the weapon to the move</span><span class="card-sub">EasyBallistics and bindable execution contexts.</span></a><a class="card" href="#the-foundation-underneath" style="--hue:205"><span class="card-num">+</span><span class="card-title">The foundation underneath</span><span class="card-sub">Optional test tooling. Clearer plugin boundaries. No compatibility code left.</span></a></section>
-<aside class="howto"><p><strong>Browse the images. Open Look closer for the controls behind them.</strong> On the website, click any image to enlarge it.</p><p>Each <strong>Look closer</strong> panel includes a compact code directory. File links open the private development repo at revision <strong><code>5d605e0</code></strong> (12 October 2026), so the line numbers stay fixed. Repository access is required to open the source.</p></aside>
-<section class="chapter" id="collision-shapes" style="--hue:186"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">01</span><div><p class="eyebrow">Chapter 01</p><h2>Shape the attack</h2><p class="subtitle">Able Collision Engine — hitboxes that match the move.</p></div></header><div class="chapter-body"><p>Build reusable Collision Shapes from presets, outlines, and repeated pieces. Preview the volume beside its graph, drag its dimensions into place, and expose them through typed Params.</p>
-<figure class="shot"><img alt="Cross Slash's construction graph, live shape preview and parameter controls." src="images/ace-cross-slash.png" /><figcaption>Cross Slash: build the arc, inspect the volume, adjust its dimensions.</figcaption></figure>
-<div class="gallery"><figure class="shot"><img alt="Ground Slam's Arc Shape node selected: Outer Radius, Height, Angle and Location handles on the ring, its inputs in Details." src="images/ace-shape-handles.png" /><figcaption><strong>Handles:</strong> select a node, then drag its radius, height, angle or location.</figcaption></figure><figure class="shot"><img alt="Cross Slash's Transform Hulls in Details: Transform traced to Make Transform, Rotation to Make Rotator, X (Roll) as the Tilt Param." src="images/ace-node-details.png" /><figcaption><strong>Details:</strong> follow a wire back to the Param behind it.</figcaption></figure></div>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: handles, Details, ranges and abilities</strong></summary>
-<div class="gallery"><figure class="shot"><img alt="Cross Slash's Generate Arc Points selected: its points drawn along the arc, with Radius, Angle and Center handles." src="images/ace-generator-handles.png" /><figcaption><strong>Generate Arc Points:</strong> points, with Radius, Angle and Center handles.</figcaption></figure><figure class="shot"><img alt="GrenadeExplosion's Collision Query: a Sphere Shape of radius 500 in the Ability Editor viewport, with its location gizmo." src="images/ace-in-ability.png" /><figcaption><strong>GrenadeExplosion:</strong> a Sphere Shape query, drawn and placed in the viewport.</figcaption></figure></div>
-<div class="gallery"><figure class="shot"><img alt="Cross Slash preview with debug points and viewport parameter handles." src="images/ace-preview.png" /><figcaption><strong>Cross Slash:</strong> debug a node and drag its handles.</figcaption></figure><figure class="shot"><img alt="Morning Star composed from a sphere and repeated cone spikes." src="images/ace-morning-star.png" /><figcaption><strong>Morning Star:</strong> reuse and repeat smaller pieces.</figcaption></figure></div>
-<figure class="shot"><img alt="Collision Query exposes Cross Slash's Radius, Thickness, Angle, Height and Tilt with separate binding controls." src="images/shape-parameters.png" /><figcaption>Bind one dimension without replacing the whole parameter struct.</figcaption></figure>
+<section class="contents" id="contents">
+<h2 class="contents-title">Contents</h2>
+<ol class="toc"><li><a href="#collision-shapes"><span class="n">01</span><span class="t">Shape the attack</span><span class="leader" aria-hidden="true"></span><span class="p">8 fig.</span></a><span class="s">Able Collision Engine — hitboxes that match the move.</span></li><li><a href="#timelines"><span class="n">02</span><span class="t">Give one ability several phases</span><span class="leader" aria-hidden="true"></span><span class="p">3 fig.</span></a><span class="s">Wind up. Sustain. Recover. Keep one execution.</span></li><li><a href="#gameplay-events"><span class="n">03</span><span class="t">React when gameplay happens</span><span class="leader" aria-hidden="true"></span><span class="p">3 fig.</span></a><span class="s">Typed gameplay events — respond to a result, instead of guessing its timing.</span></li><li><a href="#ability-state"><span class="n">04</span><span class="t">Remember between activations</span><span class="leader" aria-hidden="true"></span><span class="p">2 fig.</span></a><span class="s">Ability State — structured memory for each caster.</span></li><li><a href="#passives"><span class="n">05</span><span class="t">Keep each player&#x27;s effects independent</span><span class="leader" aria-hidden="true"></span><span class="p">3 fig.</span></a><span class="s">Passives per instigator — separate stacks, expiry and attribution.</span></li><li><a href="#enhanced-input"><span class="n">06</span><span class="t">Make input part of the move</span><span class="leader" aria-hidden="true"></span><span class="p">1 fig.</span></a><span class="s">Enhanced Input — hold, release and branch with Input Actions.</span></li><li><a href="#root-motion"><span class="n">07</span><span class="t">Author the movement</span><span class="leader" aria-hidden="true"></span><span class="p">4 fig.</span></a><span class="s">Root-motion tasks — dashes, pulls, knockbacks and leaps.</span></li><li><a href="#ability-editor"><span class="n">08</span><span class="t">Read the ability at a glance</span><span class="leader" aria-hidden="true"></span><span class="p">1 fig.</span></a><span class="s">Ability Editor — clearer tracks, phase routes and preview controls.</span></li><li><a href="#task-library"><span class="n">09</span><span class="t">Bind it. Spawn it. Present it.</span><span class="leader" aria-hidden="true"></span><span class="p">3 fig.</span></a><span class="s">Richer task authoring — customize each use of the move.</span></li><li><a href="#collision-performance"><span class="n">10</span><span class="t">Make collision cheaper—and visible</span><span class="leader" aria-hidden="true"></span><span class="p">1 fig.</span></a><span class="s">Native shape execution, caching and ACE Profiler.</span></li><li><a href="#networking-apis"><span class="n">11</span><span class="t">Start abilities. Follow the result.</span><span class="leader" aria-hidden="true"></span><span class="p">2 fig.</span></a><span class="s">Simpler APIs and leaner replication underneath.</span></li><li><a href="#weapon-integrations"><span class="n">12</span><span class="t">Connect the weapon to the move</span><span class="leader" aria-hidden="true"></span><span class="p">4 fig.</span></a><span class="s">EasyBallistics and bindable execution contexts.</span></li><li><a href="#the-foundation-underneath"><span class="n">00</span><span class="t">The foundation underneath</span><span class="leader" aria-hidden="true"></span><span class="p">2 fig.</span></a><span class="s">Optional test tooling. Clearer plugin boundaries. No compatibility code left.</span></li></ol>
+<div class="howto"><p><strong>Browse the images. Open Look closer for the controls behind them.</strong> On the website, click any image to enlarge it.</p><p>Each <strong>Look closer</strong> panel includes a compact code directory. File links open the private development repo at revision <strong><code>5d605e0</code></strong> (12 October 2026), so the line numbers stay fixed. Repository access is required to open the source.</p><p>13 chapters · 37 figures.</p></div>
+</section>
+<section class="chapter" id="collision-shapes"><div class="margin"><span class="sec">§</span><span class="big">01</span><dl><dt>Figures</dt><dd>8</dd><dt>Source files</dt><dd>13</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 01</p><h2>Shape the attack</h2><p class="subtitle">Able Collision Engine — hitboxes that match the move.</p></header><p>Build reusable Collision Shapes from presets, outlines, and repeated pieces. Preview the volume beside its graph, drag its dimensions into place, and expose them through typed Params.</p>
+<figure class="plate"><span class="fig-no">Fig. 01.1</span><img alt="Cross Slash's construction graph, live shape preview and parameter controls." src="images/ace-cross-slash.png" /><figcaption>Cross Slash: build the arc, inspect the volume, adjust its dimensions.</figcaption></figure>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 01.2</span><img alt="Ground Slam's Arc Shape node selected: Outer Radius, Height, Angle and Location handles on the ring, its inputs in Details." src="images/ace-shape-handles.png" /><figcaption><strong>Handles:</strong> select a node, then drag its radius, height, angle or location.</figcaption></figure><figure class="plate"><span class="fig-no">Fig. 01.3</span><img alt="Cross Slash's Transform Hulls in Details: Transform traced to Make Transform, Rotation to Make Rotator, X (Roll) as the Tilt Param." src="images/ace-node-details.png" /><figcaption><strong>Details:</strong> follow a wire back to the Param behind it.</figcaption></figure></div>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: handles, Details, ranges and abilities</strong></summary>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 01.4</span><img alt="Cross Slash's Generate Arc Points selected: its points drawn along the arc, with Radius, Angle and Center handles." src="images/ace-generator-handles.png" /><figcaption><strong>Generate Arc Points:</strong> points, with Radius, Angle and Center handles.</figcaption></figure><figure class="plate"><span class="fig-no">Fig. 01.5</span><img alt="GrenadeExplosion's Collision Query: a Sphere Shape of radius 500 in the Ability Editor viewport, with its location gizmo." src="images/ace-in-ability.png" /><figcaption><strong>GrenadeExplosion:</strong> a Sphere Shape query, drawn and placed in the viewport.</figcaption></figure></div>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 01.6</span><img alt="Cross Slash preview with debug points and viewport parameter handles." src="images/ace-preview.png" /><figcaption><strong>Cross Slash:</strong> debug a node and drag its handles.</figcaption></figure><figure class="plate"><span class="fig-no">Fig. 01.7</span><img alt="Morning Star composed from a sphere and repeated cone spikes." src="images/ace-morning-star.png" /><figcaption><strong>Morning Star:</strong> reuse and repeat smaller pieces.</figcaption></figure></div>
+<figure class="plate"><span class="fig-no">Fig. 01.8</span><img alt="Collision Query exposes Cross Slash's Radius, Thickness, Angle, Height and Tilt with separate binding controls." src="images/shape-parameters.png" /><figcaption>Bind one dimension without replacing the whole parameter struct.</figcaption></figure>
 <ul>
 <li><strong>Handles:</strong> a drag writes the value where it lives: the pin's own value, or the Param it's wired from. Each drag is one undo; values computed by other nodes aren't draggable.</li>
 <li><strong>Node Details:</strong> a selected node's inputs edit as on the node. Inputs from Get Shape Params name their Param, "X (Roll) (Tilt Param)"; inputs from other nodes fold out into those nodes' inputs, up to four nodes back, with lists folded.</li>
@@ -65,8 +57,8 @@
 <li><strong>Integration:</strong> Query, Sweep, Watch for Overlap and targeting; negative query shapes, automatic range and per-field bindings. Ordinary Blueprint queries support typed Params and async completion.</li>
 </ul>
 <p>Async completion returns to the game thread. Worker-safe shapes can also build off-thread; raycasts retain line-trace behavior.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -102,29 +94,47 @@
 <td style="text-align: left;">Viewport node handles</td>
 <td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapeNodeHandles.cpp#L282" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapeNodeHandles.cpp">AblShapeNodeHandles.cpp · L282</a><br><sub>ACE Editor · Private/Preview</sub></td>
 </tr>
+<tr>
+<td style="text-align: left;">Node Details, traced through wires</td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeNodeDetails.cpp#L206" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeNodeDetails.cpp">AblShapeNodeDetails.cpp · L206</a><br><sub>ACE Editor · Private/Blueprint</sub></td>
+</tr>
+<tr>
+<td style="text-align: left;">Details for the selected node</td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/ShapeEditor/AblShapeNodeSelection.cpp#L36" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/ShapeEditor/AblShapeNodeSelection.cpp">AblShapeNodeSelection.cpp · L36</a><br><sub>ACE Editor · Private/ShapeEditor</sub></td>
+</tr>
+<tr>
+<td style="text-align: left;">A value written where it lives</td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapePinValues.cpp#L213" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapePinValues.cpp">AblShapePinValues.cpp · L213</a><br><sub>ACE Editor · Private/Preview</sub></td>
+</tr>
+<tr>
+<td style="text-align: left;">Generator handles</td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblGeneratorHandles.cpp#L7" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblGeneratorHandles.cpp">AblGeneratorHandles.cpp · L7</a><br><sub>ACE Editor · Private/Preview</sub></td>
+</tr>
+<tr>
+<td style="text-align: left;">Params kept in range</td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsLimits.cpp#L67" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsLimits.cpp">AblShapeParamsLimits.cpp · L67</a><br><sub>ACE · Private/Shape</sub></td>
+</tr>
+<tr>
+<td style="text-align: left;">Create Params Struct</td>
+<td style="text-align: left;"><a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeEditorUtils.cpp#L84" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeEditorUtils.cpp">AblShapeEditorUtils.cpp · L84</a><br><sub>ACE Editor · Private/Blueprint</sub></td>
+</tr>
 </tbody>
 </table>
-<p>| Node Details, traced through wires | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeNodeDetails.cpp#L206" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeNodeDetails.cpp">AblShapeNodeDetails.cpp · L206</a><br><sub>ACE Editor · Private/Blueprint</sub> |
-| Details for the selected node | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/ShapeEditor/AblShapeNodeSelection.cpp#L36" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/ShapeEditor/AblShapeNodeSelection.cpp">AblShapeNodeSelection.cpp · L36</a><br><sub>ACE Editor · Private/ShapeEditor</sub> |
-| A value written where it lives | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapePinValues.cpp#L213" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblShapePinValues.cpp">AblShapePinValues.cpp · L213</a><br><sub>ACE Editor · Private/Preview</sub> |
-| Generator handles | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblGeneratorHandles.cpp#L7" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Preview/AblGeneratorHandles.cpp">AblGeneratorHandles.cpp · L7</a><br><sub>ACE Editor · Private/Preview</sub> |
-| Params kept in range | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsLimits.cpp#L67" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngine/Private/Shape/AblShapeParamsLimits.cpp">AblShapeParamsLimits.cpp · L67</a><br><sub>ACE · Private/Shape</sub> |
-| Create Params Struct | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeEditorUtils.cpp#L84" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Blueprint/AblShapeEditorUtils.cpp">AblShapeEditorUtils.cpp · L84</a><br><sub>ACE Editor · Private/Blueprint</sub> |</p>
 </details>
 <hr />
-</div></section><section class="chapter" id="timelines" style="--hue:200"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">02</span><div><p class="eyebrow">Chapter 02</p><h2>Give one ability several phases</h2><p class="subtitle">Wind up. Sustain. Recover. Keep one execution.</p></div></header><div class="chapter-body"><p>Each timeline owns its tasks, playback, loops and exit routes. Phase transitions preserve the running context; alternate attacks can also own separate cooldowns and targeting.</p>
-<figure class="shot"><img alt="Wind Up, Sustained Attack and Recovery tabs show the routes between phases." src="images/timeline-phases.png" /><figcaption>The phase tabs show what runs next.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: held loops and independent attacks</strong></summary>
-<div class="gallery"><figure class="shot"><img alt="Sustained Attack loops and routes to Recovery when its input channel fails." src="images/timeline-settings.png" /><figcaption><strong>Channel failure → Recovery.</strong></figcaption></figure><figure class="shot"><img alt="A timeline owns a three-second cooldown and Cross Slash targeting with automatic range." src="images/timeline-targeting.png" /><figcaption><strong>Own cooldown, target requirement and shape.</strong></figcaption></figure></div>
+</div></section><section class="chapter" id="timelines"><div class="margin"><span class="sec">§</span><span class="big">02</span><dl><dt>Figures</dt><dd>3</dd><dt>Source files</dt><dd>6</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 02</p><h2>Give one ability several phases</h2><p class="subtitle">Wind up. Sustain. Recover. Keep one execution.</p></header><p>Each timeline owns its tasks, playback, loops and exit routes. Phase transitions preserve the running context; alternate attacks can also own separate cooldowns and targeting.</p>
+<figure class="plate"><span class="fig-no">Fig. 02.1</span><img alt="Wind Up, Sustained Attack and Recovery tabs show the routes between phases." src="images/timeline-phases.png" /><figcaption>The phase tabs show what runs next.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: held loops and independent attacks</strong></summary>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 02.2</span><img alt="Sustained Attack loops and routes to Recovery when its input channel fails." src="images/timeline-settings.png" /><figcaption><strong>Channel failure → Recovery.</strong></figcaption></figure><figure class="plate"><span class="fig-no">Fig. 02.3</span><img alt="A timeline owns a three-second cooldown and Cross Slash targeting with automatic range." src="images/timeline-targeting.png" /><figcaption><strong>Own cooldown, target requirement and shape.</strong></figcaption></figure></div>
 <ul>
 <li>Bind playback, loop count and destinations; route completion and channel failure separately.</li>
 <li>Choose a starting phase, find one by name, or pick random/weighted destinations using shared random values.</li>
 <li>Targets, stacks and scratchpads survive transitions. Tasks end with <strong>Branched</strong>; activation checks and cooldowns are not repeated.</li>
 <li>Add, rename, duplicate, reorder or remove phases; stable identities retain their tasks. Dependencies stay within a timeline.</li>
 </ul>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -160,12 +170,12 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="gameplay-events" style="--hue:220"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">03</span><div><p class="eyebrow">Chapter 03</p><h2>React when gameplay happens</h2><p class="subtitle">Typed gameplay events — respond to a result, instead of guessing its timing.</p></div></header><div class="chapter-body"><p>Tags declare payload types. Send and Get Payload expose those types in Blueprint; Listen tasks release response groups when a matching event arrives.</p>
-<figure class="shot"><img alt="Typed Send Gameplay Event and Get Gameplay Event Payload nodes expose Scalable Float members from the selected tag." src="images/typed-event-nodes.png" /><figcaption>An existing registry tag supplies the payload type. Split pins expose its members.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: the registry and repeated responses</strong></summary>
-<figure class="shot"><img alt="The project's Gameplay Event Registry pairs tags with payload structs." src="images/event-registry.png" /><figcaption>Declare the tag and type once; author with typed pins.</figcaption></figure>
-<figure class="shot"><img alt="Listen for Gameplay Event uses Repeat, Queue, eight queued responses and a two-second response watchdog." src="images/event-response-settings.png" /><figcaption>Listen repeatedly, queue accepted events, and bound how long a response may run.</figcaption></figure>
+</div></section><section class="chapter" id="gameplay-events"><div class="margin"><span class="sec">§</span><span class="big">03</span><dl><dt>Figures</dt><dd>3</dd><dt>Source files</dt><dd>6</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 03</p><h2>React when gameplay happens</h2><p class="subtitle">Typed gameplay events — respond to a result, instead of guessing its timing.</p></header><p>Tags declare payload types. Send and Get Payload expose those types in Blueprint; Listen tasks release response groups when a matching event arrives.</p>
+<figure class="plate"><span class="fig-no">Fig. 03.1</span><img alt="Typed Send Gameplay Event and Get Gameplay Event Payload nodes expose Scalable Float members from the selected tag." src="images/typed-event-nodes.png" /><figcaption>An existing registry tag supplies the payload type. Split pins expose its members.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: the registry and repeated responses</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 03.2</span><img alt="The project's Gameplay Event Registry pairs tags with payload structs." src="images/event-registry.png" /><figcaption>Declare the tag and type once; author with typed pins.</figcaption></figure>
+<figure class="plate"><span class="fig-no">Fig. 03.3</span><img alt="Listen for Gameplay Event uses Repeat, Queue, eight queued responses and a two-second response watchdog." src="images/event-response-settings.png" /><figcaption>Listen repeatedly, queue accepted events, and bound how long a response may run.</figcaption></figure>
 <ul>
 <li><strong>Publish:</strong> Started, Completed, Interrupted, Manual and supported Result events. Damage, spawn, query and committed barrel-shot results carry captured outcomes.</li>
 <li><strong>Route:</strong> Self, Instigator, Targets or a specified component; combine sources and Blueprint waits across components.</li>
@@ -174,8 +184,8 @@
 <li><strong>Bind and diagnose:</strong> whole payloads or individual fields, child-tag type inheritance, bounded dispatch, dropped-event counters, trace and clean cancellation.</li>
 </ul>
 <p>Gameplay events are <strong>local</strong>; they do not automatically replicate or activate abilities. Ability Callbacks remain separate.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -211,11 +221,11 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="ability-state" style="--hue:245"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">04</span><div><p class="eyebrow">Chapter 04</p><h2>Remember between activations</h2><p class="subtitle">Ability State — structured memory for each caster.</p></div></header><div class="chapter-body"><p>Keep charges, combo progress or a previous target on the Ability Component. Typed Get/Set nodes expose the selected struct's members.</p>
-<figure class="shot"><img alt="Get Ability State reads Has Charged, Charges and Combo Step; Set Ability State writes a changed charge count." src="images/ability-state-nodes.png" /><figcaption>Read the caster's values, change one, and retain the others.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: defaults, sharing and replication</strong></summary>
-<figure class="shot"><img alt="Ability State selects ST Ability Memory, initializes three charges and uses Server replication." src="images/ability-state-settings.png" /><figcaption>Choose the struct, starting values, sharing key and replication policy together.</figcaption></figure>
+</div></section><section class="chapter" id="ability-state"><div class="margin"><span class="sec">§</span><span class="big">04</span><dl><dt>Figures</dt><dd>2</dd><dt>Source files</dt><dd>5</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 04</p><h2>Remember between activations</h2><p class="subtitle">Ability State — structured memory for each caster.</p></header><p>Keep charges, combo progress or a previous target on the Ability Component. Typed Get/Set nodes expose the selected struct's members.</p>
+<figure class="plate"><span class="fig-no">Fig. 04.1</span><img alt="Get Ability State reads Has Charged, Charges and Combo Step; Set Ability State writes a changed charge count." src="images/ability-state-nodes.png" /><figcaption>Read the caster's values, change one, and retain the others.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: defaults, sharing and replication</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 04.2</span><img alt="Ability State selects ST Ability Memory, initializes three charges and uses Server replication." src="images/ability-state-settings.png" /><figcaption>Choose the struct, starting values, sharing key and replication policy together.</figcaption></figure>
 <ul>
 <li><strong>Lazy storage:</strong> create on first use; <strong>Use State</strong> can disable storage for selected casters. <strong>Has State</strong> reports availability.</li>
 <li><strong>Shared memory:</strong> related abilities share a <strong>State Key</strong>. Component <strong>State Overrides</strong> supply different defaults.</li>
@@ -223,8 +233,8 @@
 <li><strong>Lifecycle:</strong> reset one key or all states; struct/member edits refresh nodes.</li>
 <li><strong>Replication:</strong> Local per machine, or server-authoritative values sent to the owning client.</li>
 </ul>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -256,16 +266,16 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="passives" style="--hue:268"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">05</span><div><p class="eyebrow">Chapter 05</p><h2>Keep each player's effects independent</h2><p class="subtitle">Passives per instigator — separate stacks, expiry and attribution.</p></div></header><div class="chapter-body"><p>Two players can apply the same Burn to one enemy without sharing its lifetime. Query, change or cancel one instigator's application.</p>
-<figure class="shot"><img alt="Passive settings use Unique Per Instigator, five maximum stacks and duration refresh on new stacks." src="images/passive-settings.png" /><figcaption>One ability type. A separate passive instance for each instigator.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: inspect ownership and cancel selectively</strong></summary>
-<figure class="shot"><img alt="Get Passive Instigators and Get Current Stack Count for Passive Ability expose per-instigator query controls." src="images/passive-instigator-nodes.png" /><figcaption>List the applying actors, then inspect a particular actor's stacks.</figcaption></figure>
-<figure class="shot"><img alt="Cancel Ability uses Remove One and filters Only Passives From Self." src="images/passive-cancellation.png" /><figcaption>Remove your own application without clearing somebody else's.</figcaption></figure>
+</div></section><section class="chapter" id="passives"><div class="margin"><span class="sec">§</span><span class="big">05</span><dl><dt>Figures</dt><dd>3</dd><dt>Source files</dt><dd>4</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 05</p><h2>Keep each player's effects independent</h2><p class="subtitle">Passives per instigator — separate stacks, expiry and attribution.</p></header><p>Two players can apply the same Burn to one enemy without sharing its lifetime. Query, change or cancel one instigator's application.</p>
+<figure class="plate"><span class="fig-no">Fig. 05.1</span><img alt="Passive settings use Unique Per Instigator, five maximum stacks and duration refresh on new stacks." src="images/passive-settings.png" /><figcaption>One ability type. A separate passive instance for each instigator.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: inspect ownership and cancel selectively</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 05.2</span><img alt="Get Passive Instigators and Get Current Stack Count for Passive Ability expose per-instigator query controls." src="images/passive-instigator-nodes.png" /><figcaption>List the applying actors, then inspect a particular actor's stacks.</figcaption></figure>
+<figure class="plate"><span class="fig-no">Fig. 05.3</span><img alt="Cancel Ability uses Remove One and filters Only Passives From Self." src="images/passive-cancellation.png" /><figcaption>Remove your own application without clearing somebody else's.</figcaption></figure>
 <p>Stacks, duration, decay and cooldowns are independent. APIs accept an optional <strong>Instigator</strong>; Get Current Passive Abilities lists each ability type once. Replication carries separate instances and stack changes.</p>
 <p>Temporary tags are reference-counted: one effect ending keeps <code>Status.Burning</code> while another still owns it. <strong>Remove One</strong> removes a stack from each affected instance.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -293,10 +303,10 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="enhanced-input" style="--hue:290"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">06</span><div><p class="eyebrow">Chapter 06</p><h2>Make input part of the move</h2><p class="subtitle">Enhanced Input — hold, release and branch with Input Actions.</p></div></header><div class="chapter-body"><p>Use the activation's Context Input or select a Manual Input. Channel and branch readers listen to trigger callbacks for their execution window.</p>
-<figure class="shot"><img alt="Enhanced Input channel controls use Context Input, Started and While Input Is Active." src="images/enhanced-input.png" /><figcaption>Hold the channel; route to Recovery when input stops.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: input modes and listening windows</strong></summary>
+</div></section><section class="chapter" id="enhanced-input"><div class="margin"><span class="sec">§</span><span class="big">06</span><dl><dt>Figures</dt><dd>1</dd><dt>Source files</dt><dd>4</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 06</p><h2>Make input part of the move</h2><p class="subtitle">Enhanced Input — hold, release and branch with Input Actions.</p></header><p>Use the activation's Context Input or select a Manual Input. Channel and branch readers listen to trigger callbacks for their execution window.</p>
+<figure class="plate"><span class="fig-no">Fig. 06.1</span><img alt="Enhanced Input channel controls use Context Input, Started and While Input Is Active." src="images/enhanced-input.png" /><figcaption>Hold the channel; route to Recovery when input stops.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: input modes and listening windows</strong></summary>
 <ul>
 <li><strong>On Input branches</strong> remember a callback while other conditions become ready.</li>
 <li><strong>While Input Is Active</strong> follows the action lifecycle; <strong>Until Event Occurs</strong> ends on the selected callback, commonly Completed for release.</li>
@@ -304,8 +314,8 @@
 <li>Listeners belong to one execution and detach at the window's end, including input-component replacement and lost mappings.</li>
 </ul>
 <p>Physical hold/release behavior comes from the game's Input Actions and mapping contexts.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -333,12 +343,12 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="root-motion" style="--hue:315"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">07</span><div><p class="eyebrow">Chapter 07</p><h2>Author the movement</h2><p class="subtitle">Root-motion tasks — dashes, pulls, knockbacks and leaps.</p></div></header><div class="chapter-body"><p>Four dedicated tasks use Character Movement sources. Bind values, shape motion with curves, and control how velocity finishes.</p>
-<figure class="shot"><img alt="Root Motion Radial Force displays its radius and origin gizmo in the viewport beside its settings." src="images/root-motion-editor.png" /><figcaption>Place the origin. Preview the radius. Author the push or pull.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: directional force, tracking and jumping</strong></summary>
-<figure class="shot"><img alt="Constant Force exposes direction space, strength-over-time and finish-velocity controls." src="images/root-motion-constant.png" /><figcaption>Choose the direction space and strength curve for a dash.</figcaption></figure>
-<div class="gallery"><figure class="shot"><img alt="Move To exposes destination tracking, stop distance and path curves." src="images/root-motion-move.png" /><figcaption><strong>Move To:</strong> track a destination and stop short.</figcaption></figure><figure class="shot"><img alt="Jump exposes distance, height and Finish On Landed." src="images/root-motion-jump.png" /><figcaption><strong>Jump:</strong> shape the arc and finish on landing.</figcaption></figure></div>
+</div></section><section class="chapter" id="root-motion"><div class="margin"><span class="sec">§</span><span class="big">07</span><dl><dt>Figures</dt><dd>4</dd><dt>Source files</dt><dd>5</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 07</p><h2>Author the movement</h2><p class="subtitle">Root-motion tasks — dashes, pulls, knockbacks and leaps.</p></header><p>Four dedicated tasks use Character Movement sources. Bind values, shape motion with curves, and control how velocity finishes.</p>
+<figure class="plate"><span class="fig-no">Fig. 07.1</span><img alt="Root Motion Radial Force displays its radius and origin gizmo in the viewport beside its settings." src="images/root-motion-editor.png" /><figcaption>Place the origin. Preview the radius. Author the push or pull.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: directional force, tracking and jumping</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 07.2</span><img alt="Constant Force exposes direction space, strength-over-time and finish-velocity controls." src="images/root-motion-constant.png" /><figcaption>Choose the direction space and strength curve for a dash.</figcaption></figure>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 07.3</span><img alt="Move To exposes destination tracking, stop distance and path curves." src="images/root-motion-move.png" /><figcaption><strong>Move To:</strong> track a destination and stop short.</figcaption></figure><figure class="plate"><span class="fig-no">Fig. 07.4</span><img alt="Jump exposes distance, height and Finish On Landed." src="images/root-motion-jump.png" /><figcaption><strong>Jump:</strong> shape the arc and finish on landing.</figcaption></figure></div>
 <table>
 <thead>
 <tr>
@@ -366,8 +376,8 @@
 </tbody>
 </table>
 <p>All share additive/override behavior, priority, source naming, cleanup, finish velocity and temporary movement-mode controls. Duration follows play rate; Move To/Jump can finish early. Character Movement provides source replication, with server and owning-client application by default.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -399,18 +409,18 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="ability-editor" style="--hue:340"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">08</span><div><p class="eyebrow">Chapter 08</p><h2>Read the ability at a glance</h2><p class="subtitle">Ability Editor — clearer tracks, phase routes and preview controls.</p></div></header><div class="chapter-body"><p>Task groups separate presentation, collision, damage, movement and reactions. Search and collapse tracks to keep a larger ability readable.</p>
-<figure class="shot"><img alt="Animation, collision, damage, movement and gameplay-event tasks are separated into timeline groups." src="images/task-groups.png" /><figcaption>Follow each system's timing without losing the whole move.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: editing and preview improvements</strong></summary>
+</div></section><section class="chapter" id="ability-editor"><div class="margin"><span class="sec">§</span><span class="big">08</span><dl><dt>Figures</dt><dd>1</dd><dt>Source files</dt><dd>6</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 08</p><h2>Read the ability at a glance</h2><p class="subtitle">Ability Editor — clearer tracks, phase routes and preview controls.</p></header><p>Task groups separate presentation, collision, damage, movement and reactions. Search and collapse tracks to keep a larger ability readable.</p>
+<figure class="plate"><span class="fig-no">Fig. 08.1</span><img alt="Animation, collision, damage, movement and gameplay-event tasks are separated into timeline groups." src="images/task-groups.png" /><figcaption>Follow each system's timing without losing the whole move.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: editing and preview improvements</strong></summary>
 <ul>
 <li><strong>Organization:</strong> named groups, drag reordering, moving tasks between groups and category grouping. Search task/category/group, including collapsed matches.</li>
 <li><strong>Navigation:</strong> cursor-centred Alt + wheel zoom, Shift + wheel pan, draggable time/frame scrubbing and clearer task bars.</li>
 <li><strong>Spatial editing:</strong> W/E moves/rotates labelled task gizmos; per-value visibility and one undo per drag. Custom task variables can declare relative space, socket and visibility.</li>
 <li><strong>Preview:</strong> No Loop, Loop Ability, Loop Timeline, Timeline Once and Force Transition. Faster searchable actor/target pickers, Respawn, Add/Override Target and an initial-timeline new-asset workflow.</li>
 </ul>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -446,11 +456,11 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="task-library" style="--hue:12"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">09</span><div><p class="eyebrow">Chapter 09</p><h2>Bind it. Spawn it. Present it.</h2><p class="subtitle">Richer task authoring — customize each use of the move.</p></div></header><div class="chapter-body"><p>Spawn Actor exposes the chosen class's spawn variables with dynamic bindings. Animation and camera-shake controls make presentation easier to configure.</p>
-<figure class="shot"><img alt="Spawn Actor exposes the Throwable class's bindable Data, Time Cooked and Instigator spawn variables." src="images/spawn-variables.png" /><figcaption>The selected class supplies the fields. Bind values for this execution.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: animation, camera shake and task bindings</strong></summary>
-<div class="gallery"><figure class="shot"><img alt="Play Animation groups playback, duration, speed and blending controls." src="images/animation-controls.png" /><figcaption><strong>Animation:</strong> explicit playback, timing and blending.</figcaption></figure><figure class="shot"><img alt="Nearby camera shake exposes epicenter, radii and falloff controls." src="images/nearby-shake.png" /><figcaption><strong>Camera shake:</strong> nearby players with spatial falloff.</figcaption></figure></div>
+</div></section><section class="chapter" id="task-library"><div class="margin"><span class="sec">§</span><span class="big">09</span><dl><dt>Figures</dt><dd>3</dd><dt>Source files</dt><dd>5</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 09</p><h2>Bind it. Spawn it. Present it.</h2><p class="subtitle">Richer task authoring — customize each use of the move.</p></header><p>Spawn Actor exposes the chosen class's spawn variables with dynamic bindings. Animation and camera-shake controls make presentation easier to configure.</p>
+<figure class="plate"><span class="fig-no">Fig. 09.1</span><img alt="Spawn Actor exposes the Throwable class's bindable Data, Time Cooked and Instigator spawn variables." src="images/spawn-variables.png" /><figcaption>The selected class supplies the fields. Bind values for this execution.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: animation, camera shake and task bindings</strong></summary>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 09.2</span><img alt="Play Animation groups playback, duration, speed and blending controls." src="images/animation-controls.png" /><figcaption><strong>Animation:</strong> explicit playback, timing and blending.</figcaption></figure><figure class="plate"><span class="fig-no">Fig. 09.3</span><img alt="Nearby camera shake exposes epicenter, radii and falloff controls." src="images/nearby-shake.png" /><figcaption><strong>Camera shake:</strong> nearby players with spatial falloff.</figcaption></figure></div>
 <ul>
 <li><strong>Spawn:</strong> class-aware typed variables, defaults/bindings, deferred initialization, attachment and result events.</li>
 <li><strong>Animation:</strong> playback mode, duration/speed policies, start position, looping, blending, end behavior and migration validation.</li>
@@ -458,8 +468,8 @@
 <li><strong>Bindings:</strong> broader dynamic values, identifiers and Create/View Binding controls. Effects, sound and ability playback receive supporting authoring/lifecycle improvements.</li>
 </ul>
 <p>Smaller completion, cancellation, attachment, damage, turning and cleanup fixes are grouped here rather than listed task by task.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -491,10 +501,10 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="collision-performance" style="--hue:36"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">10</span><div><p class="eyebrow">Chapter 10</p><h2>Make collision cheaper—and visible</h2><p class="subtitle">Native shape execution, caching and ACE Profiler.</p></div></header><div class="chapter-body"><p>Supported shape graphs compile into native execution steps. Geometry reuse and tighter queries reduce repeated work; the profiler separates build and query costs by shape.</p>
-<figure class="shot"><img alt="ACE Profiler recording three Shape classes: the cost graph with a hover readout, the per-class table, and Worst frames below." src="images/ace-profiler.png" /><figcaption>A synthetic test workload: hover the graph to read every line; Worst frames takes the costliest apart.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: where the savings come from</strong></summary>
+</div></section><section class="chapter" id="collision-performance"><div class="margin"><span class="sec">§</span><span class="big">10</span><dl><dt>Figures</dt><dd>1</dd><dt>Source files</dt><dd>8</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 10</p><h2>Make collision cheaper—and visible</h2><p class="subtitle">Native shape execution, caching and ACE Profiler.</p></header><p>Supported shape graphs compile into native execution steps. Geometry reuse and tighter queries reduce repeated work; the profiler separates build and query costs by shape.</p>
+<figure class="plate"><span class="fig-no">Fig. 10.1</span><img alt="ACE Profiler recording three Shape classes: the cost graph with a hover readout, the per-class table, and Worst frames below." src="images/ace-profiler.png" /><figcaption>A synthetic test workload: hover the graph to read every line; Worst frames takes the costliest apart.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: where the savings come from</strong></summary>
 <ul>
 <li><strong>Native Build Shape:</strong> supported math, Params, composition, Branch and Select avoid Blueprint VM dispatch. Unsupported graphs retain the VM with diagnostics.</li>
 <li><strong>Reuse:</strong> bounded Params caches, shared hulls, cross-build caching and source-change invalidation.</li>
@@ -505,8 +515,8 @@
 <li><strong>Saved recordings:</strong> the last five, as a CSV of every frame and a summary; <strong>Recordings</strong> reopens one in the graph.</li>
 </ul>
 <p>Repository A/B measurements cover specific workloads, not a universal speedup. The production profiler is separate from the optional test plugin.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -552,11 +562,11 @@
 | Worst frames panel | <a href="https://github.com/GamesAndBacon/able-custom/blob/5d605e0d478f221d6108ef51bf053e94d538973b/plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp#L558" title="plugins/AbleCollisionEngine/Source/AbleCollisionEngineEditor/Private/Profiler/SAblCollisionProfiler.cpp">SAblCollisionProfiler.cpp · L558</a><br><sub>ACE Editor · Private/Profiler</sub> |</p>
 </details>
 <hr />
-</div></section><section class="chapter" id="networking-apis" style="--hue:150"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">11</span><div><p class="eyebrow">Chapter 11</p><h2>Start abilities. Follow the result.</h2><p class="subtitle">Simpler APIs and leaner replication underneath.</p></div></header><div class="chapter-body"><p>Try Activate Ability creates the context and reports Activated/Failed in one node. Cooldown notifications and adjustments give UI and gameplay direct timer control.</p>
-<figure class="shot"><img alt="Try Activate Ability exposes Activated, Failed, the created Context and the start result." src="images/try-activate-ability.png" /><figcaption>Start the selected ability and handle the outcome directly.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: cooldown controls and networking changes</strong></summary>
-<figure class="shot"><img alt="Change Cooldown and Get Ability Cooldown Remaining expose Timeline Index and Instigator controls." src="images/cooldown-controls.png" /><figcaption>Adjust a timer in seconds, or read one phase/instigator's remaining time.</figcaption></figure>
+</div></section><section class="chapter" id="networking-apis"><div class="margin"><span class="sec">§</span><span class="big">11</span><dl><dt>Figures</dt><dd>2</dd><dt>Source files</dt><dd>5</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 11</p><h2>Start abilities. Follow the result.</h2><p class="subtitle">Simpler APIs and leaner replication underneath.</p></header><p>Try Activate Ability creates the context and reports Activated/Failed in one node. Cooldown notifications and adjustments give UI and gameplay direct timer control.</p>
+<figure class="plate"><span class="fig-no">Fig. 11.1</span><img alt="Try Activate Ability exposes Activated, Failed, the created Context and the start result." src="images/try-activate-ability.png" /><figcaption>Start the selected ability and handle the outcome directly.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: cooldown controls and networking changes</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 11.2</span><img alt="Change Cooldown and Get Ability Cooldown Remaining expose Timeline Index and Instigator controls." src="images/cooldown-controls.png" /><figcaption>Adjust a timer in seconds, or read one phase/instigator's remaining time.</figcaption></figure>
 <ul>
 <li><strong>Activation:</strong> optional instigator, input action, starting timeline and target location. Blueprint and AI can select an attack phase.</li>
 <li><strong>Cooldowns:</strong> Started/Changed/Ended notifications, remaining seconds and single/all-timer adjustments.</li>
@@ -564,8 +574,8 @@
 <li><strong>Shared choices:</strong> per-visit random Int/Float values support corresponding timeline selections between machines.</li>
 </ul>
 <p>Screenshots show the APIs, not network traffic. Gameplay-critical transitions still need server control. Remaining replication limits include same-timeline restarts, passive timeline changes and late-join shared randomness; gameplay events stay local.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -597,19 +607,19 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="weapon-integrations" style="--hue:168"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">12</span><div><p class="eyebrow">Chapter 12</p><h2>Connect the weapon to the move</h2><p class="subtitle">EasyBallistics and bindable execution contexts.</p></div></header><div class="chapter-body"><p>Fire Barrel and Barrel Command put weapon control on the timeline. Bind settings, aim at shot time, and publish committed-shot gameplay results.</p>
-<figure class="shot"><img alt="Fire Barrel exposes held-fire cleanup, barrel selection and bindable weapon configuration." src="images/fire-barrel.png" /><figcaption>Refresh configuration while firing; choose how it restores or stops.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: barrel commands and shot-time aiming</strong></summary>
-<div class="gallery"><figure class="shot"><img alt="Barrel Command lists firing, configuration, ammo, charge, chamber and spool operations." src="images/barrel-commands.png" /><figcaption><strong>Commands:</strong> fire, stop, configure, reload and more.</figcaption></figure><figure class="shot"><img alt="Easy Aim in View Trace mode exposes view-source and obstruction settings." src="images/easy-aim.png" /><figcaption><strong>Easy Aim:</strong> choose the source and handle obstructions.</figcaption></figure></div>
+</div></section><section class="chapter" id="weapon-integrations"><div class="margin"><span class="sec">§</span><span class="big">12</span><dl><dt>Figures</dt><dd>4</dd><dt>Source files</dt><dd>8</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 12</p><h2>Connect the weapon to the move</h2><p class="subtitle">EasyBallistics and bindable execution contexts.</p></header><p>Fire Barrel and Barrel Command put weapon control on the timeline. Bind settings, aim at shot time, and publish committed-shot gameplay results.</p>
+<figure class="plate"><span class="fig-no">Fig. 12.1</span><img alt="Fire Barrel exposes held-fire cleanup, barrel selection and bindable weapon configuration." src="images/fire-barrel.png" /><figcaption>Refresh configuration while firing; choose how it restores or stops.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: barrel commands and shot-time aiming</strong></summary>
+<div class="plates"><figure class="plate"><span class="fig-no">Fig. 12.2</span><img alt="Barrel Command lists firing, configuration, ammo, charge, chamber and spool operations." src="images/barrel-commands.png" /><figcaption><strong>Commands:</strong> fire, stop, configure, reload and more.</figcaption></figure><figure class="plate"><span class="fig-no">Fig. 12.3</span><img alt="Easy Aim in View Trace mode exposes view-source and obstruction settings." src="images/easy-aim.png" /><figcaption><strong>Easy Aim:</strong> choose the source and handle obstructions.</figcaption></figure></div>
 <ul>
 <li>Select barrels explicitly or through targets; bind configuration and refresh/restore policy.</li>
 <li>Command firing, ammo, charge, chamber unloading, fire mode, spooling and shooting blocking.</li>
 <li>Aim through View Trace, a world point, actor or component; configure view source, offsets and obstructions. Dynamic binding and barrel delegates remain available.</li>
 <li>Apply external stat overrides with <strong>139 typed value getters</strong>. Result events expose committed authority-side shot data and captured bullet references.</li>
 </ul>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -640,13 +650,13 @@
 </tbody>
 </table>
 </details>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: follow one execution's lifecycle</strong></summary>
-<figure class="shot"><img alt="A bindable execution context supplies Bind Event to On Ability Timeline Changed and On Ability End." src="images/context-lifecycle.png" /><figcaption>Subscribe to the execution you started. Connect event handlers to react.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: follow one execution's lifecycle</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 12.4</span><img alt="A bindable execution context supplies Bind Event to On Ability Timeline Changed and On Ability End." src="images/context-lifecycle.png" /><figcaption>Subscribe to the execution you started. Connect event handlers to react.</figcaption></figure>
 <p>Bindable contexts expose Start, End, Interrupt, Branch and Timeline Changed delegates. Typed factories and conversion support ordinary and pooled contexts; end cleanup removes forwarding/listeners before reuse. The integration is optional and local.</p>
 <p>Both bridges existed in the repository's earliest snapshot; their later evolution is part of this generation.</p>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -670,11 +680,11 @@
 </table>
 </details>
 <hr />
-</div></section><section class="chapter" id="the-foundation-underneath" style="--hue:205"><header class="chapter-head"><span class="chapter-num" aria-hidden="true">+</span><div><p class="eyebrow">Underneath</p><h2>The foundation underneath</h2><p class="subtitle">Optional test tooling. Clearer plugin boundaries. No compatibility code left.</p></div></header><div class="chapter-body"><p>AbleTests groups editor automation, collision fixtures and reproducible measurements in a removable editor plugin. Production plugins do not depend on it.</p>
-<figure class="shot"><img alt="Able Tests is an optional plugin for automation, collision benchmarks, fixtures and reports, shown disabled." src="images/able-tests-plugin.png" /><figcaption>Available when needed; disabled in the captured editor session.</figcaption></figure>
-<details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>Look closer: modular plugins and upgrading</strong></summary>
-<figure class="shot"><img alt="Plugin browser separates Able, Able Collision Engine, EasyBallistics, optional Able Tests and bindable contexts." src="images/modular-plugins.png" /><figcaption>The framework, collision engine and bridges have distinct responsibilities.</figcaption></figure>
+</div></section><section class="chapter" id="the-foundation-underneath"><div class="margin"><span class="sec">§</span><span class="big">00</span><dl><dt>Figures</dt><dd>2</dd><dt>Source files</dt><dd>4</dd></dl></div><div class="chapter-main"><header class="chapter-head"><p class="runner">Chapter 00</p><h2>The foundation underneath</h2><p class="subtitle">Optional test tooling. Clearer plugin boundaries. No compatibility code left.</p></header><p>AbleTests groups editor automation, collision fixtures and reproducible measurements in a removable editor plugin. Production plugins do not depend on it.</p>
+<figure class="plate"><span class="fig-no">Fig. 00.1</span><img alt="Able Tests is an optional plugin for automation, collision benchmarks, fixtures and reports, shown disabled." src="images/able-tests-plugin.png" /><figcaption>Available when needed; disabled in the captured editor session.</figcaption></figure>
+<details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>Look closer: modular plugins and upgrading</strong></summary>
+<figure class="plate"><span class="fig-no">Fig. 00.2</span><img alt="Plugin browser separates Able, Able Collision Engine, EasyBallistics, optional Able Tests and bindable contexts." src="images/modular-plugins.png" /><figcaption>The framework, collision engine and bridges have distinct responsibilities.</figcaption></figure>
 <p>Automation covers shape builds, query variants, batches, filters and lifecycle behavior. Reports record workloads, environment, seeds and latency distributions. The October review recorded <strong>213 passing tests at that checkpoint</strong>. On 12 October the Able and Collision Engine product suite ran <strong>73 tests, all passing</strong>, after the compatibility code was removed.</p>
 <p>The project's own assets were converted once and saved in the current format; the conversions were then removed. Coming from the original Able, author these the current way:</p>
 <table>
@@ -715,8 +725,8 @@
 </tr>
 </tbody>
 </table>
-<p class="code-heading"><span>Code directory</span> · <a href="#source-path-key">Source path key</a></p>
-<table class="code-directory">
+<p class="parts-heading"><span>Parts list</span> · <a href="#source-path-key">Source path key</a></p>
+<table class="parts">
 <thead>
 <tr>
 <th style="text-align: left;">What to find</th>
@@ -743,8 +753,8 @@
 </tbody>
 </table>
 </details>
-</div></section><section class="notes" id="capture-notes"><details class="drawer">
-<summary><span class="plus" aria-hidden="true"></span><strong>About these captures</strong></summary>
+</div></section><section class="notes" id="capture-notes"><details class="spec">
+<summary><span class="spec-toggle" aria-hidden="true"></span><strong>About these captures</strong></summary>
 <p>Captured directly from <strong>shootcramental / Unreal Engine 5.8</strong> on <strong>11 October 2026</strong>. Cross Slash, Morning Star and registry entries are existing assets. The Collision Engine's handles, node Details, Shape-in-ability and profiler captures were added on <strong>12 October 2026</strong> by AbleTests' capture tools, which open existing assets without saving them; the profiler records a synthetic test workload.</p>
 <p><code>AB_20_Showcase</code> and <code>ST_AbilityMemory</code> are temporary, unsaved authoring examples. Graphs and inspectors demonstrate controls, not validated gameplay implementations. Existing asset classes and registry entries were read without editing them.</p>
 <p>Images are tightly framed screen captures; UI values/results were not painted into them. The cover is an original vector. The 12 October captures came from a fresh editor build; no benchmark or network validation was run for this document.</p>
@@ -800,8 +810,8 @@
 <p>Markdown and the website share content and local images. This public repository contains only the showcase/media; plugin source and the Unreal project are maintained separately.</p>
 </details></section>
 </main>
-<footer class="foot"><div><b>Able · Generation 2.0</b> · captured in Unreal Engine 5.8, 11–12 October 2026</div><div>Click any screenshot to enlarge; arrow keys step through them. <a href="https://github.com/GamesAndBacon/able-generation-2-showcase">Showcase repository</a> · <a href="https://gamesandbacon.github.io/able-generation-2-showcase/">Website</a></div></footer>
-<dialog id="viewer" aria-label="Enlarged screenshot"><button type="button" class="close" aria-label="Close">✕</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="nav prev" aria-label="Previous image">‹</button><button type="button" class="nav next" aria-label="Next image">›</button></dialog>
+<footer class="foot"><span>Able · Generation 2.0 — captured in Unreal Engine 5.8, 11–12 October 2026.</span><span>Click a figure to enlarge it; arrow keys step through them. <a href="https://github.com/GamesAndBacon/able-generation-2-showcase">Repository</a></span></footer>
+<dialog id="viewer" aria-label="Enlarged figure"><button type="button" class="close" aria-label="Close">Close</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="nav prev" aria-label="Previous figure">←</button><button type="button" class="nav next" aria-label="Next figure">→</button></dialog>
 <script src="site.js"></script>
 </body>
 </html>
