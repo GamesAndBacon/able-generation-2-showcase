@@ -165,9 +165,9 @@ page = f'''<!doctype html>
 <meta name="description" content="A field manual for custom Able on Unreal Engine 5.8: collision shapes you author visually, multiple phases, reactive gameplay, persistent state and weapon integration.">
 <meta property="og:title" content="Able · Generation 2.0">
 <meta property="og:description" content="{esc(tagline)}">
-<meta name="color-scheme" content="light dark">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light">
+<link rel="preload" href="fonts/BarlowCondensed-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Barlow-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
